@@ -25,7 +25,7 @@ class Engine:
 	def __init__(self, path = "", sample = "no"):
 
 		if sample == "yes":
-			self.path = "sample.json"
+			self.path = "/Users/minuk-hwang/Documents/Pythons/DND/sample.json"
 		else:
 			self.path = path
 		self.file = codecs.open(self.path,'r',"utf8")
@@ -38,11 +38,47 @@ class Engine:
 
 	def parseFile(self):
 		self.readFile()
+		#printu(self.jsonText)
 		self.jsonData = json.loads(s=self.jsonText)
 		self.init()
 
 	def init(self):
+
 		self.datas["playerdata"]["roomNumber"] = 0
+
+	def run(self):
+		self._parseFile()
+		#printu(self.jsonData[self.datas["playerdata"]["roomNumber"]]["text"])
+
+		#printu("events = "+str(self.datas["playerdata"]["events"]))
+		self.flagParse("temp_room_number","(*set "+str(self.datas["playerdata"]["roomNumber"])+")")
+		#eng.flagParse("flag_map_search","(*append 0)")
+		if "onEnter" in self.datas["playerdata"]["events"] and len(self.datas["playerdata"]["events"]["onEnter"]) != 0:
+			self.runActions("onEnter")
+		run = True
+		#self.textFunction(self.jsonData[self.datas["playerdata"]["roomNumber"]]["text"])
+		while(run):
+			data = self.textFunction("text",self.jsonData[self.datas["playerdata"]["roomNumber"]]["text"])
+			printu(data)
+
+			if self.datas["gamedata"]["flag_private_next"]:
+				self.runActions("next")
+			if self.datas["gamedata"]["flag_private_goto"]:
+				print("goto")
+			if not self.datas["gamedata"]["flag_private_restart"]:
+				run = False
+
+	def _parseFile(self):
+		self.datas["playerdata"]["events"] = self.jsonData[self.datas["playerdata"]["roomNumber"]]["action"]
+
+
+		# for i in self.jsonData[self.datas["playerdata"]["roomNumber"]]["action"]:
+		# 	if i == "coment":
+		# 			continue
+		# 	for e in self.jsonData[self.datas["playerdata"]["roomNumber"]]["action"][i]:
+		# 		print(e,i)
+		# 		self.datas["playerdata"]["events"][i] = []
+		# 		self.datas["playerdata"]["events"][i].append([e,self.jsonData[self.datas["playerdata"]["roomNumber"]]["action"][i][e]])
 
 	def runActions(self, key):
 		#print("key",key)
@@ -318,37 +354,6 @@ def _restart(self, data = None, option = ""):
 eng = Engine(sample = "yes")
 eng.parseFile()
 
-eng.datas["playerdata"]["events"] = {
-	"onEnter":
-	[
-		
-	],
-	"onExit":
-	[
-		["flag_map_search","(*append 0)"],
-		["temp_items","(*append map8)"]
-	],
-	"action-1":
-	[
-		["&flag_map_search &temp_room_number","당신은 이미 이곳을 탐험했다."],
-		["&flag_map_search &flag_always","이 방의 북쪽 벽에서 3m를 나가서 왼쪽(서쪽)으로 틀고, 거기서 3m를 더 가면 새로운 방이 나타난다. 이곳에는 (*action-2)이 더 있다. 어떻게 하겠는가?\n\t1.문을 연다\n\t2.돌아간다"]
-	],
-	"action-2":
-	[
-		["&flag_map_search &flag_always","고블린"]
-	],
-	"next":
-	[
-		["&flag_map_search &temp_room_number","(*goto 52)"],
-		["temp_prompt","(*prompt)"],
-		["&temp_prompt \"문을 연다\"","(*goto 66)"],
-		["&temp_prompt 1","(*goto 66)"],
-		["&temp_prompt \"돌아간다\"","(*goto 37)"],
-		["&temp_prompt 2","(*goto 37)"],
-		["&temp_prompt &flag_always","(*restart)"]
-	]
-}
-
 eng.datas["gamedata"]["funcs"]["prompt"] = _prompt
 eng.datas["gamedata"]["funcs"]["append"] = _append
 eng.datas["gamedata"]["funcs"]["next"] = _next
@@ -356,30 +361,50 @@ eng.datas["gamedata"]["funcs"]["set"] = _set
 eng.datas["gamedata"]["funcs"]["goto"] = _goto
 eng.datas["gamedata"]["funcs"]["restart"] = _restart
 
+eng.run()
+# #pdb.set_trace()
+# eng.datas["playerdata"]["events"] = {
+# 	"onEnter":
+# 	[
+		
+# 	],
+# 	"onExit":
+# 	[
+# 		["flag_map_search","(*append 0)"],
+# 		["temp_items","(*append map8)"]
+# 	],
+# 	"action-1":
+# 	[
+# 		["&flag_map_search &temp_room_number","당신은 이미 이곳을 탐험했다."],
+# 		["&flag_map_search &flag_always","이 방의 북쪽 벽에서 3m를 나가서 왼쪽(서쪽)으로 틀고, 거기서 3m를 더 가면 새로운 방이 나타난다. 이곳에는 (*action-2)이 더 있다. 어떻게 하겠는가?\n\t1.문을 연다\n\t2.돌아간다"]
+# 	],
+# 	"action-2":
+# 	[
+# 		["&flag_map_search &flag_always","고블린"]
+# 	],
+# 	"next":
+# 	[
+# 		["&flag_map_search &temp_room_number","(*goto 52)"],
+# 		["temp_prompt","(*prompt)"],
+# 		["&temp_prompt \"문을 연다\"","(*goto 66)"],
+# 		["&temp_prompt 1","(*goto 66)"],
+# 		["&temp_prompt \"돌아간다\"","(*goto 37)"],
+# 		["&temp_prompt 2","(*goto 37)"],
+# 		["&temp_prompt &flag_always","(*restart)"]
+# 	]
+# }
+# eng.flagParse("temp_room_number","(*set 0)")
+# #eng.flagParse("flag_map_search","(*append 0)")
+# if len(eng.datas["playerdata"]["events"]["onEnter"]) != 0:
+# 	eng.runActions("onEnter")
+# run = True
+# while(run):
+# 	data = eng.textFunction("text","(*action-1) (*next)")
+# 	printu(data)
 
-#pdb.set_trace()
-eng.flagParse("temp_room_number","(*set 0)")
-#eng.flagParse("flag_map_search","(*append 0)")
-if len(eng.datas["playerdata"]["events"]["onEnter"]) != 0:
-	eng.runActions("onEnter")
-run = True
-while(run):
-	data = eng.textFunction("text","(*action-1) (*next)")
-	printu(data)
-
-	if eng.datas["gamedata"]["flag_private_next"]:
-		eng.runActions("next")
-	if eng.datas["gamedata"]["flag_private_goto"]:
-		print("goto")
-	if not eng.datas["gamedata"]["flag_private_restart"]:
-		run = False
-
-
-#pdb.set_trace()
-
-#print(eng.datas["playerdata"])
-
-
-
-
-#eng.flagParse("&temp_prompt \"문을연다?\"","(*goto 66)")
+# 	if eng.datas["gamedata"]["flag_private_next"]:
+# 		eng.runActions("next")
+# 	if eng.datas["gamedata"]["flag_private_goto"]:
+# 		print("goto")
+# 	if not eng.datas["gamedata"]["flag_private_restart"]:
+# 		run = False
