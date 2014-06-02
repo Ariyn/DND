@@ -1,0 +1,35 @@
+roominfo.py{
+	// initialize
+	class name = SetRoom __init__(self, path)
+	//getter and setter
+	setAllObject(self, valindex, valname, valitems, valevents, valmonsters):
+	setAuto(self):
+	getAllObject(self):
+	getIndex(self):
+	setIndex(self, val)
+	getName(self):
+	setName(self, string)
+	getItems(self)
+	setItems(self, lists)
+	addItem(self, val)
+	delItem(self, val)
+	getEvents(self)
+	setEvents(self, dicts)
+	addEvent(self, key, val)
+	delEvent(self, key)
+	getMonsters(self)
+	setMonsters(self, lists)
+	addMonster(self, val)
+	delMonster(self, val)
+	printAllObject(self) //debug
+},
+maps.py{
+	// initialize
+	class name = Maps __init__(self, string = "5x5")
+	// creating random map but now (prototype) 5x5 random map
+	createMaps(self)
+	//mapinfo to json(list) in return
+	ToJson(self)
+	// specific map select and return json
+	spcMapSelect(self, index) return {"index:", ["North", "South"]}
+}

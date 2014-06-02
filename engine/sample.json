@@ -1,0 +1,93 @@
+[
+	{
+		"number":0,
+		"action":
+		{
+			"coment":"this is comment. this does not effect to game.",
+			"onEnter":
+			[
+			],
+			"onExit":
+			[
+				["flag_map_search","(*append 0)"]
+			],
+			"action-1":
+			[
+				["&flag_map_search &temp_room_number","당신은 이미 이곳을 탐험했다."],
+				["&flag_map_search &flag_always","이 방의 북쪽 벽에서 3m를 나가서 왼쪽(서쪽)으로 틀고, 거기서 3m를 더 가면 새로운 방이 나타난다. 이곳에는 (*action-2)이 더 있다. 어떻게 하겠는가?\n\t1.문을 연다\n\t2.돌아간다"]
+			],
+			"action-2":
+			[
+				["&flag_map_search &flag_always","고블린"]
+			],
+			"next":
+			[
+				["&flag_map_search &room_number" ,"(*goto 52)"],
+				["temp_prompt", "(*prompt)"],
+				["&temp_prompt \"문을 연다\"","(*goto 1)"],
+				["&temp_prompt 1","(*goto 1)"],
+				["&temp_prompt \"돌아간다\"","(*goto 2)"],
+				["&temp_prompt 2","(*goto 2)"],
+				["&temp_prompt &flag_always", "(*restart)"]
+			]
+		},
+		"text":"(*action-1) (*next)"
+	},
+	{
+		"number":1,
+		"action":
+		{
+			"coment":"this is comment. this does not effect to game.",
+			"onEnter":
+			[
+			],
+			"onExit":
+			[
+				["flag_map_search","(*append 1)"]
+			],
+			"action-1":
+			[
+				["&flag_map_search &flag_always","당신은 문을 열고 들어왔다. (*action-2)이 당신을 보고 말았다. 당신은 전투에서 패배했고 죽어버렸다."]
+			],
+			"action-2":
+			[
+				["&flag_map_search &flag_always","고블린"]
+			],
+			"next":
+			[
+				["temp_prompt", "(*prompt)"],
+				["&temp_prompt &flag_always" ,"(*gameover)"]
+			]
+		},
+		"text":"(*action-1) (*next)"
+	},
+	{
+		"number":2,
+		"action":
+		{
+			"coment":"this is comment. this does not effect to game.",
+			"onEnter":
+			[
+			],
+			"onExit":
+			[
+				["flag_map_search","(*append 2)"]
+			],
+			"action-1":
+			[
+				["&flag_map_search &flag_always","당신은 있는 힘껏 도망쳤지만 (*action-2)이 던진 딜도를 맞고 멀리가지 못했다."]
+			],
+			"action-2":
+			[
+				["&flag_map_search &flag_always","고블린"]
+			],
+			"next":
+			[
+				["temp_prompt", "(*prompt)"],
+				["&temp_prompt &flag_always" ,"(*gameover)"]
+			]
+		},
+		"text":"(*action-1) (*next)"
+	}
+]
+

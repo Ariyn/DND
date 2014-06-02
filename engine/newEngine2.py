@@ -39,12 +39,17 @@ class Engine:
 
 	def parseFile(self):
 		self.readFile()
+<<<<<<< HEAD:newEngine2.py
 		printu(self.jsonText)
+=======
+		#printu(self.jsonText)
+>>>>>>> engine_test:engine/newEngine2.py
 		self.jsonData = json.loads(s=self.jsonText)
 		self.init()
 
 	def init(self):
 
+<<<<<<< HEAD:newEngine2.py
 		self.datas["playerdata"]["roomNumber"] = str(0)
 
 	def run(self):
@@ -72,6 +77,63 @@ class Engine:
 					self.runActions("next")
 				if self.datas["gamedata"]["flag_private_goto"]:
 					self.datas["playerdata"]["roomNumber"] = self.datas["gamedata"]["flag_private_goto"]
+					self.datas["gamedata"]["flag_private_goto"] = None
+					#print(self.datas["playerdata"]["roomNumber"])
+				if self.datas["gamedata"]["flag_private_restart"]:
+					#print("true")
+					run = True
+
+			if self.datas["gamedata"]["flag_private_dead"]:
+				gameRun = False
+
+		if self.datas["gamedata"]["flag_private_dead"]:
+			printu("You Are Officially Dead!\n당신의 여행과정 -> 없음\n무엇을 보여줄까 -> 모름\n무엇을 짜고있는가 -> 없음")
+			return 
+
+	def _parseFile(self):
+		
+		self.datas["playerdata"]["events"] = None
+		self.datas["playerdata"]["events"] = self.jsonData[self.datas["playerdata"]["roomNumber"]]["action"]
+
+		#print(self.datas["playerdata"]["events"])
+
+
+		# for i in self.jsonData[self.datas["playerdata"]["roomNumber"]]["action"]:
+		# 	if i == "coment":
+		# 			continue
+		# 	for e in self.jsonData[self.datas["playerdata"]["roomNumber"]]["action"][i]:
+		# 		print(e,i)
+		# 		self.datas["playerdata"]["events"][i] = []
+		# 		self.datas["playerdata"]["events"][i].append([e,self.jsonData[self.datas["playerdata"]["roomNumber"]]["action"][i][e]])
+=======
+		self.datas["playerdata"]["roomNumber"] = 0
+>>>>>>> engine_test:engine/newEngine2.py
+
+	def run(self):
+		#printu(self.jsonData[self.datas["playerdata"]["roomNumber"]]["text"])
+
+		#printu("events = "+str(self.datas["playerdata"]["events"]))
+		gameRun = True
+		
+		while(gameRun):
+			self._parseFile()
+			self.flagParse("temp_room_number","(*set "+str(self.datas["playerdata"]["roomNumber"])+")")
+			#eng.flagParse("flag_map_search","(*append 0)")
+			if "onEnter" in self.datas["playerdata"]["events"] and len(self.datas["playerdata"]["events"]["onEnter"]) != 0:
+				self.runActions("onEnter")
+			#print(self.jsonData[self.datas["playerdata"]["roomNumber"]]["text"])
+			run = True
+			#self.textFunction(self.jsonData[self.datas["playerdata"]["roomNumber"]]["text"])
+			while(run):
+				run = False
+
+				data = self.textFunction("text",self.jsonData[self.datas["playerdata"]["roomNumber"]]["text"])
+				printu(data)
+
+				if self.datas["gamedata"]["flag_private_next"]:
+					self.runActions("next")
+				if self.datas["gamedata"]["flag_private_goto"]:
+					self.datas["playerdata"]["roomNumber"] = int(self.datas["gamedata"]["flag_private_goto"])
 					self.datas["gamedata"]["flag_private_goto"] = None
 					#print(self.datas["playerdata"]["roomNumber"])
 				if self.datas["gamedata"]["flag_private_restart"]:
