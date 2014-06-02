@@ -1,0 +1,378 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ind",
+				"Index"
+			],
+			[
+				"is",
+				"isNoneMap"
+			],
+			[
+				"sp",
+				"spcstr"
+			],
+			[
+				"sps",
+				"spcList"
+			],
+			[
+				"spc",
+				"spcIndex"
+			],
+			[
+				"Map",
+				"MapTable"
+			],
+			[
+				"return",
+				"returnValue"
+			],
+			[
+				"Maa",
+				"MapTable"
+			],
+			[
+				"prin",
+				"print"
+			],
+			[
+				"Ma",
+				"MapTable"
+			],
+			[
+				"d",
+				"d40lib"
+			],
+			[
+				"ro",
+				"roominfo"
+			],
+			[
+				"val",
+				"valmonsters"
+			],
+			[
+				"del",
+				"delEvents"
+			],
+			[
+				"get",
+				"getAllObject"
+			],
+			[
+				"print",
+				"printAllObject"
+			],
+			[
+				"set",
+				"setIndex"
+			],
+			[
+				"json",
+				"jsonData"
+			],
+			[
+				"En",
+				"Engines"
+			],
+			[
+				"_",
+				"_callSouth"
+			],
+			[
+				"_ca",
+				"_callEast"
+			],
+			[
+				"re",
+				"response"
+			],
+			[
+				"user",
+				"user_number"
+			],
+			[
+				"da",
+				"date2"
+			],
+			[
+				"arr",
+				"array_push"
+			],
+			[
+				"j",
+				"json_decode"
+			],
+			[
+				"n",
+				"number"
+			],
+			[
+				"te",
+				"testFunc"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"e",
+				"event"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"img",
+				"imgsrc"
+			],
+			[
+				"data",
+				"dataType"
+			],
+			[
+				"fun",
+				"function"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/MIKO/Desktop/study/roomandmap/test.py",
+		"/C/Users/MIKO/Desktop/study/roomandmap/commands.txt",
+		"/C/Users/MIKO/Desktop/study/roomandmap/mapinfo.py",
+		"/C/Users/MIKO/Desktop/study/roomandmap/maps.py",
+		"/C/Users/MIKO/Desktop/study/roomandmap/roominfo.py",
+		"/C/Users/MIKO/Desktop/study/roomandmap/d40lib.py",
+		"/C/Users/MIKO/Downloads/DND-master/DND-master/sample.json",
+		"/C/Users/MIKO/Downloads/DND-master/DND-master/newEngine2.py",
+		"/C/Users/MIKO/AppData/Roaming/Sublime Text 2/Packages/User/SFTP.errors.log",
+		"/C/Users/MIKO/Desktop/study/roomandmap/newEngine2.py",
+		"/C/Users/MIKO/Desktop/study/roomandmap/sftp-config.json",
+		"/C/Users/MIKO/Desktop/study/roomandmap/roominfo.json",
+		"/C/Users/MIKO/Desktop/study/roomandmap/sample.py",
+		"/C/Users/MIKO/Desktop/study/python/DND/maptest.py",
+		"/C/Users/MIKO/Desktop/study/python/DND/roominfo.json",
+		"/C/Users/MIKO/Desktop/study/python/DND/mapinfo.py",
+		"/C/Users/MIKO/Desktop/study/python/DND/sample.py",
+		"/C/Users/MIKO/Desktop/study/python/DND/roominfo.py",
+		"/C/Users/MIKO/Desktop/study/python/DND/newEngine2.py",
+		"/C/Users/MIKO/Desktop/study/python/DND/d40lib.py",
+		"/C/Users/MIKO/Desktop/study/python/DND/maps.py",
+		"/C/Users/MIKO/Desktop/study/python/DND/test.py",
+		"/C/Users/MIKO/Documents/basic/asset/js/getuser.js",
+		"/C/Users/MIKO/Documents/basic/asset/php/servertime.php",
+		"/C/Users/MIKO/Documents/basic/concept.json",
+		"/C/Users/MIKO/Documents/basic/asset/js/headerMenu.js",
+		"/C/Users/MIKO/Documents/basic/index.html",
+		"/C/Users/MIKO/Documents/basic/asset/js/bootstrap.js",
+		"/C/Users/MIKO/Documents/basic/asset/php/cmpuserinfo.php",
+		"/C/Users/MIKO/Documents/basic/asset/js/search.js",
+		"/C/Users/MIKO/Documents/basic/asset/php/getuserinfo.php",
+		"/C/Users/MIKO/Documents/basic/asset/css/bootstrap.css",
+		"/C/Users/MIKO/Documents/basic/login.html",
+		"/C/Users/MIKO/Documents/basic/search.html",
+		"/C/Users/MIKO/Documents/basic/main.html",
+		"/C/Users/MIKO/Documents/basic/asset/js/login.js",
+		"/C/Users/MIKO/Documents/basic/asset/js/regit.js",
+		"/C/Users/MIKO/Documents/basic/asset/php/lngregit.php",
+		"/C/Users/MIKO/Documents/basic/asset/php/test.json",
+		"/C/Users/MIKO/Documents/basic/asset/php/lgncheck.php",
+		"/C/Users/MIKO/Documents/basic/asset/php/lgncon.php",
+		"/C/Users/MIKO/Documents/basic/asset/php/index.html",
+		"/C/Users/MIKO/Documents/basic/asset/php/signin.php",
+		"/C/Users/MIKO/Downloads/svrtime.htm",
+		"/C/Users/MIKO/Downloads/svrtime_ajax.js",
+		"/C/Users/MIKO/Documents/basic/asset/css/main.css",
+		"/C/Users/MIKO/Downloads/svrtime.php",
+		"/C/Users/MIKO/Documents/basic/asset/js/jquery.cookie.js",
+		"/C/Users/MIKO/Documents/basic/asset/js/jquery-2.1.1.min.js",
+		"/C/Users/MIKO/Desktop/carhartl-jquery-cookie-92b7715/README.md",
+		"/C/Users/MIKO/Documents/basic/asset/css/index.css",
+		"/C/Users/MIKO/Documents/basic/regist.html",
+		"/C/Users/MIKO/Documents/basic/sftp-config.json",
+		"/C/Users/MIKO/AppData/Roaming/Sublime Text 2/Packages/User/gcc.sublime-build",
+		"/C/Users/MIKO/Documents/code/fuck.c",
+		"/C/Users/MIKO/Documents/code/hahaha.c"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"returnValue",
+			"returnValu",
+			"replace",
+			"valmonsters",
+			"valevents",
+			"valitems",
+			"name",
+			"items",
+			"name",
+			"createRoom",
+			"20",
+			"North",
+			"1",
+			"pass",
+			"cookie",
+			"Clock",
+			"whole_header_container",
+			"body-container",
+			"form-signin",
+			"popover",
+			"}",
+			"argument"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 215.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"si",
+				"asset/php/signin.php"
+			],
+			[
+				"lo",
+				"asset/js/login.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 206.0,
+	"status_bar_visible": true
+}
