@@ -1,31 +1,39 @@
 {
-  "playername": "name",
-  "charname": "name",
-  "values": "values",
-  "status": {
-    "class": "class",
-    "level": 0,
-    "hp": 0,
-    "ac": 0,
-    "strength": 0,
-    "intelligent": 0,
-    "wisdom": 0,
-    "agillity": 0,
-    "helth": 0,
-    "charisma": 0,
-    "res_poison": 0,
-    "res_death": 0,
-    "res_magicstic": 0,
-    "res_parrelize": 0,
-    "res_sturn": 0,
-    "res_breath": 0,
-    "res_magicspell": 0,
-    "res_magicstaff": 0
-  },
-  "skill": {
-    "skillname": "name"
-  },
-  "action": {
-    "actionname": "name"
-  }
+	"charname": "name",
+	"values": "values",
+	"status":
+	{
+		"class": "class",
+		"level": 0,
+		"hp": 0,
+		"ac": 0,
+		"strength": 0,
+		"intelligent": 0,
+		"wisdom": 0,
+		"agillity": 0,
+		"helth": 0,
+		"charisma": 0,
+		"res_poison": 0,
+		"res_death": 0,
+		"res_magicstic": 0,
+		"res_parrelize": 0,
+		"res_sturn": 0,
+		"res_breath": 0,
+		"res_magicspell": 0,
+		"res_magicstaff": 0
+	},
+	"skill":
+	[
+	  {
+	    "skillname": "name",
+	    "percentage":"30"
+	  }
+	],
+	"action":
+	[
+	  {
+	    "actionname": "name",
+		"percentage":"30"
+	  }
+	]
 }
