@@ -39,13 +39,13 @@ class Engine:
 
 	def parseFile(self):
 		self.readFile()
-		#printu(self.jsonText)
+		printu(self.jsonText)
 		self.jsonData = json.loads(s=self.jsonText)
 		self.init()
 
 	def init(self):
 
-		self.datas["playerdata"]["roomNumber"] = 0
+		self.datas["playerdata"]["roomNumber"] = str(0)
 
 	def run(self):
 		#printu(self.jsonData[self.datas["playerdata"]["roomNumber"]]["text"])
@@ -71,7 +71,7 @@ class Engine:
 				if self.datas["gamedata"]["flag_private_next"]:
 					self.runActions("next")
 				if self.datas["gamedata"]["flag_private_goto"]:
-					self.datas["playerdata"]["roomNumber"] = int(self.datas["gamedata"]["flag_private_goto"])
+					self.datas["playerdata"]["roomNumber"] = self.datas["gamedata"]["flag_private_goto"]
 					self.datas["gamedata"]["flag_private_goto"] = None
 					#print(self.datas["playerdata"]["roomNumber"])
 				if self.datas["gamedata"]["flag_private_restart"]:

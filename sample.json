@@ -1,5 +1,5 @@
-[
-	{
+{
+	"0":{
 		"number":0,
 		"action":
 		{
@@ -26,14 +26,14 @@
 				["temp_prompt", "(*prompt)"],
 				["&temp_prompt \"문을 연다\"","(*goto 1)"],
 				["&temp_prompt 1","(*goto 1)"],
-				["&temp_prompt \"돌아간다\"","(*goto 2)"],
-				["&temp_prompt 2","(*goto 2)"],
+				["&temp_prompt \"돌아간다\"","(*goto 10)"],
+				["&temp_prompt 2","(*goto 10)"],
 				["&temp_prompt &flag_always", "(*restart)"]
 			]
 		},
 		"text":"(*action-1) (*next)"
 	},
-	{
+	"1":{
 		"number":1,
 		"action":
 		{
@@ -43,11 +43,10 @@
 			],
 			"onExit":
 			[
-				["flag_map_search","(*append 1)"]
 			],
 			"action-1":
 			[
-				["&flag_map_search &flag_always","당신은 문을 열고 들어왔다. (*action-2)이 당신을 보고 말았다. 당신은 전투에서 패배했고 죽어버렸다."]
+				["&flag_map_search &flag_always","당신은 문을 열고 들어왔다. (*action-2)이 당신을 보고 말았다. 어떻게 하겠는가?\n\t1. 먼저 공격한다.\n\t2. 고블린과 대화를 시도한다."]
 			],
 			"action-2":
 			[
@@ -56,13 +55,118 @@
 			"next":
 			[
 				["temp_prompt", "(*prompt)"],
-				["&temp_prompt &flag_always" ,"(*gameover)"]
+				["&temp_prompt 1", "(*goto 2)"],
+				["&temp_prompt \"먼저 공격한다\"", "(*goto 2)"],
+				["&temp_prompt 2", "(*goto 6)"],
+				["&temp_prompt \"고블린과 대화를 시도한다\"", "(*goto 5)"],
+				["&temp_prompt &flag_always" ,"(*restart)"]
 			]
 		},
 		"text":"(*action-1) (*next)"
 	},
-	{
+	"2":{
 		"number":2,
+		"action":
+		{
+			"coment":"고블린과의 전투. 플레이어의 공격",
+			"onEnter":
+			[
+			],
+			"onExit":
+			[
+			],
+			"action-1":
+			[
+				["&flag_map_search &flag_always","당신은 (*action-2)를 공격했다. (*action-2)은 (*action-3)의 데미지를 입었다."]
+			],
+			"action-2":
+			[
+				["&flag_map_search &flag_always","고블린"]
+			],
+			"action-3":
+			[
+				["&flag_monster_demage","(*random 3)"],
+				["&flag_monster_demage 3","(*goto 5)"],
+				["&flag_monster_demage &flag_always","&flag_monster_demage"]
+			],
+			"next":
+			[
+				["temp_prompt", "(*prompt)"],
+				["&temp_prompt &flag_always" ,"(*goto 3)"]
+
+			]
+		},
+		"text":"(*action-1) (*next)"
+	},
+	"3":{
+		"number":3,
+		"action":
+		{
+			"coment":"고블린과의 전투. 고블린의 공격",
+			"onEnter":
+			[
+			],
+			"onExit":
+			[
+			],
+			"action-1":
+			[
+				["&flag_map_search &flag_always","(*action-2)은는 당신을 공격했다. (*action-2)은(는) (*action-3)의 데미지를 입었다."]
+			],
+			"action-2":
+			[
+				["&flag_map_search &flag_always","고블린"]
+			],
+			"action-3":
+			[
+				["&flag_monster_demage","(*random 3)"],
+				["&flag_monster_demage 3","(*goto 4)"],
+				["&flag_monster_demage &flag_always","&flag_monster_demage"]
+			],
+			"next":
+			[
+				["temp_prompt", "(*prompt)"],
+				["&temp_prompt &flag_always" ,"(*goto 3)"]
+
+			]
+		},
+		"text":"(*action-1) (*next)"
+	},
+	"4":{
+		"number":4,
+		"action":
+		{
+			"coment":"고블린과의 전투. 플레이어 승리",
+			"onEnter":
+			[
+			],
+			"onExit":
+			[
+			],
+			"action-1":
+			[
+				["&flag_map_search &flag_always","당신은 (*action-2)와의 전투에서 승리하였다! 당신은 (*action-3)을(를) 얻었다."]
+			],
+			"action-2":
+			[
+				["&flag_map_search &flag_always","고블린"]
+			],
+			"action-3":
+			[
+				["&flag_monster_demage","(*set 0)"],
+				["&temp_items","(*append \"열대 우림 과일\")"]
+			],
+			"next":
+			[
+				["temp_prompt", "(*prompt)"],
+				["&temp_prompt &flag_always" ,"(*goto 3)"]
+
+			]
+		},
+		"text":"(*action-1) (*next)"
+	},
+	"10":{
+		"number":10,
 		"action":
 		{
 			"coment":"this is comment. this does not effect to game.",
@@ -89,5 +193,5 @@
 		},
 		"text":"(*action-1) (*next)"
 	}
-]
+}
 
