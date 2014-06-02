@@ -1,0 +1,37 @@
+[
+	{
+		"number":0,
+		"action":
+		{
+			"coment":"this is comment. this does not effect to game.",
+			"onEnter":
+			{
+			},
+			"onExit":
+			{
+				"flag_map_search":"(*append 0)"
+			},
+			"action-1":
+			{
+				"&flag_map_search &temp_room_number":"당신은 이미 이곳을 탐험했다.",
+				"&flag_map_search &flag_always":"이 방의 북쪽 벽에서 3m를 나가서 왼쪽(서쪽)으로 틀고, 거기서 3m를 더 가면 새로운 방이 나타난다. 이곳에는 (*action-2)이 더 있다. 어떻게 하겠는가?\n\t1.문을 연다\n\t2.돌아간다"
+			},
+			"action-2":
+			{
+				"&flag_map_search &flag_always":"고블린"
+			},
+			"next":
+			{
+				"&flag_map_search &room_number" : "(*goto 52)",
+				"temp_prompt" : "(*prompt)",
+				"&temp_prompt \"문을 연다\"":"(*goto 66)",
+				"&temp_prompt 1":"(*goto 66)",
+				"&temp_prompt \"돌아간다\"":"(*goto 37)",
+				"&temp_prompt 2":"(*goto 37)",
+				"&temp_prompt &flag_always" : "(*restart)"
+			}
+		},
+		"text":"(*action-1) (*next)"
+	}
+]
+

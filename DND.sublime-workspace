@@ -1,0 +1,625 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"_data",
+				"_database"
+			],
+			[
+				"nex",
+				"nextFuncs"
+			],
+			[
+				"spl",
+				"split_func"
+			],
+			[
+				"split",
+				"split_key"
+			],
+			[
+				"text",
+				"textFunc"
+			],
+			[
+				"parse",
+				"parseFlag"
+			],
+			[
+				"room",
+				"roomNumber"
+			],
+			[
+				"player",
+				"playerdata"
+			],
+			[
+				"flag",
+				"_flag"
+			],
+			[
+				"func",
+				"pFunc"
+			],
+			[
+				"print",
+				"printu"
+			],
+			[
+				"pl",
+				"playerdata"
+			],
+			[
+				"flag_map",
+				"flag_map_search_8"
+			],
+			[
+				"flag_this",
+				"flag_map_thisroom"
+			],
+			[
+				"stri",
+				"stringPrint"
+			],
+			[
+				"tresh",
+				"treshTiles"
+			],
+			[
+				"this",
+				"thisStepPlayerNum"
+			],
+			[
+				"ret",
+				"retTile"
+			],
+			[
+				"retT",
+				"retType"
+			],
+			[
+				"admit",
+				"admitNewTile"
+			],
+			[
+				"play",
+				"playerThreshTypesNum"
+			],
+			[
+				"yard",
+				"yardNum"
+			],
+			[
+				"kertz",
+				"kertzsTileNum"
+			],
+			[
+				"shyuntz",
+				"shyuntzHand"
+			],
+			[
+				"shy",
+				"shyuntzs"
+			],
+			[
+				"shyunt",
+				"shyuntzHand"
+			],
+			[
+				"sh",
+				"shyuntzHand"
+			],
+			[
+				"temp",
+				"tempHand"
+			],
+			[
+				"thisT",
+				"thisTimeHands"
+			],
+			[
+				"checkSh",
+				"checkShyuntz2"
+			],
+			[
+				"inut",
+				"inputForTest"
+			],
+			[
+				"spec",
+				"pSpec"
+			],
+			[
+				"backgr",
+				"background-size"
+			],
+			[
+				"resour",
+				"resourcesDelta"
+			],
+			[
+				"return",
+				"_returnKertz"
+			],
+			[
+				"elem",
+				"elements"
+			],
+			[
+				"ele",
+				"elements"
+			],
+			[
+				"Mah",
+				"MahjongTile"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "texts.json",
+			"settings":
+			{
+				"buffer_size": 9200,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sample.json",
+			"settings":
+			{
+				"buffer_size": 653,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "meta.json",
+			"settings":
+			{
+				"buffer_size": 477,
+				"line_ending": "Unix",
+				"name": "["
+			}
+		},
+		{
+			"file": "newEngine2.py",
+			"settings":
+			{
+				"buffer_size": 6952,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "engine.py",
+			"settings":
+			{
+				"buffer_size": 4079,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"Package Control: remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pcodi",
+				"Package Control: Disable Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Disable Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"package instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/minuk-hwang/Documents/Pythons/DND/newEngine.py",
+		"/Users/minuk-hwang/Documents/Pythons/antinoise/test.py",
+		"/Users/minuk-hwang/Documents/Pythons/antinoise/test2.py",
+		"/Users/minuk-hwang/Documents/Pythons/DND/override.py",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/minuk-hwang/Documents/Pythons/DND/engine.py",
+		"/Users/minuk-hwang/Documents/Pythons/algorithm/train.py",
+		"/Users/minuk-hwang/Documents/Pythons/algorithm/train.qry",
+		"/Users/minuk-hwang/Documents/Pythons/algorithm/prov2.py",
+		"/Users/minuk-hwang/Documents/Pythons/algorithm/prov32.py",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/JSON Reindent/README.md",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/User/reStructuredText.sublime-settings",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/User/Pretty JSON.sublime-settings",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/Pretty JSON/Pretty JSON.sublime-settings",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/JSON Reindent/json_reindent.py",
+		"/Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/codecs.py",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/tile.py",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/game.py",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/checker.py",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/tester.py",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/gameLog/TEST.log",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/Back/3.2/game.py",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/gameLog/thTest.log",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/gameLog/thTest.index",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/gameLog/completeShort1",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/gameLog/chihou",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/gameLog/complete1",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/Back/0.3/mahjong2.py",
+		"/Users/minuk-hwang/Documents/C/testProj/list.c",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/User/sftp_servers/music_mit",
+		"/Users/minuk-hwang/Library/Application Support/Sublime Text 2/Packages/User/SFTP.sublime-settings",
+		"/Users/minuk-hwang/Documents/html/web cookie_U/production.html",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/seek.py",
+		"/Users/minuk-hwang/Documents/html/web cookie_U/resource.html",
+		"/Users/minuk-hwang/Documents/html/web cookie_U/resource_files/resources.js",
+		"/Users/minuk-hwang/Documents/html/web cookie_U/resource_files/part.js",
+		"/Users/minuk-hwang/Documents/html/web cookie_U/resource_files/classB.js",
+		"/Users/minuk-hwang/Downloads/ccc/2.c",
+		"/Users/minuk-hwang/Documents/Pythons/DB",
+		"/Users/minuk-hwang/Documents/Pythons/money/money.py",
+		"/Users/minuk-hwang/Documents/Pythons/itoons/file.py",
+		"/Users/minuk-hwang/Documents/Pythons/DB.py",
+		"/Users/minuk-hwang/Downloads/PyQt-mac-gpl-4.10.3/examples/phonon/README",
+		"/Users/minuk-hwang/Documents/Pythons/money/MoneyDb.PyData",
+		"/Users/minuk-hwang/Documents/C/testProj/cover.c",
+		"/Users/minuk-hwang/Documents/Pythons/majhong/money.py",
+		"/Users/minuk-hwang/Documents/C/testProj/decimal.c",
+		"/Users/minuk-hwang/Documents/C/testProj/star.c"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"error",
+			"splitkey",
+			"pdb",
+			"printu",
+			"if flag",
+			"if flg",
+			"self.playerdata[\"room\"]",
+			"print",
+			"split(\" \")",
+			"set",
+			"print",
+			"yes",
+			"Fals",
+			"\"items\":\"(*get 지도8)\"",
+			"지도",
+			"지",
+			"지도",
+			"{\n					\"flag_monster_kill\": [\"해골\",\"해골\"],\n					\"flag_map_search\": 13\n				},",
+			"녹괴물",
+			"녹괴",
+			"녹괴물",
+			"rea",
+			"shuffle A",
+			"error",
+			"sOuth",
+			"xrange",
+			"'",
+			"test",
+			"print",
+			"checkTile",
+			",,",
+			"index",
+			"MahjongTile",
+			"pdb",
+			"tile",
+			"MahjongTile",
+			"e*)malloc(sizeof(ListNode));\n		newNode->link = NULL;\n		newNode->data = x;",
+			"_sortTypes",
+			"copy",
+			"tenpai",
+			"changeDelta",
+			"hand",
+			"))\n",
+			"])\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"range",
+			"\\\"",
+			"_otherHand"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "texts.json",
+					"settings":
+					{
+						"buffer_size": 9200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sample.json",
+					"settings":
+					{
+						"buffer_size": 653,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								235,
+								235
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "meta.json",
+					"settings":
+					{
+						"buffer_size": 477,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								477,
+								477
+							]
+						],
+						"settings":
+						{
+							"auto_name": "[",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/RestructuredText/reStructuredText.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "newEngine2.py",
+					"settings":
+					{
+						"buffer_size": 6952,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6315,
+								6315
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3877.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "engine.py",
+					"settings":
+					{
+						"buffer_size": 4079,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3400,
+								3402
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2416.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.331163031692,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 230.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 72.0,
+	"status_bar_visible": true
+}

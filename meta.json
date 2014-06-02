@@ -1,0 +1,37 @@
+[
+	{
+		"name":"engine",
+		"type":"json",
+		"path":"./monster.json"
+	},
+	{
+		"name":"room",
+		"type":"json",
+		"path":"./monster.json"
+	},
+	{
+		"name":"event",
+		"type":"json",
+		"path":"./monster.json"
+	},
+	{
+		"name":"monster",
+		"type":"json",
+		"path":"./monster.json"
+	},
+	{
+		"name":"items",
+		"type":"json",
+		"path":"./monster.json"
+	},
+	{
+		"name":"class",
+		"type":"json",
+		"path":"./monster.json"
+	},
+	{
+		"name":"module",
+		"type":"python",
+		"path":"./lib.py"
+	}
+]
