@@ -1,0 +1,8 @@
+[
+	{
+		"name":"echo",
+		"info":"echo",
+		"package":"echo",
+		"path":"DND/lib/echo.py"
+	}
+]
