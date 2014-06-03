@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"prin",
+				"printMaptable"
+			],
+			[
+				"coe",
+				"codecs"
+			],
+			[
 				"ind",
 				"Index"
 			],
@@ -34,10 +42,6 @@
 			[
 				"Maa",
 				"MapTable"
-			],
-			[
-				"prin",
-				"print"
 			],
 			[
 				"Ma",
@@ -172,6 +176,10 @@
 	},
 	"file_history":
 	[
+		"/C/Users/MIKO/Documents/GitHub/DND/engine/newEngine2.py",
+		"/C/Users/MIKO/AppData/Roaming/Sublime Text 2/Packages/User/SFTP.errors.log",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/map.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/roominfo.json",
 		"/C/Users/MIKO/Desktop/study/roomandmap/test.py",
 		"/C/Users/MIKO/Desktop/study/roomandmap/commands.txt",
 		"/C/Users/MIKO/Desktop/study/roomandmap/mapinfo.py",
@@ -180,7 +188,6 @@
 		"/C/Users/MIKO/Desktop/study/roomandmap/d40lib.py",
 		"/C/Users/MIKO/Downloads/DND-master/DND-master/sample.json",
 		"/C/Users/MIKO/Downloads/DND-master/DND-master/newEngine2.py",
-		"/C/Users/MIKO/AppData/Roaming/Sublime Text 2/Packages/User/SFTP.errors.log",
 		"/C/Users/MIKO/Desktop/study/roomandmap/newEngine2.py",
 		"/C/Users/MIKO/Desktop/study/roomandmap/sftp-config.json",
 		"/C/Users/MIKO/Desktop/study/roomandmap/roominfo.json",
@@ -235,7 +242,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 		]
@@ -245,6 +252,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"40",
+			"5",
 			"returnValue",
 			"returnValu",
 			"replace",
@@ -287,11 +296,6 @@
 			"sheets":
 			[
 			]
-		},
-		{
-			"sheets":
-			[
-			]
 		}
 	],
 	"incremental_find":
@@ -311,18 +315,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
