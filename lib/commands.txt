@@ -1,8 +1,8 @@
 roominfo.py{
 	// initialize
 	class name = SetRoom __init__(self, path)
-	//getter and setter
-	setAllObject(self, valindex, valname, valitems, valevents, valmonsters):
+	// getter and setter
+	// setAllObject(self, valindex, valname, valitems, valevents, valmonsters):
 	setAuto(self)
 	getAllObject(self)
 	getIndex(self)

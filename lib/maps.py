@@ -128,7 +128,7 @@ class Maps:
 		print(self.roomdata)
 
 	def ToJson(self):
-		self.file = codecs.open("./map.json", 'w', 'utf-8')
+		self.file = codecs.open("../settings/map.json", 'w', 'utf-8')
 		for i in self.roomdata:
 			self.file.write(i)
 

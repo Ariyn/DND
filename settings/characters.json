@@ -1,43 +1,88 @@
-{
-	"charname": "name",
-	"values": "values",
-	"status":
+[
 	{
-		"class": "class",
-		"level": 0,
-		"hp": 0,
-		"ac": 0,
-		"strength": 0,
-		"intelligent": 0,
-		"wisdom": 0,
-		"agillity": 0,
-		"health": 0,
-		"charisma": 0,
-		"res_poison": 0,
-		"res_death": 0,
-		"res_magicstic": 0,
-		"res_parrelize": 0,
-		"res_sturn": 0,
-		"res_breath": 0,
-		"res_magicspell": 0,
-		"res_magicstaff": 0
+		"charname": "name1",
+		"values": "values",
+		"status":
+		{
+			"class": "class",
+			"level": 0,
+			"hp": 0,
+			"ac": 0,
+			"strength": 0,
+			"intelligent": 0,
+			"wisdom": 0,
+			"agillity": 0,
+			"health": 0,
+			"charisma": 0,
+			"res_poison": 0,
+			"res_death": 0,
+			"res_magicstic": 0,
+			"res_parrelize": 0,
+			"res_sturn": 0,
+			"res_breath": 0,
+			"res_magicspell": 0,
+			"res_magicstaff": 0
+		},
+		"skills":
+		[
+		  {
+		    "skillname": "name",
+		    "percentage":"30"
+		  },
+		  {
+		    "skillname2": "name",
+		    "percentage2":"30"
+		  }
+		],
+		"actions":
+		[
+		  {
+		    "actionname": "name",
+			"percentage":"30"
+		  }
+		]
 	},
-	"skills":
-	[
-	  {
-	    "skillname": "name",
-	    "percentage":"30"
-	  },
-	  {
-	    "skillname2": "name",
-	    "percentage2":"30"
-	  }
-	],
-	"actions":
-	[
-	  {
-	    "actionname": "name",
-		"percentage":"30"
-	  }
-	]
-}
+	{
+		"charname": "name2",
+		"values": "values",
+		"status":
+		{
+			"class": "class",
+			"level": 0,
+			"hp": 0,
+			"ac": 0,
+			"strength": 0,
+			"intelligent": 0,
+			"wisdom": 0,
+			"agillity": 0,
+			"health": 0,
+			"charisma": 0,
+			"res_poison": 0,
+			"res_death": 0,
+			"res_magicstic": 0,
+			"res_parrelize": 0,
+			"res_sturn": 0,
+			"res_breath": 0,
+			"res_magicspell": 0,
+			"res_magicstaff": 0
+		},
+		"skills":
+		[
+		  {
+		    "skillname": "name",
+		    "percentage":"30"
+		  },
+		  {
+		    "skillname2": "name",
+		    "percentage2":"30"
+		  }
+		],
+		"actions":
+		[
+		  {
+		    "actionname": "name",
+			"percentage":"30"
+		  }
+		]
+	}
+]

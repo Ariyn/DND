@@ -17,7 +17,7 @@ class Library(roominfo.SetRoom, maps.Maps):
 		pass
 
 	def roomSetting(self, path = "./roominfo.json", mode = "auto"):
-		self.RoomData = roominfo.SetRoom(path)
+		self.RoomData = roominfo.Rooms(path)
 		# self.roomfile = RoomData.lib
 		self.roomJsonData = ""		
 		if(mode == "auto"):
@@ -47,7 +47,7 @@ class Library(roominfo.SetRoom, maps.Maps):
 
 if __name__ == "__main__":
 	a = Library()
-	a.roomSetting("./roominfo.json")
+	a.roomSetting("../settings/roominfo.json")
 	a.RoomData.printAllObject()
 	a.mapSetting("5x5")
 	a.MapData.printMaptable()
