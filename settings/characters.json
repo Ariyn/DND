@@ -11,7 +11,7 @@
 		"intelligent": 0,
 		"wisdom": 0,
 		"agillity": 0,
-		"helth": 0,
+		"health": 0,
 		"charisma": 0,
 		"res_poison": 0,
 		"res_death": 0,
@@ -22,14 +22,18 @@
 		"res_magicspell": 0,
 		"res_magicstaff": 0
 	},
-	"skill":
+	"skills":
 	[
 	  {
 	    "skillname": "name",
 	    "percentage":"30"
+	  },
+	  {
+	    "skillname2": "name",
+	    "percentage2":"30"
 	  }
 	],
-	"action":
+	"actions":
 	[
 	  {
 	    "actionname": "name",

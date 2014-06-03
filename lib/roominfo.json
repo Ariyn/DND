@@ -1,5 +1,5 @@
 {
-  "index": 0,
+  "number": 0,
   "name": "name",
   "events": {
     "0": "30%",
@@ -7,9 +7,9 @@
     "27": "40%"
   },
   "monsters": [
-    "monster1"
+    "Goblin"
   ],
   "items": [
-    "item1"
+    "sword"
   ]
 }

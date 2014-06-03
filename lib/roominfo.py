@@ -20,7 +20,7 @@
 # 	room.setAuto()
 # 	room.printAllObject()
 # example output result
-# index	:  0
+# number	:  0
 # name 	:  name
 # items 	:  ['item1']
 # events 	:  {'23': '30%', '27': '40%', '0': '30%'}
@@ -36,34 +36,34 @@ def printu(text):
 	sys.stdout.buffer.write((text+"\n").encode('utf-8'))
 
 class SetRoom:
-	def __init__(self, path):
-		self.lib = d40lib.Library(path)
+	def __init__(self, path = ""):
+		self.lib = d40lib.StdIOFile(path)
 		self.jsonData = self.lib.jsonReturn()
 		self.getAllObject()
 	# getter, setter
-	def setAllObject(self, valindex, valname, valitems, valevents, valmonsters):
-		self.setIndex(valindex)
+	def setAllObject(self, valnumber, valname, valitems, valevents, valmonsters):
+		self.setNumber(valnumber)
 		self.setName(valname)
 		self.setItems(valitems)
 		self.setEvents(valevents)
 		self.setMonsters(valmonsters)
 	def setAuto(self):
-		self.setIndex(self.index)
+		self.setNumber(self.number)
 		self.setName(self.name)
 		self.setItems(self.items)
 		self.setEvents(self.events)
 		self.setMonsters(self.monsters)
 	def getAllObject(self):
-		self.index = self.jsonData['index']
+		self.number = self.jsonData['number']
 		self.name = self.jsonData['name']
 		self.items = self.jsonData['items']
 		self.events = self.jsonData['events']
 		self.monsters = self.jsonData['monsters']
-	# index
-	def getIndex(self):
-		return self.index
-	def setIndex(self, val):
-		self.index = val
+	# number
+	def getNumber(self):
+		return self.number
+	def setNumber(self, val):
+		self.number = val
 	# name
 	def getName(self):
 		return self.name
@@ -77,7 +77,7 @@ class SetRoom:
 	def addItem(self, val):
 		self.items.append(val)
 	def delItem(self, val):
-		if self.items.index(val) is not None:
+		if self.items.number(val) is not None:
 			self.items.remove(val)
 		else:
 			print(val," is not exist")
@@ -107,7 +107,7 @@ class SetRoom:
 	def addMonster(self, val):
 		self.monsters.append(val)
 	def delMonster(self, val):
-		if self.monsters.index(val) is not None:
+		if self.monsters.number(val) is not None:
 			self.monsters.remove(val)
 		else:
 			print(val, " is not exist")
@@ -116,7 +116,7 @@ class SetRoom:
 
 	# debug functions
 	def printAllObject(self):
-		print("index	: ", self.index)
+		print("number	: ", self.number)
 		print("name 	: ", self.name)
 		print("items 	: ", self.items)
 		print("events 	: ", self.events)
