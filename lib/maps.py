@@ -21,7 +21,7 @@ from random import choice, randrange
 class Maps:
 	cons = ["North", "South", "West", "East", "Up", "Down"]
 
-	def __init__(self, string = "5x5"):
+	def __init__(self, string = "5x5", floor = 1):
 		if string == "5x5":
 			self.Size = 5
 			self.prob = 40
@@ -30,13 +30,25 @@ class Maps:
 			self.prob = 30
 		else:
 			pass
+		self.jsonData = []
 		self.index = -1
 		self.mapname = ""
 		self.roomdata = "["
-		self.createMaps()
+		self.floor = floor
+		self.completMaps()
+
+	def completMaps(self):
+		for i in range(self.floor):
+			self.createMaps(i+1)
+			self.jsonData.append(self.roomdata)
+			self.ToJson("D",i)
+			self.roomdata = "["
+			self.index = -1
+			self.fstStep = True
+
 
 	# temp function for prototype
-	def createMaps(self):
+	def createMaps(self, floor):
 		# if 5 by 5 size then -
 		self.fstStep = True
 		self.setMapList()
@@ -48,8 +60,9 @@ class Maps:
 					# room index
 					if(self.fstStep is False):
 						self.index += 1
-						self.MapTable[i][j].Index = self.index
+						# self.MapTable[i][j].Number = self.index
 					# west per 1 point cell check
+					# 
 					if(j-1>=0):
 						if(self.MapTable[i][j-1].East):
 							self.MapTable[i][j]._callWest()
@@ -92,7 +105,7 @@ class Maps:
 						if(self.MapTable[i][j].ConCT == 0):
 							pass
 						else:
-							self.setRoomInfo(self.index, self.MapTable[i][j].Value)
+							self.setRoomInfo(self.index, self.MapTable[i][j].Value, floor)
 							if(i is self.Size - 1 and j is self.Size - 1):
 								pass
 							else:
@@ -106,14 +119,23 @@ class Maps:
 		# empty map delete
 		self.prevent()
 
-	def spcMapSelect(self, index):
+	def setNumber(self):
+		tmpindex = -1
 		for i in range(self.Size):
 			for j in range(self.Size):
 				try:
-					if(self.MapTable[i][j].Index == index):
+					self.MapTable[i][j].Number += 1
+				except:
+					pass
+
+	def findNumber(self, number):
+		for i in range(self.Size):
+			for j in range(self.Size):
+				try:
+					if(self.MapTable[i][j].Number == number):
 						return self.MapTable[i][j].returnJson()
 				except:
-					print("index: ", index," Empty.")
+					print("number: ", index," Empty.")
 
 	def setMapList(self):
 		self.MapTable = []
@@ -125,10 +147,11 @@ class Maps:
 				self.MapTable[i].append(mapinfo.D40Map())
 
 	def printMaptable(self):
-		print(self.roomdata)
+		for i in self.jsonData:
+			print(i)
 
-	def ToJson(self):
-		self.file = codecs.open("../settings/map.json", 'w', 'utf-8')
+	def ToJson(self, name = "", number = 1):
+		self.file = codecs.open("../settings/map-"+ name + str(number) +".json", 'w', 'utf-8')
 		for i in self.roomdata:
 			self.file.write(i)
 
@@ -152,21 +175,20 @@ class Maps:
 	# 	self.roomdata += "\"connections\":" + str(con).replace("'","\"").replace("None","null") +","
 	# 	self.roomdata += "\"objects\":" + str(objects).replace("'","\"").replace("None","null") + "}"
 
-	def setRoomInfo(self, number, con = [None], floor = ""):
+	def setRoomInfo(self, number, con = [None], floor = 0):
 		self.roomdata += "{"
 		self.roomdata += "\"number\":"+ str(number).replace("'","\"").replace("None","null") +","
-		self.roomdata += "\"floor\":["+ floor +"],"
+		self.roomdata += "\"floor\":["+ str(floor).replace("'","") +"],"
 		self.roomdata += "\"connections\":" + str(con).replace("'","\"").replace("None","null") +"}"
 		# self.roomdata += "\"objects\":" + str(objects).replace("'","\"").replace("None","null") + "}"
 
 
 # sample code
 if __name__ == "__main__":
-	a = Maps("3x3")
-	b = a.ToJson()
-	c = a.spcMapSelect(5)
+	a = Maps("3x3", 2)
+	# c = a.spcMapSelect(5)
 	a.printMaptable()
-	print(c)
+	# print(c)
 
 	# print(c)
 	# a.printMaptable()
