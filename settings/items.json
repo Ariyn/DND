@@ -3,18 +3,28 @@
 		"number": 0,
 		"name": "name1",
 		"explanation": "information",
+		"grade": "normal",
 		"options": {
-			"op1": 0,
-			"op2": 0
-		}
+			"useable": true,
+			"op1": "option"
+		},
+		"type" : [
+			"itemtype1",
+			"itemtype2"
+		]
 	},
 	{
-		"number": 1,
-		"name": "name2",
+		"number": 0,
+		"name": "name1",
 		"explanation": "information",
+		"grade": "normal",
 		"options": {
-			"op1": 0,
-			"op2": 0
-		}
+			"useable": true,
+			"op1": "option"
+		},
+		"type" : [
+			"itemtype1",
+			"itemtype2"
+		]
 	}
 ]

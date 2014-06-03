@@ -70,12 +70,17 @@ class Character:
 	def ToJson(self):
 		return self.jsonData
 
-	def ToDict(self):
-		return self.charnames
+	def returnOfNameis(self, name = None):
+		try:
+			for key in self.charnames.keys():
+				if key == name:
+					return str(self.charnames[key]).replace("'","\"")
+		except:
+			return None
 
 	def printAllObject(self):
-		for key in self.charname.keys():
-			print(key, self.charname[key])
+		for key in self.charnames.keys():
+			print(key, self.charnames[key])
 		# print("values	:", self.values)
 		# print("status	:", self.status)
 		# print("class	:", self.charclass)

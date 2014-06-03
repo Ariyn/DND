@@ -22,6 +22,9 @@ class Items:
 		for key in self.name.keys():
 			print(key, self.name[key])
 
+	def ToJson(self):
+		return self.jsonData
+
 if __name__ == "__main__":
 	a = Items()
 	a.printAllObject()

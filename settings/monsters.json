@@ -1,0 +1,88 @@
+[
+	{
+		"charname": "Goblin",
+		"values": "creature",
+		"status":
+		{
+			"class": "monster",
+			"level": 1,
+			"hp": 10,
+			"ac": 1,
+			"strength": 1,
+			"intelligent": 1,
+			"wisdom": 1,
+			"agillity": 1,
+			"health": 1,
+			"charisma": 1,
+			"res_poison": 0,
+			"res_death": 0,
+			"res_magicstic": 0,
+			"res_parrelize": 0,
+			"res_sturn": 0,
+			"res_breath": 0,
+			"res_magicspell": 0,
+			"res_magicstaff": 0
+		},
+		"skills":
+		[
+		  {
+		    "skillname": "smash",
+		    "percentage":"30"
+		  },
+		  {
+		    "skillname2": "defend",
+		    "percentage2":"30"
+		  }
+		],
+		"actions":
+		[
+		  {
+		    "actionname": "run",
+			"percentage":"30"
+		  }
+		]
+	},
+	{
+		"charname": "zombie",
+		"values": "undead",
+		"status":
+		{
+			"class": "monster",
+			"level": 10,
+			"hp": 20,
+			"ac": 5,
+			"strength": 10,
+			"intelligent": 0,
+			"wisdom": 0,
+			"agillity": 2,
+			"health": 0,
+			"charisma": 0,
+			"res_poison": 0,
+			"res_death": 100,
+			"res_magicstic": 0,
+			"res_parrelize": 0,
+			"res_sturn": 0,
+			"res_breath": 0,
+			"res_magicspell": 0,
+			"res_magicstaff": 0
+		},
+		"skills":
+		[
+		  {
+		    "skillname": "bite",
+		    "percentage":"30"
+		  },
+		  {
+		    "skillname2": "smash",
+		    "percentage2":"30"
+		  }
+		],
+		"actions":
+		[
+		  {
+		    "actionname": "run",
+			"percentage":"30"
+		  }
+		]
+	}
+]
