@@ -31,7 +31,7 @@ class Library:
 		self.MapData = maps.Maps(size)
 		self.mapJsonData = ""
 		if(mode == "auto"):
-			self.MapData.createMaps()
+			self.MapData.completeMaps()
 			self.mapJsonData = self.MapData.ToJson()
 		else:
 			pass
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 	a = Library()
 	a.roomSetting()
 	a.RoomData.printAllObject()
-	a.mapSetting("5x5")
+	a.mapSetting()
 	a.MapData.printMaptable()
 	a.mobSetting()
 	a.MobData.printAllObject()

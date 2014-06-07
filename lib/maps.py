@@ -35,20 +35,20 @@ class Maps:
 		self.mapname = ""
 		self.roomdata = "["
 		self.floor = floor
-		self.completMaps()
+		self.completeMaps()
 
-	def completMaps(self):
+	def completeMaps(self):
 		for i in range(self.floor):
-			self.createMaps(i+1)
+			self.createMaps()
+			self.setNumber(i+1)
 			self.jsonData.append(self.roomdata)
 			self.ToJson("D",i)
 			self.roomdata = "["
-			self.index = -1
 			self.fstStep = True
 
 
 	# temp function for prototype
-	def createMaps(self, floor):
+	def createMaps(self):
 		# if 5 by 5 size then -
 		self.fstStep = True
 		self.setMapList()
@@ -58,8 +58,9 @@ class Maps:
 			for i in range(self.Size):
 				for j in range(self.Size):
 					# room index
-					if(self.fstStep is False):
-						self.index += 1
+					# if(self.fstStep is False):
+					# 	pass
+						# self.index += 1
 						# self.MapTable[i][j].Number = self.index
 					# west per 1 point cell check
 					# 
@@ -102,31 +103,43 @@ class Maps:
 						pass
 					else:
 						# self.setRoomInfo(self.index, self.MapTable[i][j].Value, self.MapTable[i][j].Events, self.MapTable[i][j].Objects)
-						if(self.MapTable[i][j].ConCT == 0):
-							pass
-						else:
-							self.setRoomInfo(self.index, self.MapTable[i][j].Value, floor)
-							if(i is self.Size - 1 and j is self.Size - 1):
-								pass
-							else:
-								self.roomdata += ","
+						# if(self.MapTable[i][j].ConCT == 0):
+						# 	pass
+						# else:
+						# 	self.setRoomInfo(self.index, self.MapTable[i][j].Value, floor)
+						# 	if(i is self.Size - 1 and j is self.Size - 1):
+						# 		pass
+						# 	else:
+						# 		self.roomdata += ","
+						pass
+
 			if(self.fstStep):
 				self.fstStep = False
 			else:
 				break
-		self.roomdata += "]"
-		self.roomdata = self.roomdata.replace(",]","]")
+		# self.roomdata += "]"
+		# self.roomdata = self.roomdata.replace(",]","]")
 		# empty map delete
 		self.prevent()
 
-	def setNumber(self):
+	def setNumber(self, floor):
 		tmpindex = -1
+		# print(self.Size)
 		for i in range(self.Size):
 			for j in range(self.Size):
 				try:
-					self.MapTable[i][j].Number += 1
+					tmpindex += 1
+					print(tmpindex)
+					self.MapTable[i][j].Number = tmpindex
+					self.setRoomInfo(self.MapTable[i][j].Number, self.MapTable[i][j].Value, floor)
+					if(i is self.Size - 1 and j is self.Size - 1):
+						pass
+					else:
+						self.roomdata += ","
 				except:
-					pass
+					tmpindex -= 1
+		self.roomdata += "]"
+		self.roomdata = self.roomdata.replace(",]","]")
 
 	def findNumber(self, number):
 		for i in range(self.Size):

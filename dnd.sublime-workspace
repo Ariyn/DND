@@ -4,6 +4,74 @@
 		"selected_items":
 		[
 			[
+				"te",
+				"tmpindex"
+			],
+			[
+				"pr",
+				"printAllObject"
+			],
+			[
+				"I",
+				"ItemData"
+			],
+			[
+				"Char",
+				"CharData"
+			],
+			[
+				"char",
+				"charJsonData"
+			],
+			[
+				"res",
+				"res_magicstaff"
+			],
+			[
+				"re",
+				"res_poison"
+			],
+			[
+				"ac",
+				"ac"
+			],
+			[
+				"Map",
+				"MapData"
+			],
+			[
+				"s",
+				"status"
+			],
+			[
+				"Mo",
+				"MobData"
+			],
+			[
+				"sk",
+				"skills"
+			],
+			[
+				"ski",
+				"skillname"
+			],
+			[
+				"skil",
+				"skills"
+			],
+			[
+				"res_",
+				"res_magicspell"
+			],
+			[
+				"Ma",
+				"MapData"
+			],
+			[
+				"Ro",
+				"RoomJsonpath"
+			],
+			[
 				"prin",
 				"printMaptable"
 			],
@@ -32,19 +100,11 @@
 				"spcIndex"
 			],
 			[
-				"Map",
-				"MapTable"
-			],
-			[
 				"return",
 				"returnValue"
 			],
 			[
 				"Maa",
-				"MapTable"
-			],
-			[
-				"Ma",
 				"MapTable"
 			],
 			[
@@ -92,10 +152,6 @@
 				"_callEast"
 			],
 			[
-				"re",
-				"response"
-			],
-			[
 				"user",
 				"user_number"
 			],
@@ -114,10 +170,6 @@
 			[
 				"n",
 				"number"
-			],
-			[
-				"te",
-				"testFunc"
 			],
 			[
 				"wi",
@@ -176,10 +228,26 @@
 	},
 	"file_history":
 	[
+		"/C/Users/MIKO/Documents/GitHub/DND/settings/map-D0.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/settings/map-D1.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/mapinfo.py",
+		"/C/Users/MIKO/Documents/GitHub/DND/settings/map-1.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/settings/map.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/settings/monsters.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/characters.py",
+		"/C/Users/MIKO/Documents/GitHub/DND/settings/characters.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/settings/items.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/settings/roominfo.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/roominfo.py",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/d40lib.py",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/items.py",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/lib.py",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/commands.txt",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/maps.py",
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/roominfo.json",
 		"/C/Users/MIKO/Documents/GitHub/DND/engine/newEngine2.py",
 		"/C/Users/MIKO/AppData/Roaming/Sublime Text 2/Packages/User/SFTP.errors.log",
 		"/C/Users/MIKO/Documents/GitHub/DND/lib/map.json",
-		"/C/Users/MIKO/Documents/GitHub/DND/lib/roominfo.json",
 		"/C/Users/MIKO/Desktop/study/roomandmap/test.py",
 		"/C/Users/MIKO/Desktop/study/roomandmap/commands.txt",
 		"/C/Users/MIKO/Desktop/study/roomandmap/mapinfo.py",
@@ -242,7 +310,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -252,6 +320,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"setnumber",
+			"0",
+			"ToJson",
+			"Index",
+			"index",
+			"Index",
+			"0",
+			"index",
+			"Index",
+			"index",
+			"Index",
+			"index",
+			"Index",
+			"index",
+			"Index",
+			"index",
+			"roomfile",
+			",'",
 			"40",
 			"5",
 			"returnValue",
