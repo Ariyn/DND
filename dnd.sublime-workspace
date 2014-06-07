@@ -199,6 +199,30 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "ide/html/index.html",
+			"settings":
+			{
+				"buffer_size": 3091,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/echo.py",
+			"settings":
+			{
+				"buffer_size": 1006,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/parse_nature.py",
+			"settings":
+			{
+				"buffer_size": 1730,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"command_palette":
@@ -228,7 +252,12 @@
 	},
 	"file_history":
 	[
+		"/C/Users/MIKO/Documents/GitHub/DND/lib/maps.py",
 		"/C/Users/MIKO/Documents/GitHub/DND/settings/map-D0.json",
+		"/C/Users/MIKO/Documents/GitHub/DND/ide/asset/css/bootstrap.css",
+		"/C/Users/MIKO/Documents/basic/main.html",
+		"/C/Users/MIKO/Documents/GitHub/DND/ide/html/index.html",
+		"/C/Users/MIKO/Documents/GitHub/DND/ide/asset/css/bootstrap.min.css",
 		"/C/Users/MIKO/Documents/GitHub/DND/settings/map-D1.json",
 		"/C/Users/MIKO/Documents/GitHub/DND/lib/mapinfo.py",
 		"/C/Users/MIKO/Documents/GitHub/DND/settings/map-1.json",
@@ -243,7 +272,6 @@
 		"/C/Users/MIKO/Documents/GitHub/DND/lib/items.py",
 		"/C/Users/MIKO/Documents/GitHub/DND/lib/lib.py",
 		"/C/Users/MIKO/Documents/GitHub/DND/lib/commands.txt",
-		"/C/Users/MIKO/Documents/GitHub/DND/lib/maps.py",
 		"/C/Users/MIKO/Documents/GitHub/DND/lib/roominfo.json",
 		"/C/Users/MIKO/Documents/GitHub/DND/engine/newEngine2.py",
 		"/C/Users/MIKO/AppData/Roaming/Sublime Text 2/Packages/User/SFTP.errors.log",
@@ -281,7 +309,6 @@
 		"/C/Users/MIKO/Documents/basic/asset/css/bootstrap.css",
 		"/C/Users/MIKO/Documents/basic/login.html",
 		"/C/Users/MIKO/Documents/basic/search.html",
-		"/C/Users/MIKO/Documents/basic/main.html",
 		"/C/Users/MIKO/Documents/basic/asset/js/login.js",
 		"/C/Users/MIKO/Documents/basic/asset/js/regit.js",
 		"/C/Users/MIKO/Documents/basic/asset/php/lngregit.php",
@@ -320,6 +347,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"text-",
+			"4",
+			"5",
+			"form-control",
+			"forom-control",
 			"setnumber",
 			"0",
 			"ToJson",
@@ -379,8 +411,100 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "ide/html/index.html",
+					"settings":
+					{
+						"buffer_size": 3091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": true,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lib/echo.py",
+					"settings":
+					{
+						"buffer_size": 1006,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								952,
+								952
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/parse_nature.py",
+					"settings":
+					{
+						"buffer_size": 1730,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1315,
+								1326
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 495.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

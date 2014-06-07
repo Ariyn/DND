@@ -65,9 +65,9 @@ class oModules:
 if __name__ == "__main__":
 	#print(dir(sys))
 	m = oModules()
-	data = bModules()
+	#data = bModules()
 	#print(dir(data))
-	#data.player = {}
+	data = {"player":{"synario":"놀람","script":-1}}
 	
 	#m.setJson('builtin','../scripts/builtin_method.json')
 

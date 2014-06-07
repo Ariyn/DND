@@ -1,0 +1,11 @@
+[
+    {
+      "echo": {
+        "param": [
+          "target",
+          "type",
+          "index"
+        ]
+      }
+    }
+]

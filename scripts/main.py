@@ -9,6 +9,6 @@ def init(mods):
 	#print(e)
 
 def main(mods, data, options = None):
-	aprint(data.player.synario)
+	#print(data.player.synario)
 	init(mods)
-	mods.echo("ariyn", data.player.synario, data.player.script)
+	mods.echo("ariyn", data["player"]["synario"], data["player"]["script"])
