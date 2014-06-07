@@ -15,9 +15,10 @@ class D40Map:
 		self.East = False
 		self.Up = False
 		self.Down = False
-		self.Index = None
+		self.Number = None
 		self.ConCT = 0
 		self.jsonData = ""
+		self.Floor = 0
 		pass
 
 	def setting(self, string, jstring = None):
@@ -76,7 +77,7 @@ class D40Map:
 			self.Value.append("Down")
 
 	def returnJson(self):
-		self.jsonData = "{\"index\":" + str(self.Index).replace("'","") +",\"connections\":"+ str(self.Value).replace("'","\"") + "}"
+		self.jsonData = "{\"Number\":" + str(self.Number).replace("'","") +",\"connections\":"+ str(self.Value).replace("'","\"") + "}"
 		return self.jsonData
 
 # end connection func

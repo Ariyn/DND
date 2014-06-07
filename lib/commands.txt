@@ -1,13 +1,13 @@
 roominfo.py{
 	// initialize
 	class name = SetRoom __init__(self, path)
-	//getter and setter
-	setAllObject(self, valindex, valname, valitems, valevents, valmonsters):
-	setAuto(self):
-	getAllObject(self):
-	getIndex(self):
+	// getter and setter
+	// setAllObject(self, valindex, valname, valitems, valevents, valmonsters):
+	setAuto(self)
+	getAllObject(self)
+	getIndex(self)
 	setIndex(self, val)
-	getName(self):
+	getName(self)
 	setName(self, string)
 	getItems(self)
 	setItems(self, lists)
@@ -32,4 +32,38 @@ maps.py{
 	ToJson(self)
 	// specific map select and return json
 	spcMapSelect(self, index) return {"index:", ["North", "South"]}
+	printMaptable(self)
+}
+d40lib.py{
+	// standard file input output
+	class name = StdIOFile __init__(self, path)
+	jsonReturn(self)
+}
+monster.py{
+	// value
+	self.charname
+	self.values
+	self.status
+	self.charclass
+	self.level
+	self.hp
+	self.ac
+	self.strength
+	self.intelligent
+	self.wisdom
+	self.agillity
+	self.health
+	self.charisma
+	self.res_poison
+	self.res_death
+	self.res_magicstic
+	self.res_parrelize
+	self.res_sturn
+	self.res_breath
+	self.res_magicspell
+	self.res_magicstaff
+	self.skills
+	self.actions
+	self.skillNames
+	self.actionNames
 }

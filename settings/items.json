@@ -1,0 +1,30 @@
+[
+	{
+		"number": 0,
+		"name": "name1",
+		"explanation": "information",
+		"grade": "normal",
+		"options": {
+			"useable": true,
+			"op1": "option"
+		},
+		"type" : [
+			"itemtype1",
+			"itemtype2"
+		]
+	},
+	{
+		"number": 0,
+		"name": "name1",
+		"explanation": "information",
+		"grade": "normal",
+		"options": {
+			"useable": true,
+			"op1": "option"
+		},
+		"type" : [
+			"itemtype1",
+			"itemtype2"
+		]
+	}
+]

@@ -1,8 +1,8 @@
 import pdb
 import codecs
-import test
+import lib
 import sys, json, re
 
-a = test.Test(1)
-
-print(a.Library.val)
+a = lib.Library()
+a.mobSetting()
+print(a.MobData.returnOfNameis("Goblin"))
