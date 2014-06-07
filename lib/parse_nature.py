@@ -1,36 +1,32 @@
 ##parse_nature.py
 # -*- coding:utf-8 -*-
 
+import _ast, ast
 import os, importlib, sys, json
 
 
-class bModules(dict):
-	lists = []
-
+class bModules(object):
 	def __init__(self, *args, **kwargs):
-		dict.__init__(self, *args, **kwargs)
-		self.__dict__ = self
-		self.allowDotting()
+		pass
 
-	def allowDotting(self, state=True):
-		if state:
-			self.__dict__ = self
-		else:
-			self.__dict__ = dict()
+	def __setattr__(self, name, value):
+		try:
+			super(bModules, self).__setattr__(name, value)
+		except AttributeError:
+			pass
+			#super(bModules, self).__setattr__(name, value)
 
-	# def __init__(self, name = ""):
-	# 	pass
-
-	# def append(self, name, value):
-	# 	print(self.__dict__)
-	# 	self.__dict__[name] = value
-	# 	#setattr(self, name, value)
-	# 	self.lists.append(name)
-	# def __set__(self, instance, value):
-
+	def __getattr__(self, name):
+		try:
+			temp = super(bModules, self).__getattribute__(name)
+		except AttributeError:
+			super(bModules, self).__setattr__(name, bModules())
+			temp = super(bModules, self).__getattribute__(name)
+		return temp
 
 class oModules:
 	jsonData = {}
+	realModules = {}
 	def __init__(self):
 		_path = os.path.abspath("../")
 		sys.path.append(_path)
@@ -40,32 +36,45 @@ class oModules:
 		self.jsonData[ptype] = json.loads(open(path,"r").read())
 
 	def parseStart(self):
-		packages = ["echo"]
-		modules = [["echo"]]
+		modules = ["echo"]
+		methods = [["echo", "addEchoFiles"]]
 
 		basicModules = bModules()
-		for i in packages:
+		for i, moduleId in zip(modules, methods):
 			mod = importlib.import_module(i)
-			for e in modules[packages.index(i)]:
-				temp = getattr(mod,e)
-				#print(temp)
-				basicModules[e] = temp
+			
+			temp = getattr(mod,i)()
+			for e in moduleId:
+				basicModules.__setattr__(e,getattr(temp, e))
+
+		self.realModules[i] = temp
 
 		modules = bModules()
 
 		tempPackage = "scripts"
-		packages = ["battle"]
+		packages = ["battle", "main"]
 
 		for i in packages:
-			modules[i] = importlib.import_module(tempPackage+"."+i)
+			modules.__setattr__(i,importlib.import_module(tempPackage+"."+i))
 
-		print(modules.__dict__)
-		print(basicModules.__dict__)
+		return modules, basicModules
 		#modules.battle.main(basicModules, None)
 ## 어디선가 파일을 불러온다.
 ## 이 json파일에서 분석할 python 파일의 위치를 입력받음.
 
 if __name__ == "__main__":
+	#print(dir(sys))
 	m = oModules()
-	m.setJson('builtin','../scripts/builtin_method.json')
-	m.parseStart()
+	data = bModules()
+	#print(dir(data))
+	#data.player = {}
+	
+	#m.setJson('builtin','../scripts/builtin_method.json')
+
+	modules, basicModules = m.parseStart()
+	
+	modules.main.main(basicModules, data)
+
+
+
+

@@ -4,7 +4,7 @@ import sys, re
 from random import choice
 
 def printu(text):
-	sys.stdout.buffer.write((text+"\n").encode('utf-8'))
+	sys.stdout.buffer.write((str(text)).encode('utf-8'))
 
 class D40Map:
 	def __init__(self):
@@ -85,6 +85,6 @@ class D40Map:
 if __name__ == "__main__":
 	b = ["North", "South", "West", "East", "UP", "Down"]
 	c = choice(b)
-	a = d40Map()
+	a = D40Map()
 	a.setting(c)
 	print(c, a.Value)
