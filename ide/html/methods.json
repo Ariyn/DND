@@ -1,0 +1,16 @@
+[
+	{
+	  "echo": [
+	      "target",
+	      "type",
+	      "index"
+	    ]
+	},
+	{
+	  "echo2": [
+	      "target2",
+	      "type2",
+	      "index2"
+	    ]
+	}
+]

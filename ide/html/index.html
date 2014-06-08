@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bootstrap 101 Template</title>
+        <title>IDE</title>
         <meta charset="utf-8"></meta>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"></meta>
         <meta content="" name="description"></meta>
@@ -12,6 +12,7 @@
         <title></title>
         <!-- css -->
         <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../asset/css/index.css">
         <!-- <link rel="stylesheet" type="text/css" href="../"> -->
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
         <!-- js -->
@@ -21,22 +22,18 @@
         <script src="../asset/js/index.js"></script>
         <!-- Respond.js 으로 IE8 에서 반응형 기능을 활성화하세요 (https://github.com/scottjehl/Respond) -->
     </head>
-    <body onload="init();">
+    <body onload="init()">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <span style="font-size:16px">method</span>
+                    <span style="font-size:16px">Method</span>
                 </div>
                 <div class="col-lg-6">
-                    <div class="input-group">                        
+                    <div class="input-group">                      
                         <input type="text" class="form-control">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action<span class="caret"></span></button>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a href="#">Text-1</a></li>
-                                <li><a href="#">Text-2</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Text-3</a></li>
+                            <button id="btn-method" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">select<span class="caret"></span></button>
+                            <ul id="methods-ul" class="dropdown-menu pull-right">
                             </ul>
                         </span>
                     </div>
@@ -46,18 +43,31 @@
                 <div class="col-sm-12"><span style="font-size:16px">parameter</span></div>
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input id="param-input-text" type="text" class="form-control">
+                        <!-- <textarea id="param-textarea" rows="4" cols="50" name="comment" form="usrform"></textarea> -->
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">parm<span class="caret"></span></button>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a href="#">Text-1</a></li>
-                                <li><a href="#">Text-2</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Text-3</a></li>
-                            </ul>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Add<span class="caret"></span></button>
+                            <ul id="param-ul" class="dropdown-menu pull-right"></ul>
                         </span>
                     </div>
                 </div>
+            </div>
+            <div id="textShellDiv" class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <section class="editorWrap">
+                            <h1 class="animate">In Code</h1>
+                            <div class="editor animate">
+                                <!-- div class="menu"></div> -->
+                                <div class="code">
+                                    <textarea class="text"></textarea>
+                                </div>
+                            </div>
+                        </section>  
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="col-lg-6"></div>
+                </div>                
             </div>
         </div>
     </body>
