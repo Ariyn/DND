@@ -18,6 +18,27 @@ class Items:
 			tmpname = i['name']
 			self.name[tmpname] = i
 
+	def getNameis(self, name = None):
+		try:
+			for key in self.name.keys():
+				if key == name:
+					return self.name[key]
+		except:
+			return None
+
+	def getObjtoName(self, obj, attribute = ""):
+		try:
+			for key in obj.keys():
+				if(key == attribute):
+					return obj[key]
+				elif(type(obj[key]) is dict):
+					return attribute, obj[key][attribute]
+					pass
+				elif(type(obj[key]) is list):
+					self.getObjtoName(obj[key], attribute)
+		except:
+			return None
+
 	def printAllObject(self):
 		for key in self.name.keys():
 			print(key, self.name[key])

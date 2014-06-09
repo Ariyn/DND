@@ -78,7 +78,7 @@ class Character:
 		except:
 			return None
 
-	def getObjtoName(self, obj, attribute = "*"):
+	def getObjtoName(self, obj, attribute = ""):
 		try:
 			for key in obj.keys():
 				if(key == attribute):

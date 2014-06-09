@@ -74,7 +74,7 @@ characters.py{
 	jsonData
 	charnames < list
 	/- methods -/
-	def getAllObject() < pars json to string
+	def getAllObject() < parse json to string
 	def ToJson() < return Json data
 	def getNameis(characterName) < return object of characterName
 	def getObjtoName(characterObj, attribute) < return attribute of Character name's object
@@ -82,6 +82,24 @@ characters.py{
 	/- base form -/
 	val = Charater(jsonDataUrl)
 	> get character's hp <
-	self.hp = a.getObjtoName(a.getNameis(characterName), "hp")
+	self.hp = val.getObjtoName(val.getNameis(characterName), "hp")
 	print(self.hp)
+}
+items.py{
+	class name: Items(path = "../settings/items.json")
+	/- values -/
+	lib
+	jsonData
+	name < list, same thing characters's charnames
+	/- methods -/
+	def getAllObject() < parse json to string
+	def getNameis(ItemName) < return object of ItemName
+	def getObjtoName(ItemObj, attribute) < return attribute of Item name's object
+	def printAllObject(self)
+	def ToJson(self)
+	/- base form -/
+	val = Items(jsonDataUrl)
+	> get Items number <
+	self.numberOfItem = val.getObjtoName(val.getNameis(ItemName), "number")
+	print(self.numberOfItem)
 }
