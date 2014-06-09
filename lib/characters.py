@@ -70,11 +70,24 @@ class Character:
 	def ToJson(self):
 		return self.jsonData
 
-	def returnOfNameis(self, name = None):
+	def getNameis(self, name = None):
 		try:
 			for key in self.charnames.keys():
 				if key == name:
-					return str(self.charnames[key]).replace("'","\"")
+					return self.charnames[key]
+		except:
+			return None
+
+	def getObjtoName(self, obj, attribute = "*"):
+		try:
+			for key in obj.keys():
+				if(key == attribute):
+					return obj[key]
+				elif(type(obj[key]) is dict):
+					return attribute, obj[key][attribute]
+					pass
+				elif(type(obj[key]) is list):
+					self.getObjtoName(obj[key], attribute)
 		except:
 			return None
 
@@ -110,6 +123,15 @@ class Character:
 if __name__ == "__main__":
 	a = Character("../settings/characters.json")
 	a.printAllObject()
+	# print(a.getNameis("horo"))
+	# print(a.getObjtoName("horo", "status"))
+	print(a.getObjtoName(a.getNameis("horo"), "hp"))
+
+	# for key in a.charnames["horo"].keys():
+	# 	# print(a.charnames["horo"][key])
+	# 	if(type(a.charnames["horo"][key]) == dict or type(a.charnames["horo"][key]) == list):
+	# 		for val in a.charnames["horo"][key]:
+	# 			print(val)
 
 
 # self.charname = self.jsonData['charname']

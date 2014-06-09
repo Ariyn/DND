@@ -22,4 +22,7 @@ class StdIOFile:
 	def jsonReturn(self):
 		self.parseFile()
 		return self.jsonData
+
+	def JsonToTranslate(self, string):
+		return str(string).replace("'", "\"")
 		

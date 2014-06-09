@@ -1,69 +1,87 @@
-roominfo.py{
-	// initialize
-	class name = SetRoom __init__(self, path)
-	// getter and setter
-	// setAllObject(self, valindex, valname, valitems, valevents, valmonsters):
-	setAuto(self)
-	getAllObject(self)
-	getIndex(self)
-	setIndex(self, val)
-	getName(self)
-	setName(self, string)
-	getItems(self)
-	setItems(self, lists)
-	addItem(self, val)
-	delItem(self, val)
-	getEvents(self)
-	setEvents(self, dicts)
-	addEvent(self, key, val)
-	delEvent(self, key)
-	getMonsters(self)
-	setMonsters(self, lists)
-	addMonster(self, val)
-	delMonster(self, val)
-	printAllObject(self) //debug
-},
-maps.py{
-	// initialize
-	class name = Maps __init__(self, string = "5x5")
-	// creating random map but now (prototype) 5x5 random map
-	createMaps(self)
-	//mapinfo to json(list) in return
-	ToJson(self)
-	// specific map select and return json
-	spcMapSelect(self, index) return {"index:", ["North", "South"]}
-	printMaptable(self)
+lib.py{
+	class name: Library()
+	/- values -/
+	RoomData
+	MapData
+	MobData
+	CharData
+	itemData
+	/- methods -/
+	def roomSetting(path = "../settings/roominfo.json", mode = "auto")
+	def mapSetting(size = "3x3", mode = "auto")
+	def mobSetting(path = "../settings/monsters.json", mode = "auto")
+	def charSettting(path = "../settings/characters.json", mode = "auto")
+	def itemSetting(path = "../setttings/items.json", mode = "auto")
+	/- base form -/
+	a = Library()
+	a.roomSetting()
+	a.RoomData.printAllObject()
+	a.mapSetting()
+	a.MapData.printMaptable()
+	a.mobSetting()
+	a.MobData.printAllObject()
+	a.charSettting()
+	a.CharData.printAllObject()
 }
 d40lib.py{
-	// standard file input output
-	class name = StdIOFile __init__(self, path)
-	jsonReturn(self)
+	class name: StdIOFile(path = "")
+	/- values -/
+	path < file url
+	jsonText < string
+	jsonData < json
+	file < codecs
+	/- methods -/
+	def readFile() < jsonText setting
+	def parseFile() < jsonData settting
+	def jsonReturn() < json < return jsonData
+	/- base form -/
+	val = StdIOFile(fileUrl)
+	> get jsonData <
+	json = val.jsonReturn()
 }
-monster.py{
-	// value
-	self.charname
-	self.values
-	self.status
-	self.charclass
-	self.level
-	self.hp
-	self.ac
-	self.strength
-	self.intelligent
-	self.wisdom
-	self.agillity
-	self.health
-	self.charisma
-	self.res_poison
-	self.res_death
-	self.res_magicstic
-	self.res_parrelize
-	self.res_sturn
-	self.res_breath
-	self.res_magicspell
-	self.res_magicstaff
-	self.skills
-	self.actions
-	self.skillNames
-	self.actionNames
+roominfo.py{
+	class name: Room(path = "../settings/roominfo.json")
+	/- values -/
+	lib	< d49lib obj
+	jsondata < json
+	number < dick , {key, jsondata}
+	/- methods -/
+	def getAllObject() < save number
+	def getObjNameIs(string) < json <(find json cpm param-1)
+	def printAllObject() < print object
+	/- base form -/
+	val = Rooms(FileUrl)
+	> print All Object <
+	val.printAllObject()
+	> select object to name <
+	selectItem = val.getObjNameIs(roomName)
+}
+maps.py{
+	class name: Maps(size, floor) < now size choose 5x5, 3x3
+	/- values -/
+	size < map size 3x3 = 3, 5x5 = 5
+	jsonData < json
+	mapname < name
+	floor < floor
+	/- methods -/
+	def completMaps() < create Maps and save json file
+	def findNumber(roomNumber) < return roomNumber room information
+}
+characters.py{
+	class name: Character(path = "../settings/characters.json")
+	/- values -/
+	lib
+	jsonData
+	charnames < list
+	/- methods -/
+	def getAllObject() < pars json to string
+	def ToJson() < return Json data
+	def getNameis(characterName) < return object of characterName
+	def getObjtoName(characterObj, attribute) < return attribute of Character name's object
+	def printAllObject() < print all of object
+	/- base form -/
+	val = Charater(jsonDataUrl)
+	> get character's hp <
+	self.hp = a.getObjtoName(a.getNameis(characterName), "hp")
+	print(self.hp)
 }

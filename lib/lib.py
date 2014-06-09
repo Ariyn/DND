@@ -15,6 +15,8 @@ class Library:
 		self.RoomData = None
 		self.MapData = None
 		self.MobData = None
+		self.CharData = None
+		self.ItemData = None
 		pass
 
 	def roomSetting(self, path = "../settings/roominfo.json", mode = "auto"):

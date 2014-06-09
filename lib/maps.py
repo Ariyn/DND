@@ -129,7 +129,7 @@ class Maps:
 			for j in range(self.Size):
 				try:
 					tmpindex += 1
-					print(tmpindex)
+					# print(tmpindex)
 					self.MapTable[i][j].Number = tmpindex
 					self.setRoomInfo(self.MapTable[i][j].Number, self.MapTable[i][j].Value, floor)
 					if(i is self.Size - 1 and j is self.Size - 1):
@@ -201,7 +201,8 @@ if __name__ == "__main__":
 	a = Maps("3x3", 2)
 	# c = a.spcMapSelect(5)
 	a.printMaptable()
-	# print(c)
+	b = a.findNumber(3)
+	print(b)
 
 	# print(c)
 	# a.printMaptable()

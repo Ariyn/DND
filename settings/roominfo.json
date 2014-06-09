@@ -1,7 +1,7 @@
 [
     {
         "number": 0,
-        "name": "name",
+        "name": "room-1",
         "events": {
             "0": "30%",
             "23": "30%",
@@ -16,7 +16,7 @@
     },
     {
         "number": 1,
-        "name": "name",
+        "name": "room-2",
         "events": {
             "0": "30%",
             "23": "30%",

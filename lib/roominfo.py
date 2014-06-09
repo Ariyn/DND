@@ -62,6 +62,11 @@ class Rooms:
 			tmpnumber = i['number']
 			self.number[tmpnumber] = i
 
+	def getObjNameIs(self, val):
+		for i in self.number:
+			if val == self.number[i]['name']:
+				return self.number[i]
+
 		# self.number = self.jsonData['number']
 		# self.name = self.jsonData['name']
 		# self.items = self.jsonData['items']
@@ -139,3 +144,5 @@ class Rooms:
 if __name__ == "__main__":
 	a = Rooms()
 	a.printAllObject()
+	b = a.getObjNameIs('room-1')
+	print(b)
