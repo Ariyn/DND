@@ -1,0 +1,88 @@
+[
+	{
+		"charname": "miko",
+		"values": "evil",
+		"status":
+		{
+			"class": "thief",
+			"level": 1,
+			"hp": 10,
+			"ac": 2,
+			"strength": 10,
+			"intelligent": 10,
+			"wisdom": 10,
+			"agillity": 10,
+			"health": 10,
+			"charisma": 10,
+			"res_poison": 10,
+			"res_death": 10,
+			"res_magicstic": 10,
+			"res_parrelize": 10,
+			"res_sturn": 10,
+			"res_breath": 10,
+			"res_magicspell": 10,
+			"res_magicstaff": 10
+		},
+		"skills":
+		[
+		  {
+		    "skillname": "smash",
+		    "percentage":"30"
+		  },
+		  {
+		    "skillname2": "broken neck",
+		    "percentage2":"30"
+		  }
+		],
+		"actions":
+		[
+		  {
+		    "actionname": "move",
+			"percentage":"30"
+		  }
+		]
+	},
+	{
+		"charname": "horo",
+		"values": "wagamama",
+		"status":
+		{
+			"class": "druid_wolf",
+			"level": 1,
+			"hp": 20,
+			"ac": 20,
+			"strength": 20,
+			"intelligent": 20,
+			"wisdom": 20,
+			"agillity": 20,
+			"health": 20,
+			"charisma": 20,
+			"res_poison": 20,
+			"res_death": 20,
+			"res_magicstic": 20,
+			"res_parrelize": 20,
+			"res_sturn": 20,
+			"res_breath": 20,
+			"res_magicspell": 20,
+			"res_magicstaff": 20
+		},
+		"skills":
+		[
+		  {
+		    "skillname": "roar",
+		    "percentage":"30"
+		  },
+		  {
+		    "skillname2": "smash",
+		    "percentage2":"30"
+		  }
+		],
+		"actions":
+		[
+		  {
+		    "actionname": "move",
+			"percentage":"30"
+		  }
+		]
+	}
+]

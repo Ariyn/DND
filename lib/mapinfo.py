@@ -4,7 +4,7 @@ import sys, re
 from random import choice
 
 def printu(text):
-	sys.stdout.buffer.write((text+"\n").encode('utf-8'))
+	sys.stdout.buffer.write((str(text)).encode('utf-8'))
 
 class D40Map:
 	def __init__(self):
@@ -15,9 +15,10 @@ class D40Map:
 		self.East = False
 		self.Up = False
 		self.Down = False
-		self.Index = None
+		self.Number = None
 		self.ConCT = 0
 		self.jsonData = ""
+		self.Floor = 0
 		pass
 
 	def setting(self, string, jstring = None):
@@ -76,7 +77,7 @@ class D40Map:
 			self.Value.append("Down")
 
 	def returnJson(self):
-		self.jsonData = "{\"index\":" + str(self.Index).replace("'","") +",\"connections\":"+ str(self.Value).replace("'","\"") + "}"
+		self.jsonData = "{\"Number\":" + str(self.Number).replace("'","") +",\"connections\":"+ str(self.Value).replace("'","\"") + "}"
 		return self.jsonData
 
 # end connection func
@@ -85,6 +86,6 @@ class D40Map:
 if __name__ == "__main__":
 	b = ["North", "South", "West", "East", "UP", "Down"]
 	c = choice(b)
-	a = d40Map()
+	a = D40Map()
 	a.setting(c)
 	print(c, a.Value)

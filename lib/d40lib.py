@@ -5,8 +5,8 @@ import sys, json, re
 def printu(text):
 	sys.stdout.buffer.write((text+"\n").encode('utf-8'))
 
-class Library:
-	def __init__(self,  path):
+class StdIOFile:
+	def __init__(self,  path = ""):
 		self.path = path
 		self.jsonText = ""
 		self.file = codecs.open(self.path,'r',"utf8")
@@ -22,4 +22,7 @@ class Library:
 	def jsonReturn(self):
 		self.parseFile()
 		return self.jsonData
+
+	def JsonToTranslate(self, string):
+		return str(string).replace("'", "\"")
 		
