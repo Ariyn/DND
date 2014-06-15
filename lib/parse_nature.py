@@ -62,18 +62,23 @@ class oModules:
 ## 어디선가 파일을 불러온다.
 ## 이 json파일에서 분석할 python 파일의 위치를 입력받음.
 
+def runModules():
+	pass
+
 if __name__ == "__main__":
-	#print(dir(sys))
 	m = oModules()
 	#data = bModules()
-	#print(dir(data))
-	data = {"player":{"synario":"놀람","script":-1}}
+	
+	data = {"player":{"synario":"놀람","script":-1}, "flag_battle":False}
 	
 	#m.setJson('builtin','../scripts/builtin_method.json')
 
 	modules, basicModules = m.parseStart()
 	
-	modules.main.main(basicModules, data)
+	data = modules.main.main(basicModules, data)
+
+	if data["flag_battle"]:
+		modules.battle.main(basicModules, data)
 
 
 

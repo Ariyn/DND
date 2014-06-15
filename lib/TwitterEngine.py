@@ -18,7 +18,9 @@ class DND_Twitter(object):
 	def __init__(self, data):
 		self.accesses = []
 		for i in data['oauth']:
-			oauth = OAuth(i[0][0], i[0][1], i[1][0], i[1][1])
+			#print(i)
+			print(i[0][0]+"\n", "'"+i[0][1]+"\n", "'"+i[1][0]+"\n", "'"+i[1][1]+"\n")
+			oauth = OAuth(token = i[0][0], token_secret = i[0][1], consumer_key = i[1][0], consumer_secret = i[1][1])
 			twitter = Twitter(domain='api.twitter.com',
                   					auth=oauth,
                     				api_version='1.1')
@@ -142,3 +144,8 @@ class Twitter_Manager(object):
 		except:
 			return False
 		return ids
+
+if __name__ == "__main__":
+	tw = Twitter_Manager(path = "Oauth.json")
+
+	tw.sendMessage("Twitter Test. Does this will work well??")
