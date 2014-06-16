@@ -80,6 +80,4 @@ if __name__ == "__main__":
 	if data["flag_battle"]:
 		modules.battle.main(basicModules, data)
 
-
-
-
+	print(basicModules)

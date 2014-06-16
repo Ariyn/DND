@@ -29,7 +29,12 @@
                     <span style="font-size:16px">Method</span>
                 </div>
                 <div class="col-lg-6">
-                    <div class="input-group">                      
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button id="btn-method" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">select<span class="caret"></span></button>
+                            <ul id="methods-ul" class="dropdown-menu">
+                            </ul>
+                        </span>
                         <input id="method-text" type="text" class="form-control">
                         <span class="input-group-btn">
                             <button id="btn-method" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">select<span class="caret"></span></button>
@@ -60,7 +65,7 @@
                             <div class="editor animate">
                                 <!-- div class="menu"></div> -->
                                 <div class="code">
-                                    <textarea class="text"></textarea>
+                                    <textarea id="incode" class="text"></textarea>
                                 </div>
                             </div>
                         </section>  

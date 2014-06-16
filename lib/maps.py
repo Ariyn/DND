@@ -11,7 +11,6 @@
 # 	rmap = maps.Maps()
 # 	rmap.createMaps()
 # 	rmap.printRoomInfo()
-
 import json
 import codecs
 import mapinfo
@@ -200,9 +199,7 @@ class Maps:
 if __name__ == "__main__":
 	a = Maps("3x3", 2)
 	# c = a.spcMapSelect(5)
-	a.printMaptable()
-	b = a.findNumber(3)
-	print(b)
+	# a.printMaptable()
 
 	# print(c)
 	# a.printMaptable()

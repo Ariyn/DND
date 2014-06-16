@@ -16,12 +16,14 @@ lib.py{
 	a = Library()
 	a.roomSetting()
 	a.RoomData.printAllObject()
-	a.mapSetting()
+	a.mapSetting("3x3", 2)
 	a.MapData.printMaptable()
 	a.mobSetting()
 	a.MobData.printAllObject()
 	a.charSettting()
 	a.CharData.printAllObject()
+	a.itemSetting()
+	a.ItemData.printAllObject()
 }
 d40lib.py{
 	class name: StdIOFile(path = "")
@@ -56,7 +58,7 @@ roominfo.py{
 	> select object to name <
 	selectItem = val.getObjNameIs(roomName)
 }
-maps.py{
+maps.py{	Not Yet
 	class name: Maps(size, floor) < now size choose 5x5, 3x3
 	/- values -/
 	size < map size 3x3 = 3, 5x5 = 5

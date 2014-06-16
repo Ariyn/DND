@@ -91,6 +91,18 @@ class Character:
 		except:
 			return None
 
+	def setObjtoName(self, obj, attribute = "", val1 = 0):
+		try:
+			for key in obj.keys():
+				print(key)
+				if(key == attribute):
+					obj[key] = val1
+				elif((type(obj[key]) is dict) or (type(obj[key]) is list)):
+					self.setObjtoName(obj[key], attribute, val1)
+					pass
+		except:
+			return None
+
 	def printAllObject(self):
 		for key in self.charnames.keys():
 			print(key, self.charnames[key])
@@ -125,6 +137,7 @@ if __name__ == "__main__":
 	a.printAllObject()
 	# print(a.getNameis("horo"))
 	# print(a.getObjtoName("horo", "status"))
+	a.setObjtoName(a.getNameis("horo"), "hp", 100)
 	print(a.getObjtoName(a.getNameis("horo"), "hp"))
 
 	# for key in a.charnames["horo"].keys():

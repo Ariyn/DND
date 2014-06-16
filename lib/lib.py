@@ -29,12 +29,13 @@ class Library:
 		else:
 			pass
 
-	def mapSetting(self, size = "3x3", mode = "auto"):
-		self.MapData = maps.Maps(size)
+	def mapSetting(self, size = "3x3", floor = 1, mode = "auto"):
+		self.MapData = maps.Maps(size, floor)
 		self.mapJsonData = ""
 		if(mode == "auto"):
-			self.MapData.completeMaps()
-			self.mapJsonData = self.MapData.ToJson()
+			pass
+			# self.MapData.completeMaps()
+			# self.mapJsonData = self.MapData.ToJson()
 		else:
 			pass
 
@@ -55,7 +56,7 @@ class Library:
 		else:
 			pass
 
-	def itemSetting(self, path = "../setttings/items.json", mode = "auto"):
+	def itemSetting(self, path = "../settings/items.json", mode = "auto"):
 		self.ItemData = items.Items(path)
 		self.itemJsonData = ""
 		if(mode == "auto"):
@@ -67,9 +68,11 @@ if __name__ == "__main__":
 	a = Library()
 	a.roomSetting()
 	a.RoomData.printAllObject()
-	a.mapSetting()
+	a.mapSetting("3x3", 2)
 	a.MapData.printMaptable()
 	a.mobSetting()
 	a.MobData.printAllObject()
 	a.charSettting()
 	a.CharData.printAllObject()
+	a.itemSetting()
+	a.ItemData.printAllObject()
