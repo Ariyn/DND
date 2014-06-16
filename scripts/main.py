@@ -11,4 +11,7 @@ def init(mods):
 def main(mods, data, options = None):
 	#print(data.player.synario)
 	init(mods)
+	
 	mods.echo("ariyn", data["player"]["synario"], data["player"]["script"])
+
+	return data
