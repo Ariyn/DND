@@ -18,9 +18,7 @@ class DND_Twitter(object):
 	def __init__(self, data):
 		self.accesses = []
 		for i in data['oauth']:
-			#print(i)
-			print(i[0][0]+"\n", "'"+i[0][1]+"\n", "'"+i[1][0]+"\n", "'"+i[1][1]+"\n")
-			oauth = OAuth(token = i[0][0], token_secret = i[0][1], consumer_key = i[1][0], consumer_secret = i[1][1])
+			oauth = OAuth(i[0][0], i[0][1], i[1][0], i[1][1])
 			twitter = Twitter(domain='api.twitter.com',
                   					auth=oauth,
                     				api_version='1.1')
@@ -46,9 +44,12 @@ class DND_Twitter(object):
 
 		tempTwitter = []
 		for t in newTwitter:
-			if (self.lastTwitter['created_at'] == t['created_at']) and (self.lastTwitter['user']['screen_name']  == t['user']['screen_name']):
+			if (self.lastTwitter['created_at'] == t['created_at']) and (self.lastTwitter['user']['id']  == t['user']['id']):
 				if len(tempTwitter) > 0:
-					self.lastTwitter = tempTwitter[len(tempTwitter)-1]
+					self.lastTwitter = tempTwitter[0]
+					return tempTwitter
+				else:
+					return tempTwitter
 			else:
 				tempTwitter.append(t)
 		return tempTwitter
@@ -61,13 +62,18 @@ class DND_Twitter(object):
 			i += 1
 		return limits
 
+	def getUsers(self):
+		return self.accesses[self.turn].followers.ids()
+
 
 class Twitter_Manager(object):
 	twitters = []
+	masterTwitter = None
 	sender = 0
 
-	def __init__(self, path = '.'):
-		self.file = codecs.open(path, 'r', 'utf8')
+	def __init__(self, path):
+		self.path = path
+		self.file = codecs.open(self.path, 'r', 'utf8')
 		self.twitterData = {}
 		ouathData = {}
 		ouathText = ""
@@ -77,7 +83,10 @@ class Twitter_Manager(object):
 		i = 0
 		while i != len(self.twitterData):
 			data = self.twitterData[i]
-			self.twitters.append(DND_Twitter(data))
+			if i == 0:
+				self.masterTwitter = DND_Twitter(data)
+			else:
+				self.twitters.append(DND_Twitter(data))
 			i+=1
 
 	def sendMessage(self, text):
@@ -94,15 +103,28 @@ class Twitter_Manager(object):
 				self.sender += 1
 			self.sendMessage(text)
 
-	def sendMessageWithID(self, text, screen_name):
-		message = "@" + screen_name + " " + text
+	def sendMessageWithID(self, text, ID):
+		message = "@" + ID + " " + text
 		self.sendMessage(text)
+
+	def sendMessageToFollower(self, text):
+		if(len(text) > 140):
+			print("message is over 140 characters")
+			return False
+		try:
+			self.masterTwitter.sendMessage(text)
+		except TwitterHTTPError as e:
+			print("masterTwitter is error : " + str(e))
+			return False
 
 	def saveLastTwitter(self):
 		for i, t in enumerate(self.twitterData):
-			t['lastTwitter'] = self.twitters[i].lastTwitter
+			if i == 0:
+				t['lastTwitter'] = self.masterTwitter.lastTwitter
+			else:
+				t['lastTwitter'] = self.twitters[i-1].lastTwitter
 
-		f = codecs.open("Oauth.json", 'w', 'utf8')
+		f = codecs.open(self.path, 'w', 'utf8')
 		json.dump(self.twitterData, f)
 
 	def receiveMessage(self):
@@ -111,7 +133,8 @@ class Twitter_Manager(object):
 			for t in self.twitters:
 				message.append(t.getTimeline())
 			self.saveLastTwitter()
-		except:
+		except TwitterHTTPError as e:
+			print("receiveMessage is False :" + str(e))
 			return False
 		return message
 
@@ -128,7 +151,8 @@ class Twitter_Manager(object):
 				message = t.getTimeline()
 				_id = {}
 				for m in message:
-					_id['id'] = m['user']['screen_name']
+					_id['id'] = m['user']['id_str']
+					_id['screen_name'] = m['user']['screen_name']
 					_id['text'] = m['text']
 					_id['created_at'] = m['created_at']
 					flag = False
@@ -141,11 +165,15 @@ class Twitter_Manager(object):
 						ids.append(_id)
 
 			self.saveLastTwitter()
-		except:
+		except TwitterHTTPError as e:
+			print("receiveMessage is False :" + str(e))
 			return False
 		return ids
 
-if __name__ == "__main__":
-	tw = Twitter_Manager(path = "Oauth.json")
+	def getUsers(self):
+		return self.masterTwitter.getUsers()
 
-	tw.sendMessage("Twitter Test. Does this will work well??")
+
+tm = Twitter_Manager("Oauth.json")
+print(tm.getUsers())
+print(tm.receiveMessagePerID())
