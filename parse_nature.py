@@ -28,8 +28,9 @@ class oModules:
 	jsonData = {}
 	realModules = {}
 	def __init__(self):
-		_path = os.path.abspath("../")
-		sys.path.append(_path)
+		#_path = os.path.abspath("../")
+		#sys.path.append(_path)
+		pass
 
 	def setJson(self, ptype, path):
 		path = os.path.abspath(path)
@@ -41,7 +42,7 @@ class oModules:
 
 		basicModules = bModules()
 		for i, moduleId in zip(modules, methods):
-			mod = importlib.import_module(i)
+			mod = importlib.import_module("lib."+i)
 			
 			temp = getattr(mod,i)()
 			for e in moduleId:
@@ -51,11 +52,10 @@ class oModules:
 
 		modules = bModules()
 
-		tempPackage = "scripts"
 		packages = ["battle", "main"]
 
 		for i in packages:
-			modules.__setattr__(i,importlib.import_module(tempPackage+"."+i))
+			modules.__setattr__(i,importlib.import_module("scripts."+i))
 
 		return modules, basicModules
 		#modules.battle.main(basicModules, None)
