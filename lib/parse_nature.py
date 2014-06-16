@@ -75,6 +75,4 @@ if __name__ == "__main__":
 	
 	modules.main.main(basicModules, data)
 
-
-
-
+	print(basicModules)
