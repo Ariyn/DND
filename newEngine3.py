@@ -4,8 +4,12 @@ import lib.jsonParse
 import lib.echo
 import parse_nature
 
-def testTwit():
-	return input()
+def testTwit(characters):
+	text = {}
+	for i in characters:
+		text[i] = input(i+"의 입력\n")
+
+	return text
 def main():
 	m = parse_nature.oModules()
 		#data = bModules()
@@ -13,8 +17,8 @@ def main():
 	data = {
 		"players":
 		{
-			"YuiDevelop":{"synario":"기본","location":0,"flag_battle":False},
-			"MuTopia_ArtTeam":{"synario":"기본","location":0,"flag_battle":False},
+			"YuiDevelop":{"synario":"기본","location":0,"flag_battle":False,"moveEvent":[]},
+			"MuTopia_ArtTeam":{"synario":"기본","location":0,"flag_battle":False,"moveEvent":[]},
 		},
 		"texts":{},
 		"characters":{},
@@ -48,22 +52,28 @@ def main():
 
 	#print(m.realModules["librarys"].RoomData.number)
 	#print(m.realModules["librarys"].)
-	#while True:
+	num = 3
+	while num > 0:
+		num-=1
 	#basicModules.twitter.get()
-	retData = testTwit()
+		retInputData = testTwit(data["players"].keys())
+		print("\n")
+		for i in data["players"]:
+			options = modules.main.main(
+				basicModules,
+				data["players"][i],
+				{
+					"characters":data["characters"],
+					"rooms":data["rooms"],
+					"texts":data["texts"],
+					"inputs":retInputData[i]
+				})
+			if "move" in options:
+				data["players"][i]["location"] = options["move"]
 
-	for i in data["players"]:
-		#print(i)
-		options = modules.main.main(
-			basicModules,
-			data["players"][i],
-			{
-				"characters":data["characters"],
-				"rooms":data["rooms"],
-				"texts":data["texts"]
-			})
+			data["players"][i]["moveEvent"] = options["moveEvent"]
 
-	basicModules.echo()
+		basicModules.echo()
 
 
 		# if "flag_battle" in options:

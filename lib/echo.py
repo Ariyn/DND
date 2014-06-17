@@ -41,7 +41,7 @@ class echo:
 	def echo(self, _text = ""):
 
 		for i in self.echoText:
-			self.printu(i)
+			self.printu(i+"\n")
 		self.echoText = []
 
 
