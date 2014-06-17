@@ -8,9 +8,11 @@ def printu(text):
 
 class Character:
 	def __init__(self, path = "../settings/characters.json"):
+		self._path = path
 		self.lib = d40lib.StdIOFile(path)
 		self.jsonData = self.lib.jsonReturn()
-		self.charnames = {}
+		self.name = {}
+		self.rtName = []
 		# self.values = []
 		# self.status = []
 		# self.charclass = []
@@ -36,11 +38,12 @@ class Character:
 		# self.skillNames = []
 		# self.actionNames = []
 		self.getAllObject()
+		self.ToJson()
 
 	def getAllObject(self):
 		for i in self.jsonData:
 			tmpname = i['charname']
-			self.charnames[tmpname] = i
+			self.name[tmpname] = i
 			# self.charname(tmpname) = i
 			# self.values.append(i['values'])
 			# self.status.append(i['status'])
@@ -72,9 +75,9 @@ class Character:
 
 	def getNameis(self, name = None):
 		try:
-			for key in self.charnames.keys():
+			for key in self.name.keys():
 				if key == name:
-					return self.charnames[key]
+					return self.name[key]
 		except:
 			return None
 
@@ -92,20 +95,30 @@ class Character:
 			return None
 
 	def setObjtoName(self, obj, attribute = "", val1 = 0):
+		self.innerSetObj(obj, attribute, val1)
+		self.ToJson()
+		
+
+	def innerSetObj(self, obj, attribute = "", val1 = 0):
 		try:
 			for key in obj.keys():
 				print(key)
 				if(key == attribute):
 					obj[key] = val1
 				elif((type(obj[key]) is dict) or (type(obj[key]) is list)):
-					self.setObjtoName(obj[key], attribute, val1)
+					self.innerSetObj(obj[key], attribute, val1)
 					pass
 		except:
 			return None
 
+	def ToJson(self):
+		self.rtName = []
+		for i in self.name.keys():
+			self.rtName.append(self.name[i])
+
 	def printAllObject(self):
-		for key in self.charnames.keys():
-			print(key, self.charnames[key])
+		for key in self.name.keys():
+			print(key, self.name[key])
 		# print("values	:", self.values)
 		# print("status	:", self.status)
 		# print("class	:", self.charclass)
@@ -139,6 +152,7 @@ if __name__ == "__main__":
 	# print(a.getObjtoName("horo", "status"))
 	a.setObjtoName(a.getNameis("horo"), "hp", 100)
 	print(a.getObjtoName(a.getNameis("horo"), "hp"))
+	print(a.rtName)
 
 	# for key in a.charnames["horo"].keys():
 	# 	# print(a.charnames["horo"][key])

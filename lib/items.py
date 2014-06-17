@@ -8,10 +8,13 @@ def printu(text):
 
 class Items:
 	def __init__(self, path = "../settings/items.json"):
+		self._path = path
 		self.lib = d40lib.StdIOFile(path)
 		self.jsonData = self.lib.jsonReturn()
 		self.name = {}
+		self.rtName = []
 		self.getAllObject()
+		self.ToJson()
 
 	def getAllObject(self):
 		for i in self.jsonData:
@@ -39,13 +42,34 @@ class Items:
 		except:
 			return None
 
+	def setObjtoName(self, obj, attribute = "", val1 = 0):
+		self.innerSetObj(obj, attribute, val1)
+		self.ToJson()
+
+	def innerSetObj(self, obj, attribute = "", val1 = 0):
+		try:
+			for key in obj.keys():
+				if(key == attribute):
+					obj[key] = val1
+				elif((type(obj[key]) is dict) or (type(obj[key]) is list)):
+					self.innerSetObj(obj[key], attribute)
+		except:
+			return None
+
 	def printAllObject(self):
 		for key in self.name.keys():
 			print(key, self.name[key])
 
 	def ToJson(self):
-		return self.jsonData
+		self.rtName = []
+		for i in self.name.keys():
+			self.rtName.append(self.name[i])
+
+	def saveFile(self, path = "", name = "", string = ""):
+		self.lib.saveFile(path, name, string)
 
 if __name__ == "__main__":
 	a = Items()
-	a.printAllObject()
+	print(a.lib.Trans(a.rtName))
+	a.setObjtoName(a.getNameis("name1"), "number", 1)
+	a.saveFile(a._path,"",a.lib.Trans(a.rtName))

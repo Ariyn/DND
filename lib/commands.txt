@@ -36,6 +36,8 @@ d40lib.py{
 	def readFile() < jsonText setting
 	def parseFile() < jsonData settting
 	def jsonReturn() < json < return jsonData
+	def Trans(self, string) < json to string
+	def saveFile(self, path = "", name = "", string = "") < save json file
 	/- base form -/
 	val = StdIOFile(fileUrl)
 	> get jsonData <
