@@ -4,6 +4,9 @@
 import _ast, ast
 import os, importlib, sys, json
 
+def print(*text):
+	sys.stdout.buffer.write((str(text)+"\n").encode('utf-8'))
+
 
 class bModules(object):
 	def __init__(self, *args, **kwargs):
@@ -28,8 +31,8 @@ class oModules:
 	jsonData = {}
 	realModules = {}
 	def __init__(self):
-		#_path = os.path.abspath("../")
-		#sys.path.append(_path)
+		_path = os.path.abspath("./lib")
+		sys.path.append(_path)
 		pass
 
 	def setJson(self, ptype, path):
@@ -37,13 +40,14 @@ class oModules:
 		self.jsonData[ptype] = json.loads(open(path,"r").read())
 
 	def parseStart(self):
-		modules = ["echo"]
-		methods = [["echo", "addEchoFiles"]]
+		modules = ["echo","lib"]
+		methods = [["echo", "addEchoFiles"],["roomSetting","mapSetting","mobSetting","charSettting","itemSetting"]]
 
 		basicModules = bModules()
 		for i, moduleId in zip(modules, methods):
-			mod = importlib.import_module("lib."+i)
+			mod = importlib.import_module(i)
 			
+			print(mod, i)
 			temp = getattr(mod,i)()
 			for e in moduleId:
 				basicModules.__setattr__(e,getattr(temp, e))

@@ -10,7 +10,7 @@ import sys, json, re
 def printu(text):
 	sys.stdout.buffer.write((text+"\n").encode('utf-8'))
 
-class Library:
+class lib:
 	def __init__(self):
 		self.RoomData = None
 		self.MapData = None
@@ -65,7 +65,7 @@ class Library:
 			pass
 
 if __name__ == "__main__":
-	a = Library()
+	a = lib()
 	a.roomSetting()
 	a.RoomData.printAllObject()
 	a.mapSetting("3x3", 2)
