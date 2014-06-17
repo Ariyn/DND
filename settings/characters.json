@@ -1,6 +1,7 @@
 [
 	{
 		"charname": "miko",
+		"realuser": "@YuiDevelop",
 		"values": "evil",
 		"status":
 		{
@@ -45,6 +46,7 @@
 	{
 		"charname": "horo",
 		"values": "wagamama",
+		"realuser": "@MuTopia_ArtTeam",
 		"status":
 		{
 			"class": "druid_wolf",

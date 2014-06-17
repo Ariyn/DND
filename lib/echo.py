@@ -5,7 +5,7 @@ import sys, os, json, codecs, random
 
 class echo:
 	files = {}
-
+	echoText = []
 	def addEchoFiles(self, name):
 		#print(os.path.abspath("../scripts/"+name))
 		try:
@@ -17,6 +17,8 @@ class echo:
 
 		#self.printu(self.files[name])
 		return True
+	def addEchoText(self, text):
+		self.echoText.append(text)
 
 	def printu(self, text):
 		sys.stdout.buffer.write((text+"\n").encode('utf-8'))
@@ -25,17 +27,22 @@ class echo:
 		text = ''.join(str(text))
 		sys.stdout.buffer.write((str(text)+"\n").encode('utf-8'))
 
-	def echo(self, _target = "", _type = "", _index = -1):
+	# def echo(self, _target = "", _type = "", _index = -1):
 
-		if _target in self.files and _type in self.files[_target]:
-			if _index == -1:
-				self.printu(random.choice(self.files[_target][_type]))
-			else:
-				self.printu(self.files[_target][_type][_index])
-		elif _target not in self.files:
-			return "target"
-		elif _type not in self.files[_target]:
-			return "type"
+	# 	if _target in self.files and _type in self.files[_target]:
+	# 		if _index == -1:
+	# 			self.printu(random.choice(self.files[_target][_type]))
+	# 		else:
+	# 			self.printu(self.files[_target][_type][_index])
+	# 	elif _target not in self.files:
+	# 		return "target"
+	# 	elif _type not in self.files[_target]:
+	# 		return "type"
+	def echo(self, _text = ""):
+
+		for i in self.echoText:
+			self.printu(i)
+		self.echoText = []
 
 
 if __name__ == "__main__":

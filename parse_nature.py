@@ -1,7 +1,6 @@
 ##parse_nature.py
 # -*- coding:utf-8 -*-
 
-import _ast, ast
 import os, importlib, sys, json
 
 def print(*text):
@@ -35,13 +34,9 @@ class oModules:
 		sys.path.append(_path)
 		pass
 
-	def setJson(self, ptype, path):
-		path = os.path.abspath(path)
-		self.jsonData[ptype] = json.loads(open(path,"r").read())
-
 	def parseStart(self):
-		modules = ["echo","lib"]
-		methods = [["echo", "addEchoFiles"],["roomSetting","mapSetting","mobSetting","charSettting","itemSetting"]]
+		modules = ["echo","librarys"]
+		methods = [["echo", "addEchoText"],["roomSetting","mapSetting","mobSetting","charSettting","itemSetting", "textSetting"]]
 
 		basicModules = bModules()
 		for i, moduleId in zip(modules, methods):
@@ -59,6 +54,7 @@ class oModules:
 		packages = ["battle", "main"]
 
 		for i in packages:
+			print(i)
 			modules.__setattr__(i,importlib.import_module("scripts."+i))
 
 		return modules, basicModules
@@ -84,4 +80,15 @@ if __name__ == "__main__":
 	if data["flag_battle"]:
 		modules.battle.main(basicModules, data)
 
-	print(basicModules)
+	#print(dir(basicModules))
+	basicModules.roomSetting("settings/roominfo.json")
+	m.realModules["lib"].RoomData.printAllObject()
+	basicModules.mapSetting("3x3", 2, path="settings/")
+	m.realModules["lib"].MapData.printMaptable()
+	basicModules.mobSetting(path = "settings/monsters.json")
+	m.realModules["lib"].MobData.printAllObject()
+	basicModules.charSettting(path ="settings/characters.json")
+	m.realModules["lib"].CharData.printAllObject()
+	basicModules.itemSetting(path = "settings/items.json")
+	m.realModules["lib"].ItemData.printAllObject()
+	#basicModules.mapSetting("settings/characters.json")
