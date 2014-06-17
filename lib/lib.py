@@ -29,8 +29,8 @@ class lib:
 		else:
 			pass
 
-	def mapSetting(self, size = "3x3", floor = 1, mode = "auto"):
-		self.MapData = maps.Maps(size, floor)
+	def mapSetting(self, size = "3x3", floor = 1, mode = "auto", path = "../settings/"):
+		self.MapData = maps.Maps(size, floor, path)
 		self.mapJsonData = ""
 		if(mode == "auto"):
 			pass

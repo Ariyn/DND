@@ -20,7 +20,7 @@ from random import choice, randrange
 class Maps:
 	cons = ["North", "South", "West", "East", "Up", "Down"]
 
-	def __init__(self, string = "5x5", floor = 1):
+	def __init__(self, string = "5x5", floor = 1, path = "../settings/"):
 		if string == "5x5":
 			self.Size = 5
 			self.prob = 40
@@ -34,14 +34,14 @@ class Maps:
 		self.mapname = ""
 		self.roomdata = "["
 		self.floor = floor
-		self.completeMaps()
+		self.completeMaps(path)
 
-	def completeMaps(self):
+	def completeMaps(self, path = "../settings/"):
 		for i in range(self.floor):
 			self.createMaps()
 			self.setNumber(i+1)
 			self.jsonData.append(self.roomdata)
-			self.ToJson("D",i)
+			self.ToJson("D",i, path)
 			self.roomdata = "["
 			self.fstStep = True
 
@@ -162,8 +162,8 @@ class Maps:
 		for i in self.jsonData:
 			print(i)
 
-	def ToJson(self, name = "", number = 1):
-		self.file = codecs.open("../settings/map-"+ name + str(number) +".json", 'w', 'utf-8')
+	def ToJson(self, name = "", number = 1, path = "../settings/"):
+		self.file = codecs.open(path+"map-"+ name + str(number) +".json", 'w', 'utf-8')
 		for i in self.roomdata:
 			self.file.write(i)
 
