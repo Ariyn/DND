@@ -41,7 +41,8 @@
 		    "actionname": "move",
 			"percentage":"30"
 		  }
-		]
+		],
+		"moveHistory":[]
 	},
 	{
 		"charname": "horo",
@@ -85,6 +86,7 @@
 		    "actionname": "move",
 			"percentage":"30"
 		  }
-		]
+		],
+		"moveHistory":[]
 	}
 ]

@@ -94,19 +94,24 @@ class Character:
 		except:
 			return None
 
-	def setObjtoName(self, obj, attribute = "", val1 = 0):
-		self.innerSetObj(obj, attribute, val1)
+	def setObjtoName(self, obj, attribute = "", val1 = 0, ptype= None):
+		self.innerSetObj(obj, attribute, val1, ptype)
 		self.ToJson()
 		
 
-	def innerSetObj(self, obj, attribute = "", val1 = 0):
+	def innerSetObj(self, obj, attribute = "", val1 = 0, ptype=None):
 		try:
 			for key in obj.keys():
 				print(key)
+
 				if(key == attribute):
-					obj[key] = val1
+					if ptype != None:
+						obj[key] += val1
+					elif ptype == None:
+						obj[key] = val1
+
 				elif((type(obj[key]) is dict) or (type(obj[key]) is list)):
-					self.innerSetObj(obj[key], attribute, val1)
+					self.innerSetObj(obj[key], attribute, val1,ptype)
 					pass
 		except:
 			return None
@@ -143,6 +148,8 @@ class Character:
 		# print("ations	:", self.actions)
 		# print("", self.skillNames)
 		# print("", self.actionNames)
+	def saveFile(self, path = "", name = "", string = ""):
+		self.lib.saveFile(path, name, string)
 
 
 if __name__ == "__main__":
@@ -150,7 +157,7 @@ if __name__ == "__main__":
 	a.printAllObject()
 	# print(a.getNameis("horo"))
 	# print(a.getObjtoName("horo", "status"))
-	a.setObjtoName(a.getNameis("horo"), "hp", 100)
+	a.setObjtoName(a.getNameis("horo"), "hp", 10)
 	print(a.getObjtoName(a.getNameis("horo"), "hp"))
 	print(a.rtName)
 
