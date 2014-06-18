@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
 	{
 		"charname": "miko",
@@ -90,3 +91,6 @@
 		"moveHistory":[]
 	}
 ]
+=======
+[{"skills": [{"smash": 30}, {"broken": 30}], "charname": "miko", "status": {"hp": 10, "agillity": 10, "ac": 2, "strength": 10, "res_magicspell": 10, "health": 10, "res_magicstaff": 10, "res_parrelize": 10, "res_poison": 10, "charisma": 10, "class": "thief", "res_magicstic": 10, "res_breath": 10, "res_sturn": 10, "level": 1, "intelligent": 10, "res_death": 10, "wisdom": 10}, "values": "evil", "realuser": "@YuiDevelop", "actions": [{"move": 30}]}, {"skills": [{"roar": 30}, {"smash": 30}], "charname": "horo", "status": {"hp": 100, "agillity": 20, "ac": 20, "strength": 20, "res_magicspell": 20, "health": 20, "res_magicstaff": 20, "res_parrelize": 20, "res_poison": 20, "charisma": 20, "class": "druid_wolf", "res_magicstic": 20, "res_breath": 20, "res_sturn": 20, "level": 1, "intelligent": 20, "res_death": 20, "wisdom": 20}, "values": "wagamama", "realuser": "@MuTopia_ArtTeam", "actions": [{"move": 30}]}]
+>>>>>>> 9bf1ec295ec6c3f4aa0f2b0e3581e805c4c093d0

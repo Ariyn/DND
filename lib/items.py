@@ -30,17 +30,23 @@ class Items:
 			return None
 
 	def getObjtoName(self, obj, attribute = ""):
-		try:
-			for key in obj.keys():
-				if(key == attribute):
-					return obj[key]
-				elif(type(obj[key]) is dict):
-					return attribute, obj[key][attribute]
-					pass
-				elif(type(obj[key]) is list):
-					self.getObjtoName(obj[key], attribute)
-		except:
-			return None
+
+		print(obj)
+		objs = obj
+		for i in objs:
+			iftype(objs[i]) attribute not in objs[i]:
+				return self.getObjtoName(objs[i],attribute)
+
+
+		# for key in obj.keys():
+		# 	if(key == attribute):
+		# 		return obj[key]
+		# 	elif(type(obj[key]) is dict):
+		# 		print(key, obj[key])
+		# 		return attribute, obj[key][attribute]
+		# 		pass
+		# 	elif(type(obj[key]) is list):
+		# 		self.getObjtoName(obj[key], attribute)
 
 	def setObjtoName(self, obj, attribute = "", val1 = 0):
 		self.innerSetObj(obj, attribute, val1)
@@ -70,6 +76,7 @@ class Items:
 
 if __name__ == "__main__":
 	a = Items()
-	print(a.lib.Trans(a.rtName))
+	#print(a.lib.Trans(a.rtName))
 	a.setObjtoName(a.getNameis("name1"), "number", 1)
-	a.saveFile(a._path,"",a.lib.Trans(a.rtName))
+	print(a.getObjtoName(a.getNameis("name1"), "number"))
+	# a.saveFile(a._path,"",a.lib.Trans(a.rtName))

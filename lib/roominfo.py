@@ -37,10 +37,13 @@ def printu(text):
 
 class Rooms:
 	def __init__(self, path = "../settings/roominfo.json"):
+		self._path = path
 		self.lib = d40lib.StdIOFile(path)
 		self.jsonData = self.lib.jsonReturn()
-		self.number = {}
+		self.name = {}
+		self.rtName = []
 		self.getAllObject()
+		self.ToJson()
 
 	# getter, setter
 	# def setAllObject(self, valnumber, valname, valitems, valevents, valmonsters):
@@ -59,90 +62,53 @@ class Rooms:
 
 	def getAllObject(self):
 		for i in self.jsonData:
-			tmpnumber = i['number']
-			self.number[tmpnumber] = i
+			tmpnumber = i['name']
+			self.name[tmpnumber] = i
 
-	def getObjNameIs(self, val):
-		for i in self.number:
-			if val == self.number[i]['name']:
-				return self.number[i]
+	def getNameis(self, name = None):
+		try:
+			for key in self.name.keys():
+				if key == name:
+					return self.name[key]
+		except:
+			return None
 
-		# self.number = self.jsonData['number']
-		# self.name = self.jsonData['name']
-		# self.items = self.jsonData['items']
-		# self.events = self.jsonData['events']
-		# self.monsters = self.jsonData['monsters']
+	def getObjtoName(self, obj, attribute = ""):
+		try:
+			for key in obj.keys():
+				if(key == attribute):
+					return obj[key]
+				elif((type(obj[key]) is list) or (type(obj[key]) is dict)):
+					self.getObjtoName(obj[key], attribute)
+		except:
+			return None
 
-	# # number
-	# def getNumber(self):
-	# 	return self.number
-	# def setNumber(self, val):
-	# 	self.number = val
-	# # name
-	# def getName(self):
-	# 	return self.name
-	# def setName(self, string):
-	# 	self.name = string
-	# # items -> type : list in python , but array type in json
-	# def getItems(self):
-	# 	return self.items
-	# def setItems(self, lists):
-	# 	self.items = lists
-	# def addItem(self, val):
-	# 	self.items.append(val)
-	# def delItem(self, val):
-	# 	if self.items.number(val) is not None:
-	# 		self.items.remove(val)
-	# 	else:
-	# 		print(val," is not exist")
-	# # events -> type : dict in python, but object type in json
-	# def getEvents(self):
-	# 	return self.events
-	# def setEvents(self, dicts):
-	# 	self.events = dicts
-	# def addEvent(self, key, val):
-	# 	if(type(key) is int):
-	# 		if(type(val) is int ):
-	# 			vallist = [str(val), "%"]
-	# 			self.events[str(key)] = ''.join(vallist)
-	# def delEvent(self, key):
-	# 	if(type(key) is int):
-	# 		if(str(key) in self.events):
-	# 			del self.events[str(key)]
-	# 		else:
-	# 			print(key, " is not exist")
-	# 	else:
-	# 		del self.events[key]
-	# # monsters -> type : list in python, but array type in json
-	# def getMonsters(self):
-	# 	return self.monsters
-	# def setMonsters(self, lists):
-	# 	self.monsters = lists
-	# def addMonster(self, val):
-	# 	self.monsters.append(val)
-	# def delMonster(self, val):
-	# 	if self.monsters.number(val) is not None:
-	# 		self.monsters.remove(val)
-	# 	else:
-	# 		print(val, " is not exist")
+	def innerSetObj(self, obj, attribute = "", val1 = 0):
+		try:
+			for key in obj.keys():
+				if(key == attribute):
+					obj[key] = val1
+				elif((type(obj[key]) is dict) or (type(obj[key]) is list)):
+					self.innerSetObj(obj[key], attribute, val1)
+					pass
+		except:
+			return None
 
+	def ToJson(self):
+		self.rtName = []
+		for i in self.name.keys():
+			self.rtName.append(self.name[i])
 
+	def setObjtoName(self, obj, attribute = "", val1 = 0):
+		self.innerSetObj(obj, attribute, val1)
+		self.ToJson()
 
 	# debug functions
 	def printAllObject(self):
-		for key in self.number.keys():
-			print(key, self.number[key])
-		# print("number	: ", self.number)
-		# print("name 	: ", self.name)
-		# print("items 	: ", self.items)
-		# print("events 	: ", self.events)
-		# print("monsters	: ", self.monsters)
-
-
-
+		for key in self.name.keys():
+			print(key, self.name[key])
 
 if __name__ == "__main__":
 	a = Rooms()
-	a.printAllObject()
-	b = a.getObjNameIs('room-1')
-	print(b)
+	print(a.getNameis("room-2"))
+	print(a.getObjtoName(a.getNameis("room-2"), "number"))
