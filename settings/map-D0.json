@@ -1,1 +1,0 @@
-[{"number":0,"floor":[1],"connections":["East"]},{"number":1,"floor":[1],"connections":["West", "South"]},{"number":2,"floor":[1],"connections":["East", "North", "South"]},{"number":3,"floor":[1],"connections":["West"]},{"number":4,"floor":[1],"connections":["North"]}]
