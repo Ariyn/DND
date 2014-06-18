@@ -32,7 +32,7 @@ class Character:
 
 	def getObjtoName(self, obj, attribute = ""):
 		if attribute in obj:
-			print(obj)
+			# print(obj)
 			self.attr = obj[attribute]
 		else:
 			for key in obj.keys():
@@ -65,6 +65,18 @@ class Character:
 		
 
 	def innerSetObj(self, obj, attribute = "", val1 = 0):
+		# if attribute in obj:
+		# 	# print("seu")
+		# 	obj[attribute] = val1
+		# else:
+		# 	for key in obj.keys():
+		# 		if((type(obj[key]) is dict)):
+		# 			if attribute in obj[key]:
+		# 				self.innerSetObj(obj[key], attribute)
+		# 		if(type(obj[key]) is list):
+		# 			for i in obj[key]:
+		# 				self.innerSetObj(i, attribute)
+		# ------------------------------------------------------
 		try:
 			for key in obj.keys():
 				if(key == attribute):
@@ -91,8 +103,7 @@ if __name__ == "__main__":
 	a = Character("../settings/characters.json")
 	# print(a.getNameis("horo"))
 	# print(a.getObjtoName("horo", "status"))
-	a.setObjtoName(a.getNameis("horo"), "hp", 100)
-	print(a.getNameis("horo"))
-	print(a.getObjtoName(a.getNameis("horo"), "hp"))
-	a.saveFile(a._path, "", a.lib.Trans(a.rtName))
+	print(a.getObjtoName(a.getObjtoName(a.getNameis("horo"), "status"), "hp"))
+
+
 

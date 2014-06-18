@@ -7,6 +7,7 @@ def printu(text):
 	sys.stdout.buffer.write((text+"\n").encode('utf-8'))
 
 class Items:
+	attr = None
 	def __init__(self, path = "../settings/items.json"):
 		self._path = path
 		self.lib = d40lib.StdIOFile(path)
@@ -30,12 +31,24 @@ class Items:
 			return None
 
 	def getObjtoName(self, obj, attribute = ""):
+		if attribute in obj:
+			# print(obj)
+			self.attr = obj[attribute]
+		else:
+			for key in obj.keys():
+				if((type(obj[key]) is dict)):
+					if attribute in obj[key]:
+						self.attr = self.getObjtoName(obj[key], attribute)
+				if(type(obj[key]) is list):
+					for i in obj[key]:
+						self.attr = self.getObjtoName(i, attribute)
 
-		print(obj)
-		objs = obj
-		for i in objs:
-			iftype(objs[i]) attribute not in objs[i]:
-				return self.getObjtoName(objs[i],attribute)
+		return self.attr
+		# print(obj)
+		# objs = obj
+		# for i in objs:
+		# 	iftype(objs[i]) attribute not in objs[i]:
+		# 		return self.getObjtoName(objs[i],attribute)
 
 
 		# for key in obj.keys():
@@ -76,7 +89,7 @@ class Items:
 
 if __name__ == "__main__":
 	a = Items()
-	#print(a.lib.Trans(a.rtName))
+	# print(a.lib.Trans(a.rtName))
 	a.setObjtoName(a.getNameis("name1"), "number", 1)
 	print(a.getObjtoName(a.getNameis("name1"), "number"))
-	# a.saveFile(a._path,"",a.lib.Trans(a.rtName))
+	a.saveFile(a._path,"",a.lib.Trans(a.rtName))

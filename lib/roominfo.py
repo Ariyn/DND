@@ -36,6 +36,7 @@ def printu(text):
 	sys.stdout.buffer.write((text+"\n").encode('utf-8'))
 
 class Rooms:
+	attr = None
 	def __init__(self, path = "../settings/roominfo.json"):
 		self._path = path
 		self.lib = d40lib.StdIOFile(path)
@@ -74,14 +75,26 @@ class Rooms:
 			return None
 
 	def getObjtoName(self, obj, attribute = ""):
-		try:
+		if attribute in obj:
+			# print(obj)
+			self.attr = obj[attribute]
+		else:
 			for key in obj.keys():
-				if(key == attribute):
-					return obj[key]
-				elif((type(obj[key]) is list) or (type(obj[key]) is dict)):
-					self.getObjtoName(obj[key], attribute)
-		except:
-			return None
+				if((type(obj[key]) is dict)):
+					if attribute in obj[key]:
+						self.attr = self.getObjtoName(obj[key], attribute)
+				if(type(obj[key]) is list):
+					try:
+						for i in obj[key]:
+							self.attr = self.getObjtoName(i, attribute)
+					except:
+						pass
+					for i in obj[key]:
+						if(i == attribute):
+							self.attr = i
+
+		return self.attr
+
 
 	def innerSetObj(self, obj, attribute = "", val1 = 0):
 		try:
@@ -108,7 +121,11 @@ class Rooms:
 		for key in self.name.keys():
 			print(key, self.name[key])
 
+	def saveFile(self, path = "", name = "", string = ""):
+		self.lib.saveFile(path, name, string)
+
 if __name__ == "__main__":
 	a = Rooms()
 	print(a.getNameis("room-2"))
-	print(a.getObjtoName(a.getNameis("room-2"), "number"))
+	# a.setObjtoName(a.getNameis("room-2"), "")
+	print(a.getObjtoName(a.getNameis("room-2"), "monster1"))
