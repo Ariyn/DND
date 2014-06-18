@@ -13,7 +13,7 @@ def checkInput(data, pinput):
 def main(mods, data, options):
 	inputCorrect = checkInput(data["moveEvent"], options["inputs"])
 	retData = {
-		"moveEvent":[],
+		"moveEvent":[],"state":[]
 	}
 	playerSynarioNum = data["location"]
 
@@ -22,15 +22,36 @@ def main(mods, data, options):
 		playerSynarioNum = gameData["moveEvent"][options["inputs"]]
 		
 		retData["move"] = playerSynarioNum
-
 	
 	gameData = [x for x in options["texts"] if x["number"] == playerSynarioNum][0]
-	moveEvents = gameData["moveEvent"]
+	if "moveEvent" in gameData:
+		moveEvents = gameData["moveEvent"]
+	if "event" in gameData:
+		events = gameData["event"].split(" ")
+
+		if events[0] == "battle":
+			retData["event"] = events[0]
+			retData["eventTarget"] = events[1]
+			if events[1] == "monster":
+				retData["monster"] = gameData["monster"]
+			elif events[1] == "playerName":#not yet!
+				pass
+
+		elif events[0] == "demage":
+			retData["event"] = events[0]	
+			retData["eventTarget"] = events[1]
+			retData["demage"] = events[2]
 
 	text = gameData["text"]
 	for i in moveEvents:
+		splitText= i.split(" ")
+		if len(splitText) == 2 and splitText[0] == "state":
+			retData["state"].append(splitText[1])
+			continue
 		text += "\n"+i
 		retData["moveEvent"].append({"key":i,"target":moveEvents[i]})
+	if retData["event"] == "battle":
+		for i in 
 
 	mods.addEchoText(str(text))
 	return retData
