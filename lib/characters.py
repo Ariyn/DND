@@ -59,12 +59,11 @@ class Character:
 		# 			retVal = self.getObjtoName(i, attribute)
 		# return retVal
 
-	def setObjtoName(self, obj, attribute = "", val1 = 0, ptype= None):
-		self.innerSetObj(obj, attribute, val1, ptype)
+	def setObjtoName(self, obj, attribute = "", val1 = 0):
+		self.innerSetObj(obj, attribute, val1)
 		self.ToJson()
 		
 
-<<<<<<< HEAD
 	def innerSetObj(self, obj, attribute = "", val1 = 0):
 		# if attribute in obj:
 		# 	# print("seu")
@@ -78,24 +77,12 @@ class Character:
 		# 			for i in obj[key]:
 		# 				self.innerSetObj(i, attribute)
 		# ------------------------------------------------------
-=======
-	def innerSetObj(self, obj, attribute = "", val1 = 0, ptype=None):
->>>>>>> 31acb14dfa2325bd8c13addece0040fa103be5e9
 		try:
 			for key in obj.keys():
-<<<<<<< HEAD
-				print(key)
-
-=======
->>>>>>> 9bf1ec295ec6c3f4aa0f2b0e3581e805c4c093d0
 				if(key == attribute):
-					if ptype != None:
-						obj[key] += val1
-					elif ptype == None:
-						obj[key] = val1
-
+					obj[key] = val1
 				elif((type(obj[key]) is dict) or (type(obj[key]) is list)):
-					self.innerSetObj(obj[key], attribute, val1,ptype)
+					self.innerSetObj(obj[key], attribute, val1)
 					pass
 		except:
 			return None
@@ -108,36 +95,6 @@ class Character:
 	def printAllObject(self):
 		for key in self.name.keys():
 			print(key, self.name[key])
-<<<<<<< HEAD
-		# print("values	:", self.values)
-		# print("status	:", self.status)
-		# print("class	:", self.charclass)
-		# print("", self.level)
-		# print("", self.hp)
-		# print("", self.ac)
-		# print("", self.strength)
-		# print("", self.intelligent)
-		# print("", self.wisdom)
-		# print("", self.agillity)
-		# print("", self.health)
-		# print("", self.charisma)
-		# print("", self.res_poison)
-		# print("", self.res_death)
-		# print("", self.res_magicstic)
-		# print("", self.res_parrelize)
-		# print("", self.res_sturn)
-		# print("", self.res_breath)
-		# print("", self.res_magicspell)
-		# print("", self.res_magicstaff)
-		# print("skills	:", self.skills)
-		# print("ations	:", self.actions)
-		# print("", self.skillNames)
-		# print("", self.actionNames)
-	def saveFile(self, path = "", name = "", string = ""):
-		self.lib.saveFile(path, name, string)
-
-=======
->>>>>>> 9bf1ec295ec6c3f4aa0f2b0e3581e805c4c093d0
 
 	def saveFile(self, path = "", name = "", string = ""):
 		self.lib.saveFile(path, name, string)
@@ -146,18 +103,7 @@ if __name__ == "__main__":
 	a = Character("../settings/characters.json")
 	# print(a.getNameis("horo"))
 	# print(a.getObjtoName("horo", "status"))
-<<<<<<< HEAD
 	print(a.getObjtoName(a.getObjtoName(a.getNameis("horo"), "status"), "hp"))
 
 
-=======
-<<<<<<< HEAD
-	a.setObjtoName(a.getNameis("horo"), "hp", 10)
-=======
-	a.setObjtoName(a.getNameis("horo"), "hp", 100)
-	print(a.getNameis("horo"))
->>>>>>> 9bf1ec295ec6c3f4aa0f2b0e3581e805c4c093d0
-	print(a.getObjtoName(a.getNameis("horo"), "hp"))
-	a.saveFile(a._path, "", a.lib.Trans(a.rtName))
->>>>>>> 31acb14dfa2325bd8c13addece0040fa103be5e9
 

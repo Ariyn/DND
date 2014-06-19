@@ -1,0 +1,28 @@
+diff a/lib/characters.py b/lib/characters.py	(rejected hunks)
+@@ -78,12 +78,24 @@
+ 		# 			for i in obj[key]:
+ 		# 				self.innerSetObj(i, attribute)
+ 		# ------------------------------------------------------
++=======
++	def innerSetObj(self, obj, attribute = "", val1 = 0, ptype=None):
++>>>>>>> 31acb14dfa2325bd8c13addece0040fa103be5e9
+ 		try:
+ 			for key in obj.keys():
++<<<<<<< HEAD
++				print(key)
++
++=======
++>>>>>>> 9bf1ec295ec6c3f4aa0f2b0e3581e805c4c093d0
+ 				if(key == attribute):
+-					obj[key] = val1
++					if ptype != None:
++						obj[key] += val1
++					elif ptype == None:
++						obj[key] = val1
++
+ 				elif((type(obj[key]) is dict) or (type(obj[key]) is list)):
+-					self.innerSetObj(obj[key], attribute, val1)
++					self.innerSetObj(obj[key], attribute, val1,ptype)
+ 					pass
+ 		except:
+ 			return None

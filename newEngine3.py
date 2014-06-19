@@ -45,7 +45,7 @@ def main():
 	# m.realModules["librarys"].ItemData.printAllObject()
 	basicModules.textSetting(path = "settings/texts.json")
 	
-	data["rooms"] = m.realModules["librarys"].RoomData.number
+	data["rooms"] = m.realModules["librarys"].RoomData.name
 
 
 	data["characters"] = m.realModules["librarys"].CharData.name

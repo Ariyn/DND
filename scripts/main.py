@@ -50,8 +50,6 @@ def main(mods, data, options):
 			continue
 		text += "\n"+i
 		retData["moveEvent"].append({"key":i,"target":moveEvents[i]})
-	if retData["event"] == "battle":
-		for i in 
-
+		
 	mods.addEchoText(str(text))
 	return retData
