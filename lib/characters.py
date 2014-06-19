@@ -59,11 +59,12 @@ class Character:
 		# 			retVal = self.getObjtoName(i, attribute)
 		# return retVal
 
-	def setObjtoName(self, obj, attribute = "", val1 = 0):
-		self.innerSetObj(obj, attribute, val1)
+	def setObjtoName(self, obj, attribute = "", val1 = 0, ptype= None):
+		self.innerSetObj(obj, attribute, val1, ptype)
 		self.ToJson()
 		
 
+<<<<<<< HEAD
 	def innerSetObj(self, obj, attribute = "", val1 = 0):
 		# if attribute in obj:
 		# 	# print("seu")
