@@ -2,7 +2,10 @@
 
 import lib.jsonParse
 import lib.echo
+from lib.dice import dice
+
 import parse_nature
+
 
 def testTwit(characters):
 	text = {}
@@ -17,8 +20,8 @@ def main():
 	data = {
 		"players":
 		{
-			"YuiDevelop":{"synario":"기본","location":0,"flag_battle":False,"moveEvent":[]},
-			"MuTopia_ArtTeam":{"synario":"기본","location":0,"flag_battle":False,"moveEvent":[]},
+			"YuiDevelop":{"character":"miko","synario":"기본","location":83,"flag_battle":False,"moveEvent":[]},
+			"MuTopia_ArtTeam":{"character":"horo","synario":"기본","location":0,"flag_battle":False,"moveEvent":[]},
 		},
 		"texts":{},
 		"characters":{},
@@ -42,7 +45,7 @@ def main():
 	# m.realModules["librarys"].ItemData.printAllObject()
 	basicModules.textSetting(path = "settings/texts.json")
 	
-	data["rooms"] = m.realModules["librarys"].RoomData.number
+	data["rooms"] = m.realModules["librarys"].RoomData.name
 
 
 	data["characters"] = m.realModules["librarys"].CharData.name
@@ -59,19 +62,47 @@ def main():
 		retInputData = testTwit(data["players"].keys())
 		print("\n")
 		for i in data["players"]:
-			options = modules.main.main(
-				basicModules,
-				data["players"][i],
-				{
-					"characters":data["characters"],
-					"rooms":data["rooms"],
-					"texts":data["texts"],
-					"inputs":retInputData[i]
-				})
-			if "move" in options:
-				data["players"][i]["location"] = options["move"]
+			if i not in retInputData:
+				continue
 
-			data["players"][i]["moveEvent"] = options["moveEvent"]
+			#print(i)
+			if data["players"][i]["flag_battle"]:
+				options = modules.battle.main(
+					basicModules,
+					data["players"][i],
+					{
+						"characters":data["characters"],
+						"rooms":data["rooms"],
+						"texts":data["texts"],
+						"inputs":retInputData[i]
+					})
+			else:
+				options = modules.main.main(
+					basicModules,
+					data["players"][i],
+					{
+						"characters":data["characters"],
+						"rooms":data["rooms"],
+						"texts":data["texts"],
+						"inputs":retInputData[i]
+					})
+			if options:
+				if "move" in options:
+					data["players"][i]["location"] = options["move"]
+				if "state" in options:
+					print(options["state"])
+				if "event" in options:
+					if options["event"] == "demage":
+						_demages = dice(options["demage"])[0]
+						m.realModules["librarys"].CharData.setObjtoName(
+							m.realModules["librarys"].CharData.getNameis(data["players"][i]["character"]), "hp", _demage)
+						pass
+					elif options["event"] == "battle":
+						data["players"][i]["flag_battle"] = True
+					elif options["event"] == "synario":
+						data["players"][i]["flag_battle"] = False
+
+				data["players"][i]["moveEvent"] = options["moveEvent"]
 
 		basicModules.echo()
 
