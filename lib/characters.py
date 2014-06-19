@@ -63,8 +63,6 @@ class Character:
 		self.innerSetObj(obj, attribute, val1, ptype)
 		self.ToJson()
 		
-
-<<<<<<< HEAD
 	def innerSetObj(self, obj, attribute = "", val1 = 0):
 		# if attribute in obj:
 		# 	# print("seu")
