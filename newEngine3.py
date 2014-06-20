@@ -6,13 +6,13 @@ from lib.dice import dice
 
 import parse_nature
 
-
 def testTwit(characters):
 	text = {}
 	for i in characters:
 		text[i] = input(i+"의 입력\n")
 
 	return text
+
 def main():
 	m = parse_nature.oModules()
 		#data = bModules()
