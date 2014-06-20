@@ -3,6 +3,7 @@
 import codecs,sys
 import json
 import time
+import threading
 from twitter import Twitter, NoAuth, OAuth, read_token_file, TwitterHTTPError
 from twitter.api import TwitterDictResponse, TwitterListResponse
 
@@ -27,6 +28,13 @@ class DND_Twitter(object):
 
 	def sendMessage(self, text):
 		self.accesses[self.turn].statuses.update(status = text)
+		if(self.turn == len(self.accesses)-1):
+			self.turn = 0
+		else:
+			self.turn += 1
+
+	def sendMessageWithMedia(self, text, _media):
+		self.accesses[self.turn].statuses.update_with_media(status = text, media = _media)
 		if(self.turn == len(self.accesses)-1):
 			self.turn = 0
 		else:
@@ -65,6 +73,9 @@ class DND_Twitter(object):
 	def getUsers(self):
 		return self.accesses[self.turn].followers.ids()
 
+	def getShow(self, ID):
+		return self.accesses[self.turn].users.show(user_id = ID)
+
 
 class Twitter_Manager(object):
 	twitters = []
@@ -90,11 +101,15 @@ class Twitter_Manager(object):
 			i+=1
 
 	def sendMessage(self, text):
-		if(len(text) > 140):
-			print("message is over 140 characters")
-			return False
 		try:
-			self.twitters[self.sender].sendMessage(text)
+			if(len(text) > 140):
+				i = 0
+				while i != (len(text) / 140) + 1:
+					s = text[i * 140 + 1:140*(i+1)]
+					self.twitters[self.sender].sendMessage(s)
+					i+=1
+			else:
+				self.twitters[self.sender].sendMessage(text)
 		except TwitterHTTPError as e:
 			print("twitter" + str(self.sender) + " is error : " + str(e))
 			if(len(self.twitters) - 1 == self.sender):
@@ -103,11 +118,24 @@ class Twitter_Manager(object):
 				self.sender += 1
 			self.sendMessage(text)
 
-	def sendMessageWithID(self, text, ID):
-		message = "@" + ID + " " + text
-		self.sendMessage(text)
+	def sendMessageWithScreen_name(self, text, screen_name):
+		message = "@" + screen_name + " " + text
+		self.sendMessage(message)
 
-	def sendMessageToFollower(self, text):
+	def sendMessageWithMedia(self, text, _media):
+		if(len(text) > 140):
+			print("message is over 140 characters")
+			return False
+		try:
+			self.twitters[self.sender].sendMessageWithMedia(text, _media)
+		except TwitterHTTPError as e:
+			print("twitter" + str(self.sender) + " is error : " + str(e))
+			if(len(self.twitters) - 1 == self.sender):
+				self.sender = 0
+			else:
+				self.sender += 1
+
+	def sendMessageForMasterTwitter(self, text):
 		if(len(text) > 140):
 			print("message is over 140 characters")
 			return False
@@ -173,7 +201,12 @@ class Twitter_Manager(object):
 	def getUsers(self):
 		return self.masterTwitter.getUsers()
 
+	def getScreenName(self, ID):
+		return self.masterTwitter.getShow(ID)["screen_name"]
 
-tm = Twitter_Manager("Oauth.json")
-print(tm.getUsers())
-print(tm.receiveMessagePerID())
+	def sendMessages(self, messages):
+		for message in messages:
+			ID = message['id']
+			text = message['text']
+			thread = threading.Thread(target = self.sendMessageWithScreen_name, args = (text, ID))
+			thread.start()
