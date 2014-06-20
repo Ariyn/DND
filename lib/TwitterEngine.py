@@ -6,6 +6,8 @@ import time
 import threading
 from twitter import Twitter, NoAuth, OAuth, read_token_file, TwitterHTTPError
 from twitter.api import TwitterDictResponse, TwitterListResponse
+# import twitter
+# import twitter.api
 
 def printu(text):
 	sys.stdout.buffer.write((text+"\n").encode('utf-8'))

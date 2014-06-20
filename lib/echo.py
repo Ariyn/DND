@@ -5,7 +5,8 @@ import sys, os, json, codecs, random
 
 class echo:
 	files = {}
-	echoText = []
+	echoText = {}
+
 	def addEchoFiles(self, name):
 		#print(os.path.abspath("../scripts/"+name))
 		try:
@@ -17,8 +18,9 @@ class echo:
 
 		#self.printu(self.files[name])
 		return True
-	def addEchoText(self, text):
-		self.echoText.append(text)
+
+	def addEchoText(self, id, text):
+		self.echoText[id] = text
 
 	def printu(self, text):
 		sys.stdout.buffer.write((text+"\n").encode('utf-8'))
@@ -41,10 +43,19 @@ class echo:
 	def echo(self, _text = ""):
 
 		for i in self.echoText:
-			print(i+"\n")
+			print(self.echoText[i]+"\n")
 		self.echoText = []
+
+	def Message(self):
+		rt = []
+		tmp = self.echoText
+		for key in tmp:			
+			ha = {}
+			ha["id"] = key
+			ha["text"] = tmp[key]
+			rt.append(ha)
+		return rt
 
 
 if __name__ == "__main__":
 	t = echo()
-	t.echo("테스트")
