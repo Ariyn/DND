@@ -26,7 +26,7 @@ class StdIOFile:
 	def Trans(self, string):
 		return str(string).replace("'", "\"").replace("True", "true")
 
-	def saveFile(self, path = "", name = "", string = ""):
+	def saveFile(self, path = "", name = "", string=""):
 		self.savefile = codecs.open(path + name, 'w', 'utf-8')
 		self.savefile.write(self.Trans(string))
 		

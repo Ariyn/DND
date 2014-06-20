@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 import pdb
 import codecs
 import roominfo
@@ -69,7 +71,7 @@ class librarys:
 		else:
 			pass
 
-	def textSetting(self, path = "../settings/texts.json", mode = "auto"):
+	# def textSetting(self, path = "../settings/texts.json", mode = "auto"):
 		self.TextData = texts.Texts(path)
 		self.textJsonData = ""
 		if(mode == "auto"):
@@ -132,7 +134,8 @@ if __name__ == "__main__":
 	# data rcv
 
 	b = a.getRcvTwitInfo()
-	print(b)
+	sys.stdout.buffer.write(str(b).encode("utf-8"))
+	#print(bytes(b,"ISO-8859-1"))
 	# result : [{'YuiDevelop': 'naoekfloidasfadklsm'}]
 
 	# data send

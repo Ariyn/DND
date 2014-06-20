@@ -9,18 +9,24 @@ def printu(text):
 class Character:
 	attr = None
 	def __init__(self, path = "../settings/characters.json"):
+		self.sampleData = {"charname":"","skills":[{"강타":0},{"막기":0}],"realuser":"","actions":[{"move":0}],"values":"","status":{"max_hp":0,"intelligent":0,"res_sturn":0,"health":0,"res_poison":0,"hp":0,"res_breath":0,"strength":0,"charisma":0,"res_parrelize":0,"level":1,"ac":0,"res_magicstaff":0,"class":"","res_magicspell":0,"res_death":0,"res_magicstic":0,"agillity":0,"wisdom":0}}
 		self._path = path
 		self.lib = d40lib.StdIOFile(path)
 		self.jsonData = self.lib.jsonReturn()
 		self.name = {}
 		self.rtName = []
 		self.getAllObject()
-		self.ToJson()
 
 	def getAllObject(self):
+		# for i in range(len(self.jsonData)):
+		# 	if 'realuser' in self.jsonData[i]:
+		# 		self.name[self.jsonData[i]['realuser']] = self.jsonData[i]
 		for i in self.jsonData:
-			tmpname = i['charname']
-			self.name[tmpname] = i
+			if 'realuser' in self.jsonData[i]:
+				self.name[self.jsonData[i]['realuser']] = self.jsonData[i]
+			pass
+
+		print(self.lib.Trans(self.name))
 			
 	def getNameis(self, name = None):
 		try:
@@ -45,38 +51,12 @@ class Character:
 
 		return self.attr
 
-		# retVal = None
-		# 	# print(obj)
-		# for key in obj.keys():
-		# 	# print(key)
-		# 	# print(key+ ":"+ attribute + "\t" +str(type(obj[key])))
-		# 	if(key == attribute):
-		# 		retVal = obj[key]
-		# 	elif(type(obj[key]) is dict):
-		# 		retVal = self.getObjtoName(obj[key], attribute)
-		# 	elif(type(obj[key]) is list):
-		# 		for i in obj[key]:
-		# 			retVal = self.getObjtoName(i, attribute)
-		# return retVal
-
-	def setObjtoName(self, obj, attribute = "", val1 = 0):
+	def setObjtoName(self, obj, attribute = "", val1 = None):
 		self.innerSetObj(obj, attribute, val1)
-		self.ToJson()
+		self.name[obj["realuser"]] = obj
+		# self.addUser()
 		
-
-	def innerSetObj(self, obj, attribute = "", val1 = 0):
-		# if attribute in obj:
-		# 	# print("seu")
-		# 	obj[attribute] = val1
-		# else:
-		# 	for key in obj.keys():
-		# 		if((type(obj[key]) is dict)):
-		# 			if attribute in obj[key]:
-		# 				self.innerSetObj(obj[key], attribute)
-		# 		if(type(obj[key]) is list):
-		# 			for i in obj[key]:
-		# 				self.innerSetObj(i, attribute)
-		# ------------------------------------------------------
+	def innerSetObj(self, obj, attribute = "", val1 = None):
 		try:
 			for key in obj.keys():
 				if(key == attribute):
@@ -87,23 +67,39 @@ class Character:
 		except:
 			return None
 
-	def ToJson(self):
-		self.rtName = []
-		for i in self.name.keys():
-			self.rtName.append(self.name[i])
+	def addUsers(self):
+		for key in self.name:
+			self.rtName.append(self.name[key])
+
+	def setBasicChar(self, charname, username, values, uclass):
+		temp = self.sampleData
+		self.setObjtoName(temp, "charname", charname)
+		self.setObjtoName(temp, "realuser", username)
+		self.setObjtoName(temp, "values", values)
+		self.setObjtoName(temp, "class", uclass)
+		self.name[username] = temp
 
 	def printAllObject(self):
 		for key in self.name.keys():
 			print(key, self.name[key])
 
-	def saveFile(self, path = "", name = "", string = ""):
-		self.lib.saveFile(path, name, string)
+	def saveFile(self, path = "", name = ""):
+		self.addUsers()
+		self.lib.saveFile(path, name, self.name)
 		
 if __name__ == "__main__":
 	a = Character("../settings/characters.json")
+	# create user
+	# a.setBasicChar("c", "c", "c", "c")
+	# modfy user
+	a.setObjtoName(a.getNameis("a"),"max_hp",100)
+	a.saveFile(a._path,"")
 	# print(a.getNameis("horo"))
 	# print(a.getObjtoName("horo", "status"))
-	print(a.getObjtoName(a.getObjtoName(a.getNameis("horo"), "status"), "hp"))
-
-
-
+	# print(a.lib.Trans(a.rtName))
+	# print(a.name)
+	# a.setObjtoName(a.getNameis("horo"), "hp", 10)
+	# # print(a.getObjtoName(a.getNameis("horo"), "hp"))
+	# print(a.lib.Trans(a.getNameis("horo")))
+	# print(a.name)
+	# a.saveFile(a._path,"",a.rtName)
