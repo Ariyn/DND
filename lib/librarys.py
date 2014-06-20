@@ -51,7 +51,7 @@ class librarys:
 		# self.mobfile = MapData.lib
 		self.mobJsonData = ""
 		if(mode == "auto"):
-			self.mobJsonData = self.MobData.ToJson()
+			pass
 		else:
 			pass
 
@@ -59,7 +59,7 @@ class librarys:
 		self.CharData = characters.Character(path)
 		self.charJsonData = ""
 		if(mode == "auto"):
-			self.charJsonData = self.CharData.ToJson()
+			pass
 		else:
 			pass
 
@@ -127,39 +127,39 @@ class TwitterForm:
 
 if __name__ == "__main__":
 	
-	# Twitter sample
-	a = TwitterForm()
-	c = echo.echo()
-	d = librarys()
-	# data rcv
+	# # Twitter sample
+	# a = TwitterForm()
+	# c = echo.echo()
+	# d = librarys()
+	# # data rcv
 
-	b = a.getRcvTwitInfo()
-	sys.stdout.buffer.write(str(b).encode("utf-8"))
-	#print(bytes(b,"ISO-8859-1"))
-	# result : [{'YuiDevelop': 'naoekfloidasfadklsm'}]
+	# b = a.getRcvTwitInfo()
+	# sys.stdout.buffer.write(str(b).encode("utf-8"))
+	# #print(bytes(b,"ISO-8859-1"))
+	# # result : [{'YuiDevelop': 'naoekfloidasfadklsm'}]
 
-	# data send
-	c.addEchoText("YuiDevelop", "nadonado")
-	c.addEchoText("hohohaha", "text")
-	a.Send(c.Message())
-	# result : Youngrae Jo ‏@ATLATCat01 36초
-	# 			@YuiDevelop nadonado
+	# # data send
+	# c.addEchoText("YuiDevelop", "nadonado")
+	# c.addEchoText("hohohaha", "text")
+	# a.Send(c.Message())
+	# # result : Youngrae Jo ‏@ATLATCat01 36초
+	# # 			@YuiDevelop nadonado
 
-	# c.echo()
-	# test = [[]]
-	# if len(test) == 1:
-	# 	print(test)
+	# # c.echo()
+	# # test = [[]]
+	# # if len(test) == 1:
+	# # 	print(test)
 
-	# a = librarys()
-	# a.roomSetting()
-	# a.RoomData.printAllObject()
-	# a.mapSetting("3x3", 2)
-	# a.MapData.printMaptable()
-	# a.mobSetting()
-	# a.MobData.printAllObject()
-	# a.charSettting()
-	# a.CharData.printAllObject()
-	# a.itemSetting()
-	# a.ItemData.printAllObject()
-	# a.textSetting()
+	a = librarys()
+	a.roomSetting()
+	a.RoomData.printAllObject()
+	a.mapSetting("3x3", 2)
+	a.MapData.printMaptable()
+	a.mobSetting()
+	a.MobData.printAllObject()
+	a.charSettting()
+	a.CharData.printAllObject()
+	a.itemSetting()
+	a.ItemData.printAllObject()
+	
 	#printu(str(a.TextData.jsonData))
