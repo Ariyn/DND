@@ -51,7 +51,6 @@ class Character:
 
 		return self.attr
 
-<<<<<<< HEAD
 		# retVal = None
 		# 	# print(obj)
 		# for key in obj.keys():
@@ -83,14 +82,14 @@ class Character:
 		# 			for i in obj[key]:
 		# 				self.innerSetObj(i, attribute)
 		# ------------------------------------------------------
-=======
+
 	def setObjtoName(self, obj, attribute = "", val1 = None):
 		self.innerSetObj(obj, attribute, val1)
 		self.name[obj["realuser"]] = obj
 		# self.addUser()
 		
 	def innerSetObj(self, obj, attribute = "", val1 = None):
->>>>>>> c99c159697bda8e032be3cdf8e6e3d94a972fdc9
+
 		try:
 			for key in obj.keys():
 				if(key == attribute):
