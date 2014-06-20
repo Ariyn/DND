@@ -5,6 +5,7 @@ import characters
 import d40lib
 import maps
 import items
+import skill
 import texts
 import sys, json, re
 
@@ -19,6 +20,7 @@ class librarys:
 		self.CharData = None
 		self.ItemData = None
 		self.TextData = None
+		self.SkillData = None
 		pass
 
 	def roomSetting(self, path = "../settings/roominfo.json", mode = "auto"):
@@ -73,6 +75,11 @@ class librarys:
 			self.itemJsonData = self.ItemData.ToJson()
 		else:
 			pass
+
+	def skillSetting(self, path = "../settings/skills.json", mode = "auto"):
+		self.SkillData = skill.Skills(path)
+		# self.roomfile = RoomData.lib
+		self.SkillData = ""
 
 if __name__ == "__main__":
 	a = librarys()

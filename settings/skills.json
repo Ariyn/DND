@@ -1,0 +1,17 @@
+[
+	{
+		"name":"강타",
+		"type":"smash",
+		"demage":3
+	},
+	{
+		"name":"파이어볼",
+		"type":"fireball",
+		"demage":2
+	},
+	{
+		"name":"회복",
+		"type":"heal",
+		"demage":-3
+	}
+]

@@ -36,7 +36,7 @@ class oModules:
 
 	def parseStart(self):
 		modules = ["echo","librarys"]
-		methods = [["echo", "addEchoText"],["roomSetting","mapSetting","mobSetting","charSettting","itemSetting", "textSetting"]]
+		methods = [["echo", "addEchoText"],["roomSetting","mapSetting","mobSetting","charSettting","itemSetting", "textSetting","skillSetting"]]
 
 		basicModules = bModules()
 		for i, moduleId in zip(modules, methods):
@@ -74,11 +74,6 @@ if __name__ == "__main__":
 	#m.setJson('builtin','../scripts/builtin_method.json')
 
 	modules, basicModules = m.parseStart()
-	
-	data = modules.main.main(basicModules, data)
-
-	if data["flag_battle"]:
-		modules.battle.main(basicModules, data)
 
 	#print(dir(basicModules))
 	basicModules.roomSetting("settings/roominfo.json")
