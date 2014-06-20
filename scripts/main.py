@@ -41,6 +41,7 @@ def main(mods, data, options):
 			retData["event"] = events[0]	
 			retData["eventTarget"] = events[1]
 			retData["demage"] = events[2]
+			
 
 	text = gameData["text"]
 	for i in moveEvents:
@@ -50,6 +51,10 @@ def main(mods, data, options):
 			continue
 		text += "\n"+i
 		retData["moveEvent"].append({"key":i,"target":moveEvents[i]})
+	if "event" in gameData and retData["event"] == "battle":
+		for i in options["characters"]["skills"]:
+				retData["moveEvent"].append({"key":i,"target":None})
+				text += "\n"+i
 		
 	mods.addEchoText(str(text))
 	return retData

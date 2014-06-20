@@ -32,6 +32,8 @@ def main():
 
 	modules, basicModules = m.parseStart()
 
+	print(m.realModules["librarys"])
+
 	#print(dir(basicModules))
 	basicModules.roomSetting("settings/roominfo.json")
 	# m.realModules["librarys"].RoomData.printAllObject()
@@ -44,6 +46,8 @@ def main():
 	basicModules.itemSetting(path = "settings/items.json")
 	# m.realModules["librarys"].ItemData.printAllObject()
 	basicModules.textSetting(path = "settings/texts.json")
+
+	basicModules.skillSetting(path = "settings/skills.json")
 	
 	data["rooms"] = m.realModules["librarys"].RoomData.name
 
@@ -65,23 +69,29 @@ def main():
 			if i not in retInputData:
 				continue
 
-			#print(i)
+			characterData = [data["characters"][x] for x in data["characters"] if x == data["players"][i]["character"]]
+			
 			if data["players"][i]["flag_battle"]:
 				options = modules.battle.main(
 					basicModules,
 					data["players"][i],
 					{
-						"characters":data["characters"],
+						"characters":characterData,
 						"rooms":data["rooms"],
 						"texts":data["texts"],
 						"inputs":retInputData[i]
 					})
 			else:
+				if len(characterData) < 1:
+					pass # not played yet
+				else:
+					characterData = characterData[0]
+
 				options = modules.main.main(
 					basicModules,
 					data["players"][i],
 					{
-						"characters":data["characters"],
+						"characters":characterData,
 						"rooms":data["rooms"],
 						"texts":data["texts"],
 						"inputs":retInputData[i]

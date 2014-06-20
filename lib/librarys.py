@@ -7,6 +7,7 @@ import characters
 import d40lib
 import maps
 import items
+import skill
 import texts
 import TwitterEngine
 import echo
@@ -23,7 +24,11 @@ class librarys:
 		self.CharData = None
 		self.ItemData = None
 		self.TextData = None
+<<<<<<< HEAD
+		self.SkillData = None
+=======
 		self.echo = echo.echo()
+>>>>>>> c99c159697bda8e032be3cdf8e6e3d94a972fdc9
 		pass
 
 	def roomSetting(self, path = "../settings/roominfo.json", mode = "auto"):
@@ -79,6 +84,12 @@ class librarys:
 		else:
 			pass
 
+<<<<<<< HEAD
+	def skillSetting(self, path = "../settings/skills.json", mode = "auto"):
+		self.SkillData = skill.Skills(path)
+		# self.roomfile = RoomData.lib
+		self.SkillData = ""
+=======
 class TwitterForm:
 	def __init__(self, path = "../settings/twitterData.json"):
 		self._path = path
@@ -124,6 +135,7 @@ class TwitterForm:
 		self.TMData.sendMessages(userinfo)
 				
 
+>>>>>>> c99c159697bda8e032be3cdf8e6e3d94a972fdc9
 
 if __name__ == "__main__":
 	

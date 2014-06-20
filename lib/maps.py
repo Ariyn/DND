@@ -164,8 +164,10 @@ class Maps:
 
 	def ToJson(self, name = "", number = 1, path = "../settings/"):
 		self.file = codecs.open(path+"map-"+ name + str(number) +".json", 'w', 'utf-8')
-		for i in self.roomdata:
-			self.file.write(i)
+		
+		self.file.write(self.roomdata)
+		#for i in self.roomdata:
+			#self.file.write(i)
 
 	def isNoneMap(self, val1, val2):
 		if self.MapTable[val1][val2] is None:
