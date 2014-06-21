@@ -92,8 +92,9 @@ if __name__ == "__main__":
 	# create user
 	# a.setBasicChar("c", "c", "c", "c")
 	# modfy user
-	a.setObjtoName(a.getNameis("a"),"max_hp",100)
-	a.saveFile(a._path,"")
+	#a.setObjtoName(a.getNameis("a"),"max_hp",100)
+	#a.saveFile(a._path,"")
+	print(a.name)
 	# print(a.getNameis("horo"))
 	# print(a.getObjtoName("horo", "status"))
 	# print(a.lib.Trans(a.rtName))

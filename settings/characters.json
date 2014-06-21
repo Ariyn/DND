@@ -1,1 +1,72 @@
-{"a": {"status": {"max_hp": 100, "health": 0, "intelligent": 0, "level": 1, "class": "a", "res_poison": 0, "strength": 0, "res_magicspell": 0, "res_death": 0, "hp": 0, "ac": 0, "res_parrelize": 0, "res_magicstaff": 0, "charisma": 0, "res_sturn": 0, "wisdom": 0, "agillity": 0, "res_breath": 0, "res_magicstic": 0}, "realuser": "a", "charname": "a", "values": "a", "actions": [{"move": 0}], "skills": [{"basic": 0}, {"testmod": 0}]}, "c": {"status": {"max_hp": 0, "health": 0, "intelligent": 0, "level": 1, "class": "c", "res_poison": 0, "strength": 0, "res_magicspell": 0, "res_death": 0, "hp": 0, "ac": 0, "res_parrelize": 0, "res_magicstaff": 0, "charisma": 0, "res_sturn": 0, "wisdom": 0, "agillity": 0, "res_breath": 0, "res_magicstic": 0}, "realuser": "c", "charname": "c", "values": "c", "actions": [{"move": 0}], "skills": [{"basic": 0}, {"testmod": 0}]}}
+{
+  "miko": {
+    "status": {
+      "max_hp": 100,
+      "health": 0,
+      "intelligent": 0,
+      "level": 1,
+      "class": "a",
+      "res_poison": 0,
+      "strength": 0,
+      "res_magicspell": 0,
+      "res_death": 0,
+      "hp": 0,
+      "ac": 0,
+      "res_parrelize": 0,
+      "res_magicstaff": 0,
+      "charisma": 0,
+      "res_sturn": 0,
+      "wisdom": 0,
+      "agillity": 0,
+      "res_breath": 0,
+      "res_magicstic": 0
+    },
+    "realuser": "YuiDevelop",
+    "charname": "miko",
+    "values": "a",
+    "actions": [
+      {
+        "move": 0
+      }
+    ],
+    "skills": {
+      "basic": 0,
+      "testmod": 0
+    }
+  },
+  "horo": {
+    "status": {
+      "max_hp": 0,
+      "health": 0,
+      "intelligent": 0,
+      "level": 1,
+      "class": "c",
+      "res_poison": 0,
+      "strength": 0,
+      "res_magicspell": 0,
+      "res_death": 0,
+      "hp": 0,
+      "ac": 0,
+      "res_parrelize": 0,
+      "res_magicstaff": 0,
+      "charisma": 0,
+      "res_sturn": 0,
+      "wisdom": 0,
+      "agillity": 0,
+      "res_breath": 0,
+      "res_magicstic": 0
+    },
+    "realuser": "MuTopia_ArtTeam",
+    "charname": "horo",
+    "values": "c",
+    "actions": [
+      {
+        "move": 0
+      }
+    ],
+    "skills": {
+      "basic": 0,
+      "testmod": 0
+    }
+  }
+}
