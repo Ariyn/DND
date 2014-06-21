@@ -34,6 +34,7 @@ def main(mods, data, options):
 			retData["eventTarget"] = events[1]
 			if events[1] == "monster":
 				retData["monster"] = gameData["monster"]
+				print(retData["monster"])
 			elif events[1] == "playerName":#not yet!
 				pass
 
