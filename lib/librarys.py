@@ -74,12 +74,12 @@ class librarys:
 			pass
 
 	# def textSetting(self, path = "../settings/texts.json", mode = "auto"):
-		self.TextData = texts.Texts(path)
-		self.textJsonData = ""
-		if(mode == "auto"):
-			self.itemJsonData = self.ItemData.ToJson()
-		else:
-			pass
+	# 	self.TextData = texts.Texts(path)
+	# 	self.textJsonData = ""
+	# 	if(mode == "auto"):
+	# 		self.itemJsonData = self.ItemData.ToJson()
+	# 	else:
+	# 		pass
 
 	def skillSetting(self, path = "../settings/skills.json", mode = "auto"):
 		self.SkillData = skill.Skills(path)

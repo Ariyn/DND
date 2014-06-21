@@ -9,7 +9,7 @@ def printu(text):
 class Character:
 	attr = None
 	def __init__(self, path = "../settings/characters.json"):
-		self.sampleData = {"charname":"","skills":[{"강타":0},{"막기":0}],"realuser":"","actions":[{"move":0}],"values":"","status":{"max_hp":0,"intelligent":0,"res_sturn":0,"health":0,"res_poison":0,"hp":0,"res_breath":0,"strength":0,"charisma":0,"res_parrelize":0,"level":1,"ac":0,"res_magicstaff":0,"class":"","res_magicspell":0,"res_death":0,"res_magicstic":0,"agillity":0,"wisdom":0}}
+		self.sampleData = {"charname":"","skills":[{"smash":0},{"block":0}],"realuser":"","actions":[{"move":0}],"values":"","status":{"max_hp":0,"intelligent":0,"res_sturn":0,"health":0,"res_poison":0,"hp":0,"res_breath":0,"strength":0,"charisma":0,"res_parrelize":0,"level":1,"ac":0,"res_magicstaff":0,"class":"","res_magicspell":0,"res_death":0,"res_magicstic":0,"agillity":0,"wisdom":0}}
 		self._path = path
 		self.lib = d40lib.StdIOFile(path)
 		self.jsonData = self.lib.jsonReturn()
@@ -26,7 +26,7 @@ class Character:
 				self.name[self.jsonData[i]['realuser']] = self.jsonData[i]
 			pass
 
-		print(self.lib.Trans(self.name))
+		# print(self.lib.Trans(self.name))
 			
 	def getNameis(self, name = None):
 		try:
@@ -51,45 +51,7 @@ class Character:
 
 		return self.attr
 
-		# retVal = None
-		# 	# print(obj)
-		# for key in obj.keys():
-		# 	# print(key)
-		# 	# print(key+ ":"+ attribute + "\t" +str(type(obj[key])))
-		# 	if(key == attribute):
-		# 		retVal = obj[key]
-		# 	elif(type(obj[key]) is dict):
-		# 		retVal = self.getObjtoName(obj[key], attribute)
-		# 	elif(type(obj[key]) is list):
-		# 		for i in obj[key]:
-		# 			retVal = self.getObjtoName(i, attribute)
-		# return retVal
-
-	def setObjtoName(self, obj, attribute = "", val1 = 0, ptype= None):
-		self.innerSetObj(obj, attribute, val1, ptype)
-		self.ToJson()
-		
 	def innerSetObj(self, obj, attribute = "", val1 = 0):
-		# if attribute in obj:
-		# 	# print("seu")
-		# 	obj[attribute] = val1
-		# else:
-		# 	for key in obj.keys():
-		# 		if((type(obj[key]) is dict)):
-		# 			if attribute in obj[key]:
-		# 				self.innerSetObj(obj[key], attribute)
-		# 		if(type(obj[key]) is list):
-		# 			for i in obj[key]:
-		# 				self.innerSetObj(i, attribute)
-		# ------------------------------------------------------
-
-	def setObjtoName(self, obj, attribute = "", val1 = None):
-		self.innerSetObj(obj, attribute, val1)
-		self.name[obj["realuser"]] = obj
-		# self.addUser()
-		
-	def innerSetObj(self, obj, attribute = "", val1 = None):
-
 		try:
 			for key in obj.keys():
 				if(key == attribute):
@@ -100,6 +62,11 @@ class Character:
 		except:
 			return None
 
+	def setObjtoName(self, obj, attribute = "", val1 = None):
+		self.innerSetObj(obj, attribute, val1)
+		self.name[obj["realuser"]] = obj
+		# self.addUser()
+		
 	def addUsers(self):
 		for key in self.name:
 			self.rtName.append(self.name[key])
