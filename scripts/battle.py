@@ -9,12 +9,15 @@ def checkInput(data, pinput):
 def main(mods, datas, options):
 	inputCorrect = checkInput(data["moveEvent"], options["inputs"])
 
+	if inputCorrect:
+		
 	print("datas",datas)
 
 	print("monsters",[x.name for x in datas["monster"]])
 
 	mods.addEchoText(options["player"],str(text))
-	pass
+
+
 
 #플레이어 인풋이 맞는가
 
@@ -28,4 +31,3 @@ def main(mods, datas, options):
 
 #전투 승리(=모두 죽임), 패배(=죽음), 도망시
 #return {state:"승리", "죽음", "도망"}
-
