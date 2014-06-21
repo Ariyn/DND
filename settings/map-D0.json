@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-[{"number":0,"floor":[1],"connections":["East"]},{"number":1,"floor":[1],"connections":["West"]},{"number":2,"floor":[1],"connections":["South"]},{"number":3,"floor":[1],"connections":["East"]},{"number":4,"floor":[1],"connections":["West", "South"]},{"number":5,"floor":[1],"connections":["North", "East"]},{"number":6,"floor":[1],"connections":["West"]},{"number":7,"floor":[1],"connections":["North"]}]
-=======
-[{"number":0,"floor":[1],"connections":["South"]},{"number":1,"floor":[1],"connections":["South"]},{"number":2,"floor":[1],"connections":["East", "North"]},{"number":3,"floor":[1],"connections":["West", "South"]},{"number":4,"floor":[1],"connections":["North", "East"]},{"number":5,"floor":[1],"connections":["West"]},{"number":6,"floor":[1],"connections":["North"]}]
->>>>>>> 08cebaf3528c776a9316e102a566a4b0cf71c5b7
+[{"number":0,"floor":[1],"connections":["East"]},{"number":1,"floor":[1],"connections":["West", "East"]},{"number":2,"floor":[1],"connections":["West", "South"]},{"number":3,"floor":[1],"connections":["South"]},{"number":4,"floor":[1],"connections":["North"]},{"number":5,"floor":[1],"connections":["East", "North"]},{"number":6,"floor":[1],"connections":["West"]}]
