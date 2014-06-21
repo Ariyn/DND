@@ -55,7 +55,10 @@ class Character:
 		try:
 			for key in obj.keys():
 				if(key == attribute):
-					obj[key] = val1
+					if type(val1) is int:
+						obj[key] += val1
+					else:
+						obj[key] = val1
 				elif((type(obj[key]) is dict) or (type(obj[key]) is list)):
 					self.innerSetObj(obj[key], attribute, val1)
 					pass
@@ -90,11 +93,11 @@ class Character:
 if __name__ == "__main__":
 	a = Character("../settings/characters.json")
 	# create user
-	# a.setBasicChar("c", "c", "c", "c")
+	a.setBasicChar("horo", "yuidev", "sun", "healer")
 	# modfy user
-	a.setObjtoName(a.getNameis("a"),"max_hp",100)
+	# a.setObjtoName(a.getNameis("a"),"max_hp",100)
 	a.saveFile(a._path,"")
-	# print(a.getNameis("horo"))
+	print(a.getNameis("yuidev"))
 	# print(a.getObjtoName("horo", "status"))
 	# print(a.lib.Trans(a.rtName))
 	# print(a.name)

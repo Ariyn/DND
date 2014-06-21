@@ -57,7 +57,7 @@ class librarys:
 		else:
 			pass
 
-	def charSettting(self, path = "../settings/characters.json", mode = "auto"):
+	def charSetting(self, path = "../settings/characters.json", mode = "auto"):
 		self.CharData = characters.Character(path)
 		self.charJsonData = ""
 		if(mode == "auto"):
@@ -84,7 +84,6 @@ class librarys:
 	def skillSetting(self, path = "../settings/skills.json", mode = "auto"):
 		self.SkillData = skill.Skills(path)
 		# self.roomfile = RoomData.lib
-		self.SkillData = ""
 
 class TwitterForm:
 	def __init__(self, path = "../settings/twitterData.json"):
