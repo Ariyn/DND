@@ -3,6 +3,7 @@
 import lib.jsonParse
 import lib.echo
 from lib.dice import dice
+import lib.monster
 
 import parse_nature
 
@@ -49,9 +50,9 @@ def main():
 
 	basicModules.skillSetting(path = "settings/skills.json")
 	
+	data["monster"] = lib.monster.monster
 	data["rooms"] = m.realModules["librarys"].RoomData.name
-
-
+	data["monsters"] = m.realModules["librarys"].MobData.name
 	data["characters"] = m.realModules["librarys"].CharData.name
 	data["texts"] = m.realModules["librarys"].TextData.jsonData
 
@@ -69,32 +70,41 @@ def main():
 			if i not in retInputData:
 				continue
 
-			characterData = [data["characters"][x] for x in data["characters"] if x == data["players"][i]["character"]]
+			#print(data["characters"])
+			characterData = data["characters"][i]
+			#[data["characters"][x] for x in data["characters"] if x == data["players"][i]["character"]]
 			
 			if data["players"][i]["flag_battle"]:
 				options = modules.battle.main(
 					basicModules,
 					data["players"][i],
 					{
-						"characters":characterData,
-						"rooms":data["rooms"],
-						"texts":data["texts"],
-						"inputs":retInputData[i]
+						"player"	:	i,
+						"characters":	characterData,
+						"rooms"		:	data["rooms"],
+						"texts"		:	data["texts"],
+						"monsters"	:	data["monsters"],
+						"inputs"	:	retInputData[i],
+						"monster"	:	data["monster"]
 					})
 			else:
-				if len(characterData) < 1:
-					pass # not played yet
-				else:
-					characterData = characterData[0]
+				#print(characterData)
+				# if len(characterData) < 1:
+				# 	pass # not played yet
+				# else:
+				# 	characterData = characterData[0]
 
 				options = modules.main.main(
 					basicModules,
 					data["players"][i],
 					{
-						"characters":characterData,
-						"rooms":data["rooms"],
-						"texts":data["texts"],
-						"inputs":retInputData[i]
+						"player"	:	i,
+						"characters":	characterData,
+						"rooms"		:	data["rooms"],
+						"texts"		:	data["texts"],
+						"monsters"	:	data["monsters"],
+						"monster"	:	data["monster"],
+						"inputs"	:	retInputData[i]
 					})
 			if options:
 				if "move" in options:
@@ -109,13 +119,14 @@ def main():
 						pass
 					elif options["event"] == "battle":
 						data["players"][i]["flag_battle"] = True
+						data["players"][i]["monster"] = options["monster"]
 					elif options["event"] == "synario":
 						data["players"][i]["flag_battle"] = False
 
 				data["players"][i]["moveEvent"] = options["moveEvent"]
 
 		basicModules.echo()
-
+		#wait 20sec
 
 		# if "flag_battle" in options:
 		# 	data[i]["flag_battle"] = options["flag_battle"]

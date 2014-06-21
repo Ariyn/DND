@@ -19,8 +19,9 @@ class echo:
 		#self.printu(self.files[name])
 		return True
 
-	def addEchoText(self, id, text):
-		self.echoText[id] = text
+	def addEchoText(self, pid, text):
+		print("id",pid)
+		self.echoText[pid] = text
 
 	def printu(self, text):
 		sys.stdout.buffer.write((text+"\n").encode('utf-8'))
@@ -44,7 +45,7 @@ class echo:
 
 		for i in self.echoText:
 			print(self.echoText[i]+"\n")
-		self.echoText = []
+		self.echoText = {}
 
 	def Message(self):
 		rt = []

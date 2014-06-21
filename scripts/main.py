@@ -33,8 +33,18 @@ def main(mods, data, options):
 			retData["event"] = events[0]
 			retData["eventTarget"] = events[1]
 			if events[1] == "monster":
-				retData["monster"] = gameData["monster"]
-				print(retData["monster"])
+				retData["monster"] = []
+				for i in gameData["monster"]:
+					print(options["monsters"]['a']['charname'],i)
+					retData["monster"].append(
+						options["monster"](
+							[options["monsters"][x]
+								for x in options["monsters"]
+								if options["monsters"][x]["charname"] == i]
+						)
+					)
+				#gameData["monster"]
+				#print(retData["monster"])
 			elif events[1] == "playerName":#not yet!
 				pass
 
@@ -53,9 +63,10 @@ def main(mods, data, options):
 		text += "\n"+i
 		retData["moveEvent"].append({"key":i,"target":moveEvents[i]})
 	if "event" in gameData and retData["event"] == "battle":
+		print(options["characters"]["skills"])
 		for i in options["characters"]["skills"]:
 				retData["moveEvent"].append({"key":i,"target":None})
 				text += "\n"+i
-		
-	mods.addEchoText(str(text))
+	
+	mods.addEchoText(options["player"],str(text))
 	return retData
