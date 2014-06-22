@@ -1,14 +1,14 @@
 [
     {
-        "number": 0,
-        "name": "room-1",
+        "number": 83,
+        "name": "83",
         "events": {
             "0": "30%",
             "23": "30%",
             "27": "40%"
         },
         "monsters": [
-            "monster1"
+            "Goblin"
         ],
         "items": [
             "item1"
