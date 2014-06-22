@@ -67,7 +67,7 @@ class DND_Twitter(object):
 		for i in self.accesses:
 			twit.append(self.getTimeLine(i, row))
 
-	def getTimeline(self, id, row = False):
+	def getTimeline(self, id, raw = False):
 		#newTwitter = []
 		#for i in self.accesses:
 		twit = self.accesses[id][self._getSenderBot(id)].statuses.mentions_timeline()
@@ -80,10 +80,12 @@ class DND_Twitter(object):
 		
 		self.bots[id]["newtwit"] = twit
 
-		if not row:
-			retTwit = [
-				{x["user"]["screen_name"]:x["text"].split(id+" ")[1]} for x in twit
-			]
+		if not raw:
+			retTwit = {}
+			for i in reversed(twit):
+				#print(i["user"]["screen_name"])
+				#if i["user"]["screen_name"] in rowTwit:
+				retTwit[i["user"]["screen_name"]] = i["text"].split(id+" ")[1]
 		else:
 			retTwit = twit
 		return retTwit
@@ -117,7 +119,7 @@ class DND_Twitter(object):
 		if name == None:
 			return "DNDMATSER"
 		else:
-			return 0
+			return 1
 		pass
 
 	@staticmethod
@@ -173,4 +175,7 @@ if __name__ == "__main__":
 	# print(d.th, len(d.th))
 	# sys.stdout.buffer.write(str(d.getUsers()).encode("utf-8"))
 	# sys.stdout.buffer.write(str(d.followers).encode("utf-8"))
-	sys.stdout.buffer.write(str(d.getTimeline("DNDMATSER")).encode("utf-8"))
+	twit, rawTwit = d.getTimeline("DNDMATSER")
+	sys.stdout.buffer.write(str(twit).encode("utf-8"))
+	print("")
+	sys.stdout.buffer.write(str(rawTwit).encode("utf-8"))

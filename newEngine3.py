@@ -74,21 +74,25 @@ class DND:
 		while num > 0:
 			num-=1
 
-			retInputData = basicModules.TwitterData.getTimeline("DNDMATSER")
 			newUserData = self.checkNewUser()
+			retInputData = basicModules.TwitterData.getTimeline("DNDMATSER")
+			print(retInputData)
 			#retInputData = self.testTwit(self.data["players"].keys())
 			print("\n")
 			for i in self.data["players"]:
 				if i not in retInputData:
+					print("continue")
 					continue
 
-				print(retInputData)
+				#print(retInputData[i])
 
-				#print(self.data["characters"])
+				print(i)
+				print(self.data["players"][i])
 				
 				#[self.data["characters"][x] for x in self.data["characters"] if x == self.data["players"][i]["character"]]
 
 				if self.data["players"][i]["flag_newbie"]:
+					print("here2")
 					options = self.modules.tutorial.main(
 						self.basicModules,
 						self.data["players"][i],
@@ -96,7 +100,7 @@ class DND:
 							"player"	:	i,
 							"inputs"	:	retInputData[i]
 						})
-					
+					print(self.data["players"][i])
 				elif self.data["players"][i]["flag_battle"]:
 					characterData = self.data["characters"][i]
 					# options = self.modules.battle.main(
@@ -162,7 +166,7 @@ class DND:
 		#follower = self.tf.getUsers()
 		follower = ["Mutopia_ArtTeam"]
 		for i in [x for x in follower if x not in self.data["players"]]:
-			print(i)
+			print(i,"new user")
 			self.data["players"][i] = {}
 			self.data["players"][i]["flag_newbie"] = True
 			#self.m.realModules["librarys"].CharData.setBasicChar()
