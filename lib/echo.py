@@ -2,10 +2,13 @@
 
 import sys, os, json, codecs, random
 
-
 class echo:
-	files = {}
-	echoText = {}
+	files, echoText = {}, {}
+	tf = None
+
+	debug = True
+	def echoTwitterSetting(self, twit):
+		self.tf = twit
 
 	def addEchoFiles(self, name):
 		#print(os.path.abspath("../scripts/"+name))
@@ -30,22 +33,13 @@ class echo:
 		text = ''.join(str(text))
 		sys.stdout.buffer.write((str(text)+"\n").encode('utf-8'))
 
-	# def echo(self, _target = "", _type = "", _index = -1):
-
-	# 	if _target in self.files and _type in self.files[_target]:
-	# 		if _index == -1:
-	# 			self.printu(random.choice(self.files[_target][_type]))
-	# 		else:
-	# 			self.printu(self.files[_target][_type][_index])
-	# 	elif _target not in self.files:
-	# 		return "target"
-	# 	elif _type not in self.files[_target]:
-	# 		return "type"
-	def echo(self, _text = ""):
-
-		for i in self.echoText:
-			print(self.echoText[i]+"\n")
-		self.echoText = {}
+	def echo(self, debug = True):
+		if debug:
+			for i in self.echoText:
+				print(self.echoText[i]+"\n")
+		else:
+			self.tf.sendMessages(self.Message())
+			self.echoText = {}
 
 	def Message(self):
 		rt = []
@@ -60,3 +54,4 @@ class echo:
 
 if __name__ == "__main__":
 	t = echo()
+	t.echo(False)

@@ -27,5 +27,5 @@ def main(mods, datas, options):
 #텍스트 추가
 
 #전투 승리(=모두 죽임), 패배(=죽음), 도망시
-#return {state:"승리", "죽음", "도망"}
+#return {"state":"승리", "죽음", "도망"}
 
