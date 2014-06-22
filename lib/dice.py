@@ -19,4 +19,3 @@ def dice(typeText):
 
 if __name__ == "__main__":
 	print(dice("20d3"))
-	print(dice("d%"))

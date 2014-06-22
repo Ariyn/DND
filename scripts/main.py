@@ -21,7 +21,7 @@ def main(mods, data, options):
 		gameData = [x for x in options["texts"] if x["number"] == playerSynarioNum][0]
 		playerSynarioNum = gameData["moveEvent"][options["inputs"]]
 		
-		retData["move"] = playerSynarioNum
+		ƒ["move"] = playerSynarioNum
 	
 	gameData = [x for x in options["texts"] if x["number"] == playerSynarioNum][0]
 	if "moveEvent" in gameData:

@@ -1,6 +1,7 @@
 import d40lib
 import pdb
 import codecs
+from copy import deepcopy
 import sys, json, re
 
 def printu(text):
@@ -75,12 +76,13 @@ class Character:
 			self.rtName.append(self.name[key])
 
 	def setBasicChar(self, charname, username, values, uclass):
-		temp = self.sampleData
+		temp = deepcopy(self.sampleData)
 		self.setObjtoName(temp, "charname", charname)
 		self.setObjtoName(temp, "realuser", username)
 		self.setObjtoName(temp, "values", values)
 		self.setObjtoName(temp, "class", uclass)
-		self.name[username] = temp
+		self.name[str(username)] = temp
+		print(username)
 
 	def printAllObject(self):
 		for key in self.name.keys():
