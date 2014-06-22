@@ -17,14 +17,13 @@ class DND:
 		return text
 
 	def main(self):
-		m = parse_nature.oModules()
+		self.m = parse_nature.oModules()
 			#data = bModules()
 			
 		self.data = {
 			"players":
 			{
-				"YuiDevelop":{"character":"miko","synario":"기본","location":83,"flag_battle":False,"moveEvent":[]},
-				"MuTopia_ArtTeam":{"character":"horo","synario":"기본","location":0,"flag_battle":False,"moveEvent":[]}
+				"YuiDevelop":{"character":"miko","synario":"기본","location":83,"flag_battle":False,"flag_newbie":False,"moveEvent":[]}
 			},
 			"texts":{},
 			"characters":{},
@@ -34,9 +33,9 @@ class DND:
 		tf = lib.newTwitterEngine.DND_Twitter("settings/oauth.json")
 		#m.setJson('builtin','../scripts/builtin_method.json')
 
-		modules, basicModules = m.parseStart()
+		modules, basicModules = self.m.parseStart()
 
-		print(m.realModules["librarys"])
+		print(self.m.realModules["librarys"])
 
 		basicModules.TwitterData = tf
 		basicModules.echoTwitterSetting(tf)
@@ -61,10 +60,10 @@ class DND:
 
 		#data["players"] = #player json parse
 		self.data["monster"] = lib.monster.monster
-		self.data["rooms"] = m.realModules["librarys"].RoomData.name
-		self.data["monsters"] = m.realModules["librarys"].MobData.name
-		self.data["characters"] = m.realModules["librarys"].CharData.name
-		self.data["texts"] = m.realModules["librarys"].TextData.jsonData
+		self.data["rooms"] = self.m.realModules["librarys"].RoomData.name
+		self.data["monsters"] = self.m.realModules["librarys"].MobData.name
+		self.data["characters"] = self.m.realModules["librarys"].CharData.name
+		self.data["texts"] = self.m.realModules["librarys"].TextData.jsonData
 
 		#print("bd", self.data)
 
@@ -75,41 +74,54 @@ class DND:
 		while num > 0:
 			num-=1
 
-			#retInputData = basicModules.TwitterData.getRcvTwitInfo()
-			retInputData = self.testTwit(self.data["players"].keys())
-
+			retInputData = basicModules.TwitterData.getTimeline("DNDMATSER")
 			newUserData = self.checkNewUser()
+			#retInputData = self.testTwit(self.data["players"].keys())
 			print("\n")
 			for i in self.data["players"]:
 				if i not in retInputData:
 					continue
 
+				print(retInputData)
+
 				#print(self.data["characters"])
-				characterData = self.data["characters"][i]
-				#[self.data["characters"][x] for x in self.data["characters"] if x == self.data["players"][i]["character"]]
 				
-				if self.data["players"][i]["flag_battle"]:
-					options = modules.battle.main(
-						basicModules,
+				#[self.data["characters"][x] for x in self.data["characters"] if x == self.data["players"][i]["character"]]
+
+				if self.data["players"][i]["flag_newbie"]:
+					options = self.modules.tutorial.main(
+						self.basicModules,
 						self.data["players"][i],
 						{
 							"player"	:	i,
-							"characters":	characterData,
-							"rooms"		:	self.data["rooms"],
-							"texts"		:	self.data["texts"],
-							"monsters"	:	self.data["monsters"],
-							"inputs"	:	retInputData[i],
-							"monster"	:	self.data["monster"]
+							"inputs"	:	retInputData[i]
 						})
+					
+				elif self.data["players"][i]["flag_battle"]:
+					characterData = self.data["characters"][i]
+					# options = self.modules.battle.main(
+					# 	basicModules,
+					# 	self.data["players"][i],
+					# 	{
+					# 		"player"	:	i,
+					# 		"characters":	characterData,
+					# 		"rooms"		:	self.data["rooms"],
+					# 		"texts"		:	self.data["texts"],
+					# 		"monsters"	:	self.data["monsters"],
+					# 		"inputs"	:	retInputData[i],
+					# 		"monster"	:	self.data["monster"]
+					# 	})
+					pass
 				else:
+					characterData = self.data["characters"][i]
 					#print(characterData)
 					# if len(characterData) < 1:
 					# 	pass # not played yet
 					# else:
 					# 	characterData = characterData[0]
 
-					options = modules.main.main(
-						basicModules,
+					options = self.modules.main.main(
+						self.basicModules,
 						self.data["players"][i],
 						{
 							"player"	:	i,
@@ -128,8 +140,8 @@ class DND:
 					if "event" in options:
 						if options["event"] == "demage":
 							_demages = dice(options["demage"])[0]
-							m.realModules["librarys"].CharData.setObjtoName(
-								m.realModules["librarys"].CharData.getNameis(self.data["players"][i]["character"]), "hp", _demage)
+							self.m.realModules["librarys"].CharData.setObjtoName(
+								self.m.realModules["librarys"].CharData.getNameis(self.data["players"][i]["character"]), "hp", _demage)
 							pass
 						elif options["event"] == "battle":
 							self.data["players"][i]["flag_battle"] = True
@@ -139,17 +151,21 @@ class DND:
 
 					self.data["players"][i]["moveEvent"] = options["moveEvent"]
 
-			basicModules.echo()
+			basicModules.echo(False)
+			input("continue")
 			#wait 20sec
 
 			# if "flag_battle" in options:
 			# 	self.data[i]["flag_battle"] = options["flag_battle"]
 
 	def checkNewUser(self):
-		follower = self.tf.getUsers()
+		#follower = self.tf.getUsers()
+		follower = ["Mutopia_ArtTeam"]
 		for i in [x for x in follower if x not in self.data["players"]]:
 			print(i)
-
+			self.data["players"][i] = {}
+			self.data["players"][i]["flag_newbie"] = True
+			#self.m.realModules["librarys"].CharData.setBasicChar()
 		pass
 
 if __name__ == "__main__":

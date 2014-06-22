@@ -51,7 +51,7 @@ class oModules:
 
 		modules = bModules()
 
-		packages = ["battle", "main"]
+		packages = ["battle", "main","tutorial"]
 
 		for i in packages:
 			print(i)

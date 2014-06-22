@@ -57,7 +57,10 @@ class DND_Twitter(object):
 
 	def getUsers(self):
 		data = self.accesses["DNDMATSER"][0].followers.ids()
-		self.accesses["DNDMATSER"][0].users.lookup(user_id = data["ids"])
+		retData = self.accesses["DNDMATSER"][0].users.lookup(user_id = ",".join([str(x) for x in data["ids"]]))
+
+		self.followers += [x["screen_name"] for x in retData if x["screen_name"] not in self.followers]
+		return self.followers
 
 	def getTimeLines(self, row = False):
 		twit = []
@@ -79,7 +82,7 @@ class DND_Twitter(object):
 
 		if not row:
 			retTwit = [
-				{x["user"]["screen_name"]:x["text"]} for x in twit
+				{x["user"]["screen_name"]:x["text"].split(id+" ")[1]} for x in twit
 			]
 		else:
 			retTwit = twit
@@ -114,11 +117,12 @@ class DND_Twitter(object):
 		if name == None:
 			return "DNDMATSER"
 		else:
-			return 2
+			return 0
 		pass
 
 	@staticmethod
 	def _sendMessageThread(access, sender, text, screen_name, media,th):
+		print(screen_name)
 		text = "@" + screen_name + " " + text
 		if media:
 			update = access.statuses.update_with_media
@@ -139,7 +143,7 @@ class DND_Twitter(object):
 					ass = access.statuses.update_with_media(**{"status":text, "media[]": media})
 
 				else:
-					update(**{"status" : text})
+					update(status = text)
 		except TwitterHTTPError as e:
 			print("twitter " + str(sender) + " is error : " + str(e))
 
@@ -156,7 +160,7 @@ if __name__ == "__main__":
 	print(d.accesses)
 	#print(d.accesses["DNDMATSER"][0].application.rate_limit_status())
 	#print(d.getLimits())
-	print(d.getUsers())
+	#print(d.getUsers())
 	#print(d.getUsers())
 	#d.sendMessages([{"id":"Mutopia_ArtTeam","text":"sexy picture 4 for my soul","media":os.path.abspath("../DND/resource/test2.gif")}])
 	# d.sendMessages([
@@ -167,5 +171,6 @@ if __name__ == "__main__":
 	# 	])
 
 	# print(d.th, len(d.th))
-
-	#sys.stdout.buffer.write(str(d.getTimeline("DNDMATSER")).encode("utf-8"))
+	# sys.stdout.buffer.write(str(d.getUsers()).encode("utf-8"))
+	# sys.stdout.buffer.write(str(d.followers).encode("utf-8"))
+	sys.stdout.buffer.write(str(d.getTimeline("DNDMATSER")).encode("utf-8"))
