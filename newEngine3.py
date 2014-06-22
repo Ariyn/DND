@@ -70,6 +70,7 @@ class DND:
 		self.data["characters"] = self.m.realModules["librarys"].CharData.name
 		self.data["charactersMethod"] = self.m.realModules["librarys"].CharData
 		self.data["texts"] = self.m.realModules["librarys"].TextData.jsonData
+		self.data["skills"] = self.m.realModules["librarys"].SkillData.name
 
 		#print("bd", self.data)
 
@@ -81,7 +82,7 @@ class DND:
 			num -= 1
 
 			newUserData = self.checkNewUser()
-			retInputData = basicModules.TwitterData.getTimeline("DNDMATSER")
+			retInputData = self.basicModules.TwitterData.getTimeline("DNDMATSER")
 
 			#retInputData = self.testTwit(self.data["players"].keys())
 			print("\n")
@@ -126,18 +127,19 @@ class DND:
 							})
 				elif self.data["players"][i]["flag_battle"]:
 					characterData = self.data["characters"][i]
-					# options = self.modules.battle.main(
-					# 	basicModules,
-					# 	self.data["players"][i],
-					# 	{
-					# 		"player"	:	i,
-					# 		"characters":	characterData,
-					# 		"rooms"		:	self.data["rooms"],
-					# 		"texts"		:	self.data["texts"],
-					# 		"monsters"	:	self.data["monsters"],
-					# 		"inputs"	:	retInputData[i],
-					# 		"monster"	:	self.data["monster"]
-					# 	})
+					options = self.modules.battle.main(
+						self.basicModules,
+						self.data["players"][i],
+						{
+							"player"	:	i,
+							"characters":	characterData,
+							"rooms"		:	self.data["rooms"],
+							"texts"		:	self.data["texts"],
+							"monsters"	:	self.data["monsters"],
+							"skills"	:	self.data["skills"],
+							"inputs"	:	retInputData[i],
+							"monster"	:	self.data["monster"]
+						})
 					pass
 				else:
 					characterData = self.data["characters"][i]
@@ -207,7 +209,6 @@ class DND:
 
 		self.files.write(json.dump(_data))
 		self.m.realModules["librarys"].CharData.saveFile("settings/characters.json")
-
 
 if __name__ == "__main__":
 	d = DND()

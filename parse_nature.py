@@ -37,7 +37,6 @@ class oModules:
 	def parseStart(self):
 		modules = ["echo","librarys"]
 		methods = [["echo", "addEchoText","echoTwitterSetting"],["roomSetting","mapSetting","mobSetting","charSettting","itemSetting", "textSetting","skillSetting","TwitterData"]]
-
 		basicModules = bModules()
 		for i, moduleId in zip(modules, methods):
 			mod = importlib.import_module(i)

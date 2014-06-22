@@ -1,33 +1,44 @@
 import codecs
+import lib.dice
 
 class monster:
 	name, level, status = "", 0, {}
 	skills, actions = {}, {}
+	mob = []
 
 	def __init__(self, data):
-		if len(data) == 1:
+		if len(data) != 0:
 			#print(data[0])
-			self.name = data[0]["charname"]
-			self.level = data[0]["status"]["level"]
-			self.status = data[0]["status"]
-			self.skills = data[0]["skills"]
-			self.actions = data[0]["actions"]
-
-			print(self.name)
-			print(self.level)
-			print(self.status)
-			print(self.skills)
-			print(self.actions)
+			self.mob.append(data)
+			self.name = data["charname"]
+			self.level = data["status"]["level"]
+			self.status = data["status"]
+			self.skills = data["skills"]
+			self.actions = data["actions"]
 		else:
 			pass#error
 
 	def nextAction(self):
-		return "basic"
+		rt = None
+		use = False
+		basePer = 70
+		for skill in self.skills:
+			if (dice.dice("d%")[0] <= basePer) and (use is False):
+				for name in skill:
+					rt = name
+				basePer -= 10
+				use = True
+		if (rt is None):
+			rt = self.nextAction()
+
+		return str(rt)
 
 if __name__ == "__main__":
-	mons = [monster(), monster()]
+	data = {"skills":[{"smash":3},{"block":0}],"actions":[{"move":0}],"realuser":"Goblin","values":"monster","status":{"charisma":0,"hp":10,"wisdom":0,"agillity":0,"level":1,"max_hp":10,"res_magicspell":0,"res_breath":0,"res_poison":0,"res_magicstic":0,"intelligent":0,"res_sturn":0,"res_parrelize":0,"health":0,"ac":0,"strength":0,"res_magicstaff":0,"res_death":0,"class":"monster"},"charname":"Goblin"}
+	mons = monster(data)
 
-	mons[0].level = 2
+	test = mons.nextAction()
+	print(mons.name)
+	print(test)
 
-	print(mons[0].level)
-	print(mons[1].level)
+	# mons[0].level = 2

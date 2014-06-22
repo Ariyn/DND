@@ -1,17 +1,1 @@
-[
-	{
-		"name":"강타",
-		"type":"smash",
-		"demage":3
-	},
-	{
-		"name":"파이어볼",
-		"type":"fireball",
-		"demage":2
-	},
-	{
-		"name":"회복",
-		"type":"heal",
-		"demage":-3
-	}
-]
+{"heal":{"type":"magic","damage":-5},"poison":{"type":"poison","eff":{"res_poison":-1},"damage":1},"smash":{"type":"none","damage":3}}

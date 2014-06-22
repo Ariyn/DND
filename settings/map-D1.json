@@ -1,1 +1,4 @@
+<<<<<<< HEAD
 [{"number":0,"floor":[2],"connections":["East"]},{"number":1,"floor":[2],"connections":["West"]},{"number":2,"floor":[2],"connections":["South", "East"]},{"number":3,"floor":[2],"connections":["West", "South"]},{"number":4,"floor":[2],"connections":["East"]},{"number":5,"floor":[2],"connections":["West", "North", "East"]},{"number":6,"floor":[2],"connections":["West", "North"]}]
+=======
+>>>>>>> 9c2f89a563fd2fed774b1f9777b1be326ad7f23e

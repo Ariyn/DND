@@ -4,7 +4,7 @@ import random, math
 
 def dice(typeText):
 	spliText = typeText.split("d")
-	print(spliText)
+	# print(spliText)
 	dices = []
 
 	if spliText[0] == "" and spliText[1] == "%":
@@ -18,4 +18,4 @@ def dice(typeText):
 
 
 if __name__ == "__main__":
-	print(dice("d%"))
+	print(dice("20d3"))

@@ -57,7 +57,7 @@ class librarys:
 		else:
 			pass
 
-	def charSettting(self, path = "../settings/characters.json", mode = "auto"):
+	def charSetting(self, path = "../settings/characters.json", mode = "auto"):
 		self.CharData = characters.Character(path)
 		self.charJsonData = ""
 		if(mode == "auto"):
@@ -85,7 +85,6 @@ class librarys:
 		self.SkillData = skill.Skills(path)
 		# self.roomfile = RoomData.lib
 		self.SkillData = ""
-				
 
 if __name__ == "__main__":
 	pass
@@ -112,16 +111,15 @@ if __name__ == "__main__":
 	# # if len(test) == 1:
 	# # 	print(test)
 
-	# a = librarys()
-	# a.roomSetting()
-	# a.RoomData.printAllObject()
-	# a.mapSetting("3x3", 2)
-	# a.MapData.printMaptable()
-	# a.mobSetting()
-	# a.MobData.printAllObject()
-	# a.charSettting()
-	# a.CharData.printAllObject()
-	# a.itemSetting()
-	# a.ItemData.printAllObject()
-	
+	a = librarys()
+	a.roomSetting()
+	a.RoomData.printAllObject()
+	a.mapSetting("3x3", 2)
+	a.MapData.printMaptable()
+	a.mobSetting()
+	a.MobData.printAllObject()
+	a.charSetting()
+	a.CharData.printAllObject()
+	a.itemSetting()
+	a.ItemData.printAllObject()
 	#printu(str(a.TextData.jsonData))
