@@ -4,10 +4,12 @@ import dice
 class monster:
 	name, level, status = "", 0, {}
 	skills, actions = {}, {}
+	mob = []
 
 	def __init__(self, data):
 		if len(data) != 0:
 			#print(data[0])
+			self.mob.append(data)
 			self.name = data["charname"]
 			self.level = data["status"]["level"]
 			self.status = data["status"]
