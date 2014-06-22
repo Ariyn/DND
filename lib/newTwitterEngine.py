@@ -12,7 +12,7 @@ class DND_Twitter(object):
 	accesses = {}
 	consumer_key, consumer_serect = [],[]
 	bots, followers = {}, []
-	
+	log = None
 	def __init__(self, path):
 		files = codecs.open(path,"r","utf-8")
 		fileData = files.read()
@@ -41,6 +41,44 @@ class DND_Twitter(object):
 				self.accesses[i] = acc
 
 		self.fileData, self.jsonData = fileData, jsonData
+
+	def __del__(self):
+		self.log.close()
+
+	@staticmethod
+	def _printJson(data):
+		data = str(data).replace("\'","\"").replace("None","null").replace("True","true").replace("False","false")
+		sys.stdout.buffer.write(str(data).encode("utf-8"))
+
+	def loads(self, path = "../settings/twitter.json"):
+		files = json.loads(codecs.open(path,"r","utf-8").read())
+
+		self.followers = files["followers"]
+		for i in files["bots"]:
+			if "last_twit_id" in files["bots"][i]:
+				self.bots[i]["last_twit_id"] = files["bots"][i]["last_twit_id"]
+
+	def save(self, path = "../settings/twitter.json"):
+		files = codecs.open(path,"w","utf-8")
+		data = {
+			"followers" : self.followers,
+			"bots" : {}
+		}
+		#print(data["followers"])
+		for i in self.bots:
+			data["bots"][i] = self.bots[i]
+
+		string = json.dumps(data)
+		#self._printJson(string)
+		files.write(string)
+
+	def logInit(self, path = "../Log/twitter.log"):
+		self.log = codecs.open(path,"w","utf-8")
+		pass
+
+	def logPrint(self, data):
+		self.log.write(data)
+		pass
 
 	def getLimits(self):
 		limits, jsonLimits = {}, {}
@@ -74,7 +112,7 @@ class DND_Twitter(object):
 		
 		timeList = [x["id_str"] for x in twit if x["id_str"] == self.bots[id]["last_twit_id"]]
 		if len(timeList):
-			print([x["id_str"] for x in twit].index(timeList[0]))
+			#print([x["id_str"] for x in twit].index(timeList[0]))
 			twit = twit[:[x["id_str"] for x in twit].index(timeList[0])]
 			self.bots[id]["last_twit_id"] = timeList[0]
 		
@@ -119,27 +157,31 @@ class DND_Twitter(object):
 		if name == None:
 			return "DNDMATSER"
 		else:
-			return 1
+			return 2
 		pass
 
 	@staticmethod
-	def _sendMessageThread(access, sender, text, screen_name, media,th):
-		print(screen_name)
-		text = "@" + screen_name + " " + text
+	def _sendMessageThread(access, sender, ptext, screen_name, media,th):
+		#print(screen_name)
+		text = "@" + screen_name + " " + ptext
 		if media:
 			update = access.statuses.update_with_media
 		else:
 			update = access.statuses.update
 		try:
+			#print(text)
 			if(len(text) > 140):
-				i = 0
-				while i != (len(text) / 140) + 1:
-					s = text[i * 140 + 1:140*(i+1)]
+				#maybe i need more beautiful cutting system
+				#print(["@"+screen_name+" "+ptext[x:x+137-len(screen_name)] for x in range(0,len(ptext),137-len(screen_name))])
+
 					if media:
-						update(**{"status" : s, "media[]": media})
+						_datas = ["@"+screen_name+" "+ptext[x:x+117-len(screen_name)] for x in range(0,len(ptext),117-len(screen_name))]
+						for i in _datas:
+							update(**{"status" : i, "media[]": media})
 					else:
-						update(status = s)
-					i+=1
+						_datas = ["@"+screen_name+" "+ptext[x:x+137-len(screen_name)] for x in range(0,len(ptext),137-len(screen_name))]
+						for i in _datas:
+							update(status = i)
 			else:
 				if media:
 					ass = access.statuses.update_with_media(**{"status":text, "media[]": media})
@@ -157,6 +199,7 @@ class DND_Twitter(object):
 
 if __name__ == "__main__":
 	d = DND_Twitter("../settings/oauth.json")
+	d.logInit("../log/twitter.log")
 	#print(originalTwitter.__file__)
 	#print(originalTwitter.api.__file__)
 	print(d.accesses)
@@ -175,7 +218,12 @@ if __name__ == "__main__":
 	# print(d.th, len(d.th))
 	# sys.stdout.buffer.write(str(d.getUsers()).encode("utf-8"))
 	# sys.stdout.buffer.write(str(d.followers).encode("utf-8"))
-	twit, rawTwit = d.getTimeline("DNDMATSER")
-	sys.stdout.buffer.write(str(twit).encode("utf-8"))
-	print("")
-	sys.stdout.buffer.write(str(rawTwit).encode("utf-8"))
+
+	print(d._sendMessageThread(None, "sender","this is a test text for 140 twitter system. if this is more than 140 words than the method will cut automatically, but this is not enought for 140 words. wow english twitter is pretty good, and i thought korean 140 words was a little short, but it was true","MuTopia_ArtTeam",None,None))
+	#d.loads("../settings/twitter.json")
+	#twit = d.getTimeline("DNDMATSER", True)
+	#sys.stdout.buffer.write(str(twit).encode("utf-8"))
+	print(d.getUsers())
+
+
+	d.save("../settings/twitter.json")

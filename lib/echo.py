@@ -24,7 +24,12 @@ class echo:
 
 	def addEchoText(self, pid, text):
 		print("id",pid)
-		self.echoText[pid] = text
+		
+		if pid not in self.echoText:
+			self.echoText[pid] = []
+
+		self.echoText[pid].append(text)
+
 
 	def printu(self, text):
 		sys.stdout.buffer.write((text+"\n").encode('utf-8'))
@@ -36,22 +41,32 @@ class echo:
 	def echo(self, debug = True):
 		if debug:
 			for i in self.echoText:
-				print(self.echoText[i]+"\n")
+				print(str([x for x in self.echoText[i]])+"\n")
 		else:
+			# for i in self.echoText:
+			# 	print(str([x for x in self.echoText[i]])+"\n")
 			self.tf.sendMessages(self.Message())
 			self.echoText = {}
+
 
 	def Message(self):
 		rt = []
 		tmp = self.echoText
-		for key in tmp:			
-			ha = {}
-			ha["id"] = key
-			ha["text"] = tmp[key]
-			rt.append(ha)
+		for key in tmp:
+			for text in reversed(tmp[key]):
+				ha = {}
+				ha["id"] = key
+				ha["text"] = text
+				rt.append(ha)
 		return rt
 
 
 if __name__ == "__main__":
 	t = echo()
-	t.echo(False)
+
+	lis = [{"test":"ss"},{"test":"ss"},{"test":"ss"}]
+
+	for i in lis:
+		print(i.keys()[0])
+
+	#t.echo(False)

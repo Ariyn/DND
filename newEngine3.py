@@ -17,13 +17,15 @@ class DND:
 		return text
 
 	def main(self):
+		self.files = codecs.open(path,"w","utf-8")
 		self.m = parse_nature.oModules()
 			#data = bModules()
 			
 		self.data = {
 			"players":
 			{
-				"YuiDevelop":{"character":"miko","synario":"기본","location":83,"flag_battle":False,"flag_newbie":False,"moveEvent":[]}
+				"YuiDevelop":{"character":"miko","synario":"기본","location":83,"flag_battle":False,"flag_newbie":False,"moveEvent":[]},
+				"MuTopia_ArtTeam":{"character":"정의의 아린", "class":"프로그래머", "flag_newbie":True,"flag_status":True,"moveEvent":["#능력치"]}
 			},
 			"texts":{},
 			"characters":{},
@@ -35,7 +37,7 @@ class DND:
 
 		modules, basicModules = self.m.parseStart()
 
-		print(self.m.realModules["librarys"])
+		#print(self.m.realModules["librarys"])
 
 		basicModules.TwitterData = tf
 		basicModules.echoTwitterSetting(tf)
@@ -58,11 +60,15 @@ class DND:
 		self.modules = modules
 		self.tf = tf
 
+		self.tf.logInit("log/twitter.log")
+		self.tf.loads("settings/twitter.json")
+
 		#data["players"] = #player json parse
 		self.data["monster"] = lib.monster.monster
 		self.data["rooms"] = self.m.realModules["librarys"].RoomData.name
 		self.data["monsters"] = self.m.realModules["librarys"].MobData.name
 		self.data["characters"] = self.m.realModules["librarys"].CharData.name
+		self.data["charactersMethod"] = self.m.realModules["librarys"].CharData
 		self.data["texts"] = self.m.realModules["librarys"].TextData.jsonData
 
 		#print("bd", self.data)
@@ -70,24 +76,21 @@ class DND:
 		#print(m.realModules["librarys"].RoomData.number)
 		#print(m.realModules["librarys"].)
 
-		num = 3
-		while num > 0:
-			num-=1
+		num = 6
+		while num >0:
+			num -= 1
 
 			newUserData = self.checkNewUser()
 			retInputData = basicModules.TwitterData.getTimeline("DNDMATSER")
-			print(retInputData)
+
 			#retInputData = self.testTwit(self.data["players"].keys())
 			print("\n")
 			for i in self.data["players"]:
 				if i not in retInputData:
-					print("continue")
+					print("no input")
 					continue
 
 				#print(retInputData[i])
-
-				print(i)
-				print(self.data["players"][i])
 				
 				#[self.data["characters"][x] for x in self.data["characters"] if x == self.data["players"][i]["character"]]
 
@@ -98,9 +101,29 @@ class DND:
 						self.data["players"][i],
 						{
 							"player"	:	i,
-							"inputs"	:	retInputData[i]
+							"inputs"	:	retInputData[i],
+							"characterM":	self.data["charactersMethod"]
 						})
-					print(self.data["players"][i])
+					if options["state"] == "완료":
+						characterData = self.data["characters"][i]
+						#print(characterData)
+						# if len(characterData) < 1:
+						# 	pass # not played yet
+						# else:
+						# 	characterData = characterData[0]
+
+						options = self.modules.main.main(
+							self.basicModules,
+							self.data["players"][i],
+							{
+								"player"	:	i,
+								"characters":	characterData,
+								"rooms"		:	self.data["rooms"],
+								"texts"		:	self.data["texts"],
+								"monsters"	:	self.data["monsters"],
+								"monster"	:	self.data["monster"],
+								"inputs"	:	retInputData[i]
+							})
 				elif self.data["players"][i]["flag_battle"]:
 					characterData = self.data["characters"][i]
 					# options = self.modules.battle.main(
@@ -153,9 +176,11 @@ class DND:
 						elif options["event"] == "synario":
 							self.data["players"][i]["flag_battle"] = False
 
-					self.data["players"][i]["moveEvent"] = options["moveEvent"]
+						self.data["players"][i]["moveEvent"] = options["moveEvent"]
 
 			basicModules.echo(False)
+			self.tf.save("settings/twitter.json")
+			self.save("settings/gameEngine.json")
 			input("continue")
 			#wait 20sec
 
@@ -163,14 +188,26 @@ class DND:
 			# 	self.data[i]["flag_battle"] = options["flag_battle"]
 
 	def checkNewUser(self):
-		#follower = self.tf.getUsers()
-		follower = ["Mutopia_ArtTeam"]
+		follower = self.tf.getUsers()
+		#follower = ["MuTopia_ArtTeam"]
 		for i in [x for x in follower if x not in self.data["players"]]:
-			print(i,"new user")
+			#print(i,"new user")
 			self.data["players"][i] = {}
 			self.data["players"][i]["flag_newbie"] = True
 			#self.m.realModules["librarys"].CharData.setBasicChar()
+			#print(self.data["players"])
 		pass
+
+	def load(self, path = "settings/gameEngine.json"):
+		_data = json.loads(path)
+		
+		
+	def save(self, path = "settings/gameEngine.json"):
+		_data = {"data":self.data}
+
+		self.files.write(json.dump(_data))
+		self.m.realModules["librarys"].CharData.saveFile("settings/characters.json")
+
 
 if __name__ == "__main__":
 	d = DND()
