@@ -1,218 +1,162 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
 import lib.jsonParse
-import lib.newTwitterEngine
+import lib.echo
 from lib.dice import dice
 import lib.monster
 
 import parse_nature
 
-class DND:
-	def testTwit(self, characters):
-		text = {}
-		for i in characters:
-			text[i] = input(i+"의 입력\n")
+def testTwit(characters):
+	text = {}
+	for i in characters:
+		text[i] = input(i+"의 입력\n")
 
-		return text
+	return text
 
-	def main(self):
-		self.files = codecs.open(path,"w","utf-8")
-		self.m = parse_nature.oModules()
-			#data = bModules()
+def main():
+	m = parse_nature.oModules()
+		#data = bModules()
+		
+	data = {
+		"players":
+		{
+			"YuiDevelop":{"character":"miko","synario":"기본","location":83,"flag_battle":False,"moveEvent":[]},
+			"MuTopia_ArtTeam":{"character":"horo","synario":"기본","location":0,"flag_battle":False,"moveEvent":[]},
+		},
+		"texts":{},
+		"characters":{},
+		"rooms":{}
+	}
+
+	#m.setJson('builtin','../scripts/builtin_method.json')
+
+	modules, basicModules = m.parseStart()
+
+#	print(m.realModules["librarys"])
+
+	#print(dir(basicModules))
+	basicModules.roomSetting("settings/roominfo.json")
+	# m.realModules["librarys"].RoomData.printAllObject()
+	basicModules.mapSetting("3x3", 2, path="settings/")
+	# m.realModules["librarys"].MapData.printMaptable()
+	basicModules.mobSetting(path = "settings/monsters.json")
+	# m.realModules["librarys"].MobData.printAllObject()
+	basicModules.charSetting(path ="settings/characters.json")
+	# m.realModules["librarys"].CharData.printAllObject()
+	basicModules.itemSetting(path = "settings/items.json")
+	# m.realModules["librarys"].ItemData.printAllObject()
+	basicModules.textSetting(path = "settings/texts.json")
+
+	basicModules.skillSetting(path = "settings/skills.json")
+
+	# print(basicModules.RoomData.getObjtoName(basicModules.RoomData.getNameis("")))
+	
+	# 방정보에서 몬스터 이름 get 후, library 에서 몬스터 생성후 저장 하고(방에 있는 몬스터 수만큼)
+	data["monster"] = lib.monster.monster
+	# 여기에다가 저장.(클래스형식 + 클래스 초기화)
+	data["rooms"] = m.realModules["librarys"].RoomData.name
+	data["monsters"] = m.realModules["librarys"].MobData.name
+	data["skills"] = m.realModules["librarys"].SkillData.name
+	data["characters"] = m.realModules["librarys"].CharData.name
+	data["texts"] = m.realModules["librarys"].TextData.jsonData
+
+	#print("bd", data)
+
+	#print(m.realModules["librarys"].RoomData.number)
+	#print(m.realModules["librarys"].)
+	num = 3
+	while True:
+		num-=1
+	#basicModules.twitter.get()
+		retInputData = testTwit(data["players"].keys())
+#		print(retInputData)
+		print("\n")
+		for i in data["players"]:
+			if i not in retInputData:
+				continue
+			# print(basicModules.RoomData.getNameis(data["characters"][i]))
+			#print(data["characters"])
+			characterData = data["characters"][i]
+			#[data["characters"][x] for x in data["characters"] if x == data["players"][i]["character"]]
 			
-		self.data = {
-			"players":
-			{
-				"YuiDevelop":{"character":"miko","synario":"기본","location":83,"flag_battle":False,"flag_newbie":False,"moveEvent":[]},
-				"MuTopia_ArtTeam":{"character":"정의의 아린", "class":"프로그래머", "flag_newbie":True,"flag_status":True,"moveEvent":["#능력치"]}
-			},
-			"texts":{},
-			"characters":{},
-			"rooms":{}
-		}
+			if data["players"][i]["flag_battle"]:
+				# basicModules.ItemData.lib.saveFile("./","save.json",
+				# tmp = {
+				# 	"player"	:	i,
+				# 	"characters":	characterData,
+				# 	"rooms"		:	data["rooms"],
+				# 	"texts"		:	data["texts"],
+				# 	"monsters"	:	data["monsters"],
+				# 	"skills"	:	data["skills"],
+				# 	"inputs"	:	retInputData[i],
+				# 	"monster"	:	data["monster"]
+				# }
+				# print(tmp)
+				# print(data["players"][i])
+				options = modules.battle.main(
+					basicModules,
+					data["players"][i],
+					{
+						"player"	:	i,
+						"characters":	characterData,
+						"rooms"		:	data["rooms"],
+						"texts"		:	data["texts"],
+						"monsters"	:	data["monsters"],
+						"skills"	:	data["skills"],
+						"inputs"	:	retInputData[i],
+						"monster"	:	data["monster"]
+					})
+			else:
+				#print(characterData)
+				# if len(characterData) < 1:
+				# 	pass # not played yet
+				# else:
+				# 	characterData = characterData[0]
 
-		tf = lib.newTwitterEngine.DND_Twitter("settings/oauth.json")
-		#m.setJson('builtin','../scripts/builtin_method.json')
-
-		modules, basicModules = self.m.parseStart()
-
-		#print(self.m.realModules["librarys"])
-
-		basicModules.TwitterData = tf
-		basicModules.echoTwitterSetting(tf)
-		#print(dir(basicModules))
-		basicModules.roomSetting("settings/roominfo.json")
-		# m.realModules["librarys"].RoomData.printAllObject()
-		basicModules.mapSetting("3x3", 2, path="settings/")
-		# m.realModules["librarys"].MapData.printMaptable()
-		basicModules.mobSetting(path = "settings/monsters.json")
-		# m.realModules["librarys"].MobData.printAllObject()
-		basicModules.charSettting(path ="settings/characters.json")
-		# m.realModules["librarys"].CharData.printAllObject()
-		basicModules.itemSetting(path = "settings/items.json")
-		# m.realModules["librarys"].ItemData.printAllObject()
-		basicModules.textSetting(path = "settings/texts.json")
-
-		basicModules.skillSetting(path = "settings/skills.json")
-		
-		self.basicModules = basicModules
-		self.modules = modules
-		self.tf = tf
-
-		self.tf.logInit("log/twitter.log")
-		self.tf.loads("settings/twitter.json")
-
-		#data["players"] = #player json parse
-		self.data["monster"] = lib.monster.monster
-		self.data["rooms"] = self.m.realModules["librarys"].RoomData.name
-		self.data["monsters"] = self.m.realModules["librarys"].MobData.name
-		self.data["characters"] = self.m.realModules["librarys"].CharData.name
-		self.data["charactersMethod"] = self.m.realModules["librarys"].CharData
-		self.data["texts"] = self.m.realModules["librarys"].TextData.jsonData
-		self.data["skills"] = self.m.realModules["librarys"].SkillData.name
-
-		#print("bd", self.data)
-
-		#print(m.realModules["librarys"].RoomData.number)
-		#print(m.realModules["librarys"].)
-
-		num = 6
-		while num >0:
-			num -= 1
-
-			newUserData = self.checkNewUser()
-			retInputData = self.basicModules.TwitterData.getTimeline("DNDMATSER")
-
-			#retInputData = self.testTwit(self.data["players"].keys())
-			print("\n")
-			for i in self.data["players"]:
-				if i not in retInputData:
-					print("no input")
-					continue
-
-				#print(retInputData[i])
-				
-				#[self.data["characters"][x] for x in self.data["characters"] if x == self.data["players"][i]["character"]]
-
-				if self.data["players"][i]["flag_newbie"]:
-					print("here2")
-					options = self.modules.tutorial.main(
-						self.basicModules,
-						self.data["players"][i],
-						{
-							"player"	:	i,
-							"inputs"	:	retInputData[i],
-							"characterM":	self.data["charactersMethod"]
-						})
-					if options["state"] == "완료":
-						characterData = self.data["characters"][i]
-						#print(characterData)
-						# if len(characterData) < 1:
-						# 	pass # not played yet
-						# else:
-						# 	characterData = characterData[0]
-
-						options = self.modules.main.main(
-							self.basicModules,
-							self.data["players"][i],
-							{
-								"player"	:	i,
-								"characters":	characterData,
-								"rooms"		:	self.data["rooms"],
-								"texts"		:	self.data["texts"],
-								"monsters"	:	self.data["monsters"],
-								"monster"	:	self.data["monster"],
-								"inputs"	:	retInputData[i]
-							})
-				elif self.data["players"][i]["flag_battle"]:
-					characterData = self.data["characters"][i]
-					options = self.modules.battle.main(
-						self.basicModules,
-						self.data["players"][i],
-						{
-							"player"	:	i,
-							"characters":	characterData,
-							"rooms"		:	self.data["rooms"],
-							"texts"		:	self.data["texts"],
-							"monsters"	:	self.data["monsters"],
-							"skills"	:	self.data["skills"],
-							"inputs"	:	retInputData[i],
-							"monster"	:	self.data["monster"]
-						})
+				options = modules.main.main(
+					basicModules,
+					data["players"][i],
+					{
+						"player"	:	i,
+						"characters":	characterData,
+						"rooms"		:	data["rooms"],
+						"texts"		:	data["texts"],
+						"monsters"	:	data["monsters"],
+						"skills"	:	data["skills"],
+						"monster"	:	data["monster"],
+						"inputs"	:	retInputData[i]
+					})
+			if options:
+				print(options)
+				if "move" in options:
+					data["players"][i]["location"] = options["move"]
+				if "state" in options:
 					pass
-				else:
-					characterData = self.data["characters"][i]
-					#print(characterData)
-					# if len(characterData) < 1:
-					# 	pass # not played yet
-					# else:
-					# 	characterData = characterData[0]
+					print(options["state"])
+				if "event" in options:
+					if options["event"] == "demage":
+						_demages = dice(options["demage"])[0]
+						m.realModules["librarys"].CharData.setObjtoName(
+							m.realModules["librarys"].CharData.getNameis(data["players"][i]["character"]), "hp", _demage)
+						pass
+					elif options["event"] == "battle":
+						data["players"][i]["flag_battle"] = True
+						data["players"][i]["monster"] = options["monster"]
+					elif options["event"] == "synario":
+						data["players"][i]["flag_battle"] = False
 
-					options = self.modules.main.main(
-						self.basicModules,
-						self.data["players"][i],
-						{
-							"player"	:	i,
-							"characters":	characterData,
-							"rooms"		:	self.data["rooms"],
-							"texts"		:	self.data["texts"],
-							"monsters"	:	self.data["monsters"],
-							"monster"	:	self.data["monster"],
-							"inputs"	:	retInputData[i]
-						})
-				if options:
-					if "move" in options:
-						self.data["players"][i]["location"] = options["move"]
-					if "state" in options:
-						print(options["state"])
-					if "event" in options:
-						if options["event"] == "demage":
-							_demages = dice(options["demage"])[0]
-							self.m.realModules["librarys"].CharData.setObjtoName(
-								self.m.realModules["librarys"].CharData.getNameis(self.data["players"][i]["character"]), "hp", _demage)
-							pass
-						elif options["event"] == "battle":
-							self.data["players"][i]["flag_battle"] = True
-							self.data["players"][i]["monster"] = options["monster"]
-						elif options["event"] == "synario":
-							self.data["players"][i]["flag_battle"] = False
+				data["players"][i]["moveEvent"] = options["moveEvent"]
 
-						self.data["players"][i]["moveEvent"] = options["moveEvent"]
+		basicModules.echo()
+		#wait 20sec
 
-			basicModules.echo(False)
-			self.tf.save("settings/twitter.json")
-			self.save("settings/gameEngine.json")
-			input("continue")
-			#wait 20sec
+		# if "flag_battle" in options:
+		# 	data[i]["flag_battle"] = options["flag_battle"]
 
-			# if "flag_battle" in options:
-			# 	self.data[i]["flag_battle"] = options["flag_battle"]
-
-	def checkNewUser(self):
-		follower = self.tf.getUsers()
-		#follower = ["MuTopia_ArtTeam"]
-		for i in [x for x in follower if x not in self.data["players"]]:
-			#print(i,"new user")
-			self.data["players"][i] = {}
-			self.data["players"][i]["flag_newbie"] = True
-			#self.m.realModules["librarys"].CharData.setBasicChar()
-			#print(self.data["players"])
-		pass
-
-	def load(self, path = "settings/gameEngine.json"):
-		_data = json.loads(path)
-		
-		
-	def save(self, path = "settings/gameEngine.json"):
-		_data = {"data":self.data}
-
-		self.files.write(json.dump(_data))
-		self.m.realModules["librarys"].CharData.saveFile("settings/characters.json")
 
 if __name__ == "__main__":
-	d = DND()
-	d.main()
+	main()
 
 
 
