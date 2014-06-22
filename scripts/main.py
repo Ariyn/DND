@@ -66,7 +66,7 @@ def main(mods, data, options):
 		print(options["characters"]["skills"])
 		for i in options["characters"]["skills"]:
 				retData["moveEvent"].append({"key":i,"target":None})
-				text += "\n"+i
+				text += "\n"+ str(i)
 	
 	mods.addEchoText(options["player"],str(text))
 	return retData

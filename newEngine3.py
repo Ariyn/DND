@@ -42,7 +42,7 @@ def main():
 	# m.realModules["librarys"].MapData.printMaptable()
 	basicModules.mobSetting(path = "settings/monsters.json")
 	# m.realModules["librarys"].MobData.printAllObject()
-	basicModules.charSettting(path ="settings/characters.json")
+	basicModules.charSetting(path ="settings/characters.json")
 	# m.realModules["librarys"].CharData.printAllObject()
 	basicModules.itemSetting(path = "settings/items.json")
 	# m.realModules["librarys"].ItemData.printAllObject()
@@ -53,6 +53,7 @@ def main():
 	data["monster"] = lib.monster.monster
 	data["rooms"] = m.realModules["librarys"].RoomData.name
 	data["monsters"] = m.realModules["librarys"].MobData.name
+	data["skills"] = m.realModules["librarys"].SkillData.name
 	data["characters"] = m.realModules["librarys"].CharData.name
 	data["texts"] = m.realModules["librarys"].TextData.jsonData
 
@@ -65,6 +66,7 @@ def main():
 		num-=1
 	#basicModules.twitter.get()
 		retInputData = testTwit(data["players"].keys())
+		print(retInputData)
 		print("\n")
 		for i in data["players"]:
 			if i not in retInputData:
@@ -84,6 +86,7 @@ def main():
 						"rooms"		:	data["rooms"],
 						"texts"		:	data["texts"],
 						"monsters"	:	data["monsters"],
+						"skills"	:	data["skills"],
 						"inputs"	:	retInputData[i],
 						"monster"	:	data["monster"]
 					})
@@ -103,10 +106,12 @@ def main():
 						"rooms"		:	data["rooms"],
 						"texts"		:	data["texts"],
 						"monsters"	:	data["monsters"],
+						"skills"	:	data["skills"],
 						"monster"	:	data["monster"],
 						"inputs"	:	retInputData[i]
 					})
 			if options:
+				print(options)
 				if "move" in options:
 					data["players"][i]["location"] = options["move"]
 				if "state" in options:

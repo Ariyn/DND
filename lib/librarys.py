@@ -162,7 +162,7 @@ if __name__ == "__main__":
 	a.MapData.printMaptable()
 	a.mobSetting()
 	a.MobData.printAllObject()
-	a.charSettting()
+	a.charSetting()
 	a.CharData.printAllObject()
 	a.itemSetting()
 	a.ItemData.printAllObject()

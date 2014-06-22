@@ -1,5 +1,5 @@
 import codecs
-import dice
+import lib.dice
 
 class monster:
 	name, level, status = "", 0, {}
@@ -42,6 +42,3 @@ if __name__ == "__main__":
 	print(test)
 
 	# mons[0].level = 2
-
-	# print(mons[0].level)
-	# print(mons[1].level)

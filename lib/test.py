@@ -42,12 +42,12 @@ if __name__ == "__main__":
 	skills = lib.SkillData
 	mobs = lib.MobData
 	# print
-	# print("skill name : effect")
-	# skills.printAllObject()
-	# print("charname : informations")
-	# chars.printAllObject()
-	# print("mobname : informations")
-	# mobs.printAllObject()
+	print("skill name : effect")
+	skills.printAllObject()
+	print("charname : informations")
+	chars.printAllObject()
+	print("mobname : informations")
+	mobs.printAllObject()
 	# sample battle
 	# get user information "yuidev"
 	mobskills = mobs.getObjtoName(mobs.getNameis("Goblin"),"skills")
@@ -57,9 +57,7 @@ if __name__ == "__main__":
 	mobskill_type = ""
 # $ methods ------------------------------------------------------------------------------
 	for skill in mobskills:
-		print(skill)
 		for key in skill:
-			print(key)
 			if (skill[key] != 0):
 				f = dice.dice("1d"+str(skill[key]))[0]
 				mobskill_name = key
