@@ -42,7 +42,7 @@ class oModules:
 		for i, moduleId in zip(modules, methods):
 			mod = importlib.import_module(i)
 			
-			print(mod, i)
+#			print(mod, i)
 			temp = getattr(mod,i)()
 			for e in moduleId:
 				basicModules.__setattr__(e,getattr(temp, e))
@@ -54,7 +54,7 @@ class oModules:
 		packages = ["battle", "main"]
 
 		for i in packages:
-			print(i)
+#			print(i)
 			modules.__setattr__(i,importlib.import_module("scripts."+i))
 
 		return modules, basicModules

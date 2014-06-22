@@ -33,7 +33,7 @@ def main():
 
 	modules, basicModules = m.parseStart()
 
-	print(m.realModules["librarys"])
+#	print(m.realModules["librarys"])
 
 	#print(dir(basicModules))
 	basicModules.roomSetting("settings/roominfo.json")
@@ -49,8 +49,12 @@ def main():
 	basicModules.textSetting(path = "settings/texts.json")
 
 	basicModules.skillSetting(path = "settings/skills.json")
+
+	# print(basicModules.RoomData.getObjtoName(basicModules.RoomData.getNameis("")))
 	
+	# 방정보에서 몬스터 이름 get 후, library 에서 몬스터 생성후 저장 하고(방에 있는 몬스터 수만큼)
 	data["monster"] = lib.monster.monster
+	# 여기에다가 저장.(클래스형식 + 클래스 초기화)
 	data["rooms"] = m.realModules["librarys"].RoomData.name
 	data["monsters"] = m.realModules["librarys"].MobData.name
 	data["skills"] = m.realModules["librarys"].SkillData.name
@@ -62,21 +66,34 @@ def main():
 	#print(m.realModules["librarys"].RoomData.number)
 	#print(m.realModules["librarys"].)
 	num = 3
-	while num > 0:
+	while True:
 		num-=1
 	#basicModules.twitter.get()
 		retInputData = testTwit(data["players"].keys())
-		print(retInputData)
+#		print(retInputData)
 		print("\n")
 		for i in data["players"]:
 			if i not in retInputData:
 				continue
-
+			# print(basicModules.RoomData.getNameis(data["characters"][i]))
 			#print(data["characters"])
 			characterData = data["characters"][i]
 			#[data["characters"][x] for x in data["characters"] if x == data["players"][i]["character"]]
 			
 			if data["players"][i]["flag_battle"]:
+				# basicModules.ItemData.lib.saveFile("./","save.json",
+				# tmp = {
+				# 	"player"	:	i,
+				# 	"characters":	characterData,
+				# 	"rooms"		:	data["rooms"],
+				# 	"texts"		:	data["texts"],
+				# 	"monsters"	:	data["monsters"],
+				# 	"skills"	:	data["skills"],
+				# 	"inputs"	:	retInputData[i],
+				# 	"monster"	:	data["monster"]
+				# }
+				# print(tmp)
+				# print(data["players"][i])
 				options = modules.battle.main(
 					basicModules,
 					data["players"][i],
@@ -115,6 +132,7 @@ def main():
 				if "move" in options:
 					data["players"][i]["location"] = options["move"]
 				if "state" in options:
+					pass
 					print(options["state"])
 				if "event" in options:
 					if options["event"] == "demage":

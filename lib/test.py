@@ -1,79 +1,115 @@
-import TwitterEngine
-import codecs,sys
-import json
-import time
+# -*- coding:utf-8 -*-
+import echo
 import dice
-import threading
-import librarys
+import monster
 
-def printu(text):
-	sys.stdout.buffer.write((text+"\n").encode('utf-8'))
+def checkInput(data, pinput):
+	if pinput in [x["key"] for x in data]:
+		return True
+	else:
+		return False
+
+def main(mods, datas, options):
+	print(mods)
+	print(datas)
+	print(options)
+	if datas["moveEvent"] == "도망간다":
+		result["state"] = "도망"
+		mods.addEchoText(options["player"],str(result))
+		print("escape!!!!!")
+		return result
+
+	inputCorrect = checkInput(datas["moveEvent"], options["inputs"])
+	result = {}
+	result["moveEvent"] = ""
+	skills = options["skills"]
+
+	character = datas["character"]
+	if inputCorrect:
+		userskill_name = options["inputs"]
+	else:
+		userskill_name = "smash"
+	userskill_eff = ""
+	userskill_damage = 0
+	userskill_type = ""
+	f = dice.dice("1d"+str(skills[userskill_name]["damage"]))[0]
+	userskill_damage = skills[userskill_name]["damage"] - f
+	userskill_type = skills[userskill_name]["type"]
+
+	text = ""
+	monsters = options["monster"].mob
+	for monster in monsters:
+		if monster["status"]["hp"] < userskill_damage:
+			userskill_damage = userskill_damage % monster["status"]["hp"]
+			options.remove(monster)
+			text = text + monster["realname"] + "에게 " + userskill_damage +"의 대미지를 입혔다.\n" + "남은 hp = " + monster["status"]["hp"] + "\n"
+			text = text + monster["realname"] + "이(가) 죽었다.\n"
+			continue
+		else:
+			monster["status"]["hp"] = monster["status"]["hp"] - userskill_damage
+			text = text + monster["realname"] + "에게 " + userskill_damage +"의 대미지를 입혔다.\n" + "남은 hp = " + monster["status"]["hp"] + "\n"
+		mobskill_name = montser.nextAction()
+		mobskill_eff = ""
+		mobskill_damage = 0
+		mobskill_type = ""
+
+		f = dice.dice("1d"+str(skills[mobskill_name]["damage"]))[0]
+		mobskill_damage = skills[mobskill_name]["damage"] - f
+		mobskill_type = skills[mobskill_name]["type"]
+
+		if (mobskill_name is None) :
+			pass
+		else:
+			character["status"]["hp"] = character["status"]["hp"] - mobskill_damage
+			text = text + monster["realname"] + "이(가) " + mobskill_damage +"의 대미지를 입혔다.\n" + "남은 hp = " + character["status"]["hp"] + "\n"
+
+	if len(monsters) == 0:
+		result["state"] = "승리"
+		mods.addEchoText(options["player"],str(text))
+		return result
+
+	if character["status"]["hp"] <= 0 :
+		result["state"] = "사망"
+		mods.addEchoText(options["player"],str(text))
+		return result
+		
+	result["moveEvent"] = datas["moveEvent"]
+	return result
 
 if __name__ == "__main__":
-	lib = librarys.librarys()
-	twit = librarys.TwitterForm()
-	# init
-	# lib.mobSetting()
-	# # get monster
-	# monsters = lib.MobData
-	# # monsters.printAllObject()
-	# monsters.setObjtoName(monsters.getNameis("a"), "charname", "goblin")
-	# # monsters.setBasicChar("Goblin", "Goblin", "monster", "monster")
-	# # monsters.saveFile(monsters._path,"")
-	# monsters.printAllObject()
+	sample = {"skills":[{"smash":3},{"block":0}],"actions":[{"move":0}],"realuser":"Goblin","values":"monster","status":{"charisma":0,"hp":10,"wisdom":0,"agillity":0,"level":1,"max_hp":10,"res_magicspell":0,"res_breath":0,"res_poison":0,"res_magicstic":0,"intelligent":0,"res_sturn":0,"res_parrelize":0,"health":0,"ac":0,"strength":0,"res_magicstaff":0,"res_death":0,"class":"monster"},"charname":"Goblin"}
+	options = {
+		"player":{"realuser":"YuiDevelop","charname":"horo","status":{"res_magicstic":0,"res_sturn":0,"class":"healer","res_breath":0,"res_magicspell":0,"charisma":0,"intelligent":0,"res_death":0,"res_poison":0,"res_parrelize":0,"wisdom":0,"max_hp":0,"res_magicstaff":0,"agillity":0,"hp":-13,"level":1,"health":0,"ac":0,"strength":0},"skills":[{"smash":0},{"block":0}],"actions":[{"move":0}],"values":"sun"},
+		"inputs":"smash",
+		"skills":{"heal":{"type":"magic","damage":-5},"poison":{"type":"poison","eff":{"res_poison":-1},"damage":1},"smash":{"type":"none","damage":3}},
+		"monster":monster.monster(sample)
+	}
+
+	a = echo.echo()
+	b = monster.monster(sample)
+	c = b.mob
+
+	main(a, c, options)
 
 
 
 
 
+# {
+# 	"player":{"realuser":"YuiDevelop","charname":"horo","status":{"res_magicstic":0,"res_sturn":0,"class":"healer","res_breath":0,"res_magicspell":0,"charisma":0,"intelligent":0,"res_death":0,"res_poison":0,"res_parrelize":0,"wisdom":0,"max_hp":0,"res_magicstaff":0,"agillity":0,"hp":-13,"level":1,"health":0,"ac":0,"strength":0},"skills":[{"smash":0},{"block":0}],"actions":[{"move":0}],"values":"sun"},
+# 	"inputs":"smash",
+# 	"skills":{"heal":{"type":"magic","damage":-5},"poison":{"type":"poison","eff":{"res_poison":-1},"damage":1},"smash":{"type":"none","damage":3}},
+# 	"monster":monster.monster(sample),
+# }
+#플레이어 인풋이 맞는가
 
+#플레이어 인풋에 따라 효과
 
-# battle
+#몬스터의 인풋
 
-	# sample battle system
-	# -- skill setting --
-	lib.skillSetting()
-	# -- char setting --
-	lib.charSetting()
-	# -- mob setting --
-	lib.mobSetting()
-	# 
-	chars = lib.CharData
-	skills = lib.SkillData
-	mobs = lib.MobData
-	# print
-	print("skill name : effect")
-	skills.printAllObject()
-	print("charname : informations")
-	chars.printAllObject()
-	print("mobname : informations")
-	mobs.printAllObject()
-	# sample battle
-	# get user information "yuidev"
-	mobskills = mobs.getObjtoName(mobs.getNameis("Goblin"),"skills")
-	mobskill_name = ""
-	mobskill_eff = ""
-	mobskill_damage = 0
-	mobskill_type = ""
-# $ methods ------------------------------------------------------------------------------
-	for skill in mobskills:
-		for key in skill:
-			if (skill[key] != 0):
-				f = dice.dice("1d"+str(skill[key]))[0]
-				mobskill_name = key
-				mobskill_damage = skills.getObjtoName(skills.getNameis(mobskill_name), "damage") - f
-				mobskill_type = skills.getObjtoName(skills.getNameis(mobskill_name), "type")
-				mobskill_eff = skills.getObjtoName(skills.getNameis(mobskill_name), "eff")
-			
-# ----------------------------------------------------------------------------------------
-	if (mobskill_name is None) :
-		print("missed attack")
-	else:
-		print("Goblin's battle!!")
-		print("Goblis is use the " + mobskill_name + "!!")
-		print("attacked Goblin!! U damaged " +str(mobskill_damage) + "!!")
-		chars.setObjtoName(chars.getNameis("yuidev"), "hp", -(mobskill_damage))
-		chars.saveFile(chars._path,"")
-		
-	print("You're Status -")
-	print(chars.getNameis("yuidev"))
+#몬스터의 인풋에 따라 효과
+
+#텍스트 추가
+
+#전투 승리(=모두 죽임), 패배(=죽음), 도망시
+#return {state:"승리", "죽음", "도망"}
